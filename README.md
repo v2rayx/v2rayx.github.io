@@ -1,4 +1,4 @@
-# 10月18日→20.8M/S|2024年最新免费节点V2ray/Shadowrocket/SSR/Clash订阅链接地址  更新时间 2024-10-18 09:35:37
+# 10月19日→21.4M/S|2024年最新免费节点V2ray/Clash/Shadowrocket/SSR订阅链接地址  更新时间 2024-10-19 09:55:02
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://v2rayx.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,19 +9,19 @@
 
 ### Clash订阅链接
 
-- https://v2rayx.github.io/uploads/2024/10/0-20241018.yaml
-- https://v2rayx.github.io/uploads/2024/10/1-20241018.yaml
-- https://v2rayx.github.io/uploads/2024/10/2-20241018.yaml
-- https://v2rayx.github.io/uploads/2024/10/3-20241018.yaml
-- https://v2rayx.github.io/uploads/2024/10/4-20241018.yml
+- https://v2rayx.github.io/uploads/2024/10/0-20241019.yaml
+- https://v2rayx.github.io/uploads/2024/10/1-20241019.yaml
+- https://v2rayx.github.io/uploads/2024/10/2-20241019.yaml
+- https://v2rayx.github.io/uploads/2024/10/3-20241019.yaml
+- https://v2rayx.github.io/uploads/2024/10/4-20241019.yml
 
 ### V2ray订阅链接
 
-- https://v2rayx.github.io/uploads/2024/10/0-20241018.txt
-- https://v2rayx.github.io/uploads/2024/10/1-20241018.txt
-- https://v2rayx.github.io/uploads/2024/10/2-20241018.txt
-- https://v2rayx.github.io/uploads/2024/10/3-20241018.txt
-- https://v2rayx.github.io/uploads/2024/10/4-20241018.txt
+- https://v2rayx.github.io/uploads/2024/10/0-20241019.txt
+- https://v2rayx.github.io/uploads/2024/10/1-20241019.txt
+- https://v2rayx.github.io/uploads/2024/10/2-20241019.txt
+- https://v2rayx.github.io/uploads/2024/10/3-20241019.txt
+- https://v2rayx.github.io/uploads/2024/10/4-20241019.txt
 
 ## 更多clash节点订阅 ：
 
