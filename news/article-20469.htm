@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2rayx.github.io/news/article-20469.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- SEO Meta Tags -->
+    <!-- OG Meta Tags to improve the way the post looks when you share the page on Facebook, Twitter, LinkedIn -->
+    <meta property="og:site_name" content="" /> <!-- website name -->
+    <meta property="og:site" content="" /> <!-- website link -->
+    <meta property="og:title" content="" /> <!-- title shown in the actual shared post -->
+    <meta property="og:description" content="" /> <!-- description shown in the actual shared post -->
+    <meta property="og:image" content="" /> <!-- image link, make sure it's jpg -->
+    <meta property="og:url" content="" /> <!-- where do you want your post to link to -->
+    <meta name="twitter:card" content="summary_large_image"> <!-- to have large image post format in Twitter -->
+    <title>mapreduce读取parquet文件</title>
+        <meta name="description" content="&lt;parquet.version&gt;1.8.1&lt;/parquet.version&gt; JDateTime 依赖&nbsp; &lt;jodd.version&gt;3.3.8&lt" />
+        <link rel="icon" href="__ADDON__/img/v2rayx/favicon.ico" type="image/x-icon"/>
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="/assets/website/css/v2rayx/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/css/v2rayx/fontawesome-all.min.css" rel="stylesheet">
+    <link href="/assets/website/css/v2rayx/swiper.css" rel="stylesheet">
+    <link href="/assets/website/css/v2rayx/styles.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SJTGCLQCTC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SJTGCLQCTC');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Navigation -->
+    <nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-light" aria-label="Main navigation">
+        <div class="container">
+                        <a class="navbar-brand logo-image" href="/">
+                <span>V2ray X</span>
+            </a>
+                        <!-- Text Logo - Use this if you don't have a graphic logo -->
+            <!-- <a class="navbar-brand logo-text" href="index.html">Yavin</a> -->
+            <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav ms-auto navbar-nav-scroll">
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/free-nodes/">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/news/">新闻资讯</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="#">关于</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">联系</a>
+                    </li>
+                </ul>
+            </div> <!-- end of navbar-collapse -->
+        </div> <!-- end of container -->
+    </nav> <!-- end of navbar -->
+    <!-- end of navigation -->
+    <!-- Header -->
+    <header class="ex-header bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-10 offset-xl-1">
+                    <h1>mapreduce读取parquet文件</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                    </p>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </header> <!-- end of ex-header -->
+    <!-- end of header -->
+    <!-- Details 1 -->
+    <div id="details" class="basic-2">
+        <img class="decoration-star" src="/assets/website/img/v2rayx/decoration-star.svg" alt="alternative">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                      				  				  				<div id="content_views" class="htmledit_views"> </h1> <p>&lt;parquet.version&gt;1.8.1&lt;/parquet.version&gt;</p> <p>JDateTime 依赖&nbsp; &lt;jodd.version&gt;3.3.8&lt;/jodd.version&gt;</p> <pre class="has"><code class="language-html">&lt;dependency&gt; 	&lt;groupId&gt;org.apache.parquet&lt;/groupId&gt; 	&lt;artifactId&gt;parquet-hadoop&lt;/artifactId&gt; 	&lt;version&gt;${parquet.version}&lt;/version&gt; &lt;/dependency&gt; &lt;!-- jodd --&gt; &lt;dependency&gt; 	&lt;groupId&gt;org.jodd&lt;/groupId&gt; 	&lt;artifactId&gt;jodd&lt;/artifactId&gt; 	&lt;version&gt;${jodd.version}&lt;/version&gt; &lt;/dependency&gt;</code></pre> </h1> <pre class="has"><code class="language-java">package mapreduce.job.decodeparquet;  import static org.apache.parquet.format.converter.ParquetMetadataConverter.NO_FILTER;  import java.io.IOException; import java.util.List;  import org.apache.hadoop.conf.Configuration; import org.apache.hadoop.fs.Path; import org.apache.parquet.hadoop.ParquetFileReader; import org.apache.parquet.hadoop.metadata.ParquetMetadata; import org.apache.parquet.schema.MessageType; import org.apache.parquet.schema.Type; /**  * 解析parquet文件  * @author 15257  *  */ public class DecodeParquetApp {  	public static void main(String[] args) { 		 		Configuration conf = new Configuration(); 		String filePath = "D:\\BONC\\Shanxi\\data\\parquet\\002186_0.0"; 		try { 			ParquetMetadata parquetMetadata = ParquetFileReader.readFooter(conf, new Path(filePath), NO_FILTER); 			// 获取 parquet 格式文件的全部 schema 			MessageType schema = parquetMetadata.getFileMetaData().getSchema(); 			System.out.println(schema.toString()); 			List&lt;Type&gt; fields = schema.getFields(); 			for (Type field : fields) { 				System.out.println(field.getName()); 			} 		} catch (IllegalArgumentException e) { 			// TODO Auto-generated catch block 			e.printStackTrace(); 		} catch (IOException e) { 			// TODO Auto-generated catch block 			e.printStackTrace(); 		} 	} }</code></pre> <p><img decoding="async" alt="" class="has" height="112" src="http://img.555519.xyz/uploads3/20220823/4af411c98227831815c1d07f6f8b5c20.jpg"></p> <p><img decoding="async" alt="" class="has" height="134" src="http://img.555519.xyz/uploads3/20220823/3f3e956b226f4033e94a7a3c16fbb3a3.jpg"></p> <p>schema解释</p> <p><strong>message</strong></p> <p>固定声明，就像结构体中的struct一样。</p> <p><strong>hive_schema</strong></p> <p>message name，可以粗暴的理解为表名，因为里面都是field</p> <p><strong>optional，required，repeated</strong></p> <p>这是三种field的关键字，分别表示可选，必选，可重复选</p> <p>可选和必选类似数据库中的nullable，可重复选是为了支持复杂的嵌套结构。</p> <p><strong>field类型</strong></p> <p>目前parquet支持int32,int64,int96(有些系统会把时间戳存成int96如老版hive),float,double,boolean,binary,fixed_len_byte_array。</p> <p>参考类org.apache.parquet.schema.PrimitiveType.PrimitiveTypeName</p> <p><strong>UTF8</strong></p> <p>field的原始类型（Original Type），可以辅助field的type进行细粒度的类型判断。</p> <p>参考类 org.apache.parquet.schema.OriginalType</p> <p><strong>group</strong></p> <p>嵌套结构声明，类似json对象</p> </h1> <pre class="has"><code class="language-java">package test.parquet;  import java.sql.Timestamp; import java.util.Calendar;  import org.apache.hadoop.fs.Path; import org.apache.parquet.example.data.Group; import org.apache.parquet.example.data.simple.NanoTime; import org.apache.parquet.hadoop.ParquetReader; import org.apache.parquet.hadoop.example.GroupReadSupport; import org.apache.parquet.io.api.Binary;  import jodd.datetime.JDateTime;  public class ParquetReadTest {  	public static final long NANOS_PER_SECOND = 1000000000; 	public static final long SECONDS_PER_MINUTE = 60; 	public static final long MINUTES_PER_HOUR = 60;  	public static void main(String[] args) throws Exception { 		parquetReader("D:\\BONC\\Shanxi\\data\\parquet\\002186_0.0"); 	}  	private static void parquetReader(String inPath) throws Exception { 		GroupReadSupport readSupport = new GroupReadSupport(); 		ParquetReader&lt;Group&gt; reader = ParquetReader.builder(readSupport, new Path(inPath)).build(); 		Group line = null; 		while ((line = reader.read()) != null) { 			System.out.println(getTimestamp(line.getInt96("start_time", 0))); 			return; 		} 	}  	public static long getTimestamp(Binary time) { 		NanoTime nanoTime = NanoTime.fromBinary(time); 		int julianDay = nanoTime.getJulianDay(); 		long timeOfDayNanos = nanoTime.getTimeOfDayNanos(); 		JDateTime jDateTime = new JDateTime((double) julianDay); 		Calendar calendar = Calendar.getInstance(); 		calendar.set(Calendar.YEAR, jDateTime.getYear()); 		// java calender index starting at 1. 		calendar.set(Calendar.MONTH, jDateTime.getMonth() - 1); 		calendar.set(Calendar.DAY_OF_MONTH, jDateTime.getDay()); 		long remainder = timeOfDayNanos; 		int hour = (int) (remainder / (NANOS_PER_SECOND * SECONDS_PER_MINUTE * MINUTES_PER_HOUR)); 		remainder = remainder % (NANOS_PER_SECOND * SECONDS_PER_MINUTE * MINUTES_PER_HOUR); 		int minutes = (int) (remainder / (NANOS_PER_SECOND * SECONDS_PER_MINUTE)); 		remainder = remainder % (NANOS_PER_SECOND * SECONDS_PER_MINUTE); 		int seconds = (int) (remainder / (NANOS_PER_SECOND)); 		long nanos = remainder % NANOS_PER_SECOND; 		calendar.set(Calendar.HOUR_OF_DAY, hour); 		calendar.set(Calendar.MINUTE, minutes); 		calendar.set(Calendar.SECOND, seconds); 		Timestamp ts = new Timestamp(calendar.getTimeInMillis()); 		ts.setNanos((int) nanos); 		return ts.getTime(); 	} }</code></pre> <p>解析结果<br /> Binary{12 constant bytes, [-128, 81, 50, 42, -100, 13, 0, 0, -125, -125, 37, 0]}<br /> NanoTime{julianDay=2458499, timeOfDayNanos=14964374000000}<br /> 2019-01-15 04:09:24.374<br /> 1547496564374</p> </h1> <pre class="has"><code class="language-java">package com.bonc.AiMrLocate.job.parquetTest;  import java.io.IOException; import java.util.Iterator;  import org.apache.commons.lang.ArrayUtils; import org.apache.hadoop.conf.Configuration; import org.apache.hadoop.fs.FileSystem; import org.apache.hadoop.fs.Path; import org.apache.hadoop.io.LongWritable; import org.apache.hadoop.io.Text; import org.apache.hadoop.mapreduce.Job; import org.apache.hadoop.mapreduce.Mapper; import org.apache.hadoop.mapreduce.Reducer; import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat; import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat; import org.apache.parquet.example.data.Group; import org.apache.parquet.hadoop.ParquetInputFormat; import org.apache.parquet.hadoop.api.DelegatingReadSupport; import org.apache.parquet.hadoop.api.InitContext; import org.apache.parquet.hadoop.api.ReadSupport; import org.apache.parquet.hadoop.example.GroupReadSupport; import org.apache.parquet.io.api.Binary;  import com.bonc.AiMrLocate.util.DateUtils;  public class ParquetRunner { 	 	public static class WordCountMap extends Mapper&lt;Void, Group, LongWritable, Text&gt; { 		protected void map(Void key, Group value, Mapper&lt;Void, Group, LongWritable, Text&gt;.Context context) throws IOException, InterruptedException { 			try { 				Binary start_time = value.getInt96("start_time", 0); 				long timestamp = DateUtils.getTimestamp(start_time); 				String imsi = value.getString("imsi",0); 				String mme_group_id = value.getString("mme_group_id",0); 				String mme_code = value.getString("mme_code",0); 				String ue_s1ap_id = value.getString("ue_s1ap_id",0); 				String src_eci = value.getString("src_eci",0); 				context.write(new LongWritable(1),new Text(timestamp+","+imsi+","+mme_group_id+","+mme_code+","+ue_s1ap_id+","+src_eci)); 			} catch (Exception e) { 				return; 			} 		} 	} 	 	public static class WordCountReduce extends Reducer&lt;LongWritable, Text, LongWritable, Text&gt; { 		public void reduce(LongWritable key, Iterable&lt;Text&gt; values, Context context) throws IOException, InterruptedException { 		    Iterator&lt;Text&gt; iterator = values.iterator(); 		    while(iterator.hasNext()){ 		        context.write(key,iterator.next()); 		    } 		} 	} 	 	public static final class MyReadSupport extends DelegatingReadSupport&lt;Group&gt; { 		public MyReadSupport() { 		    super(new GroupReadSupport()); 		} 		 		@Override 		public org.apache.parquet.hadoop.api.ReadSupport.ReadContext init(InitContext context) { 		    return super.init(context); 		} 	} 	 	public static void main(String[] args) throws Exception { 		Configuration conf = new Configuration(); 		String readSchema = ""; 		conf.set(ReadSupport.PARQUET_READ_SCHEMA, readSchema); 		          Job job = new Job(conf);         job.setJarByClass(ParquetRunner.class);         job.setJobName("parquet");          String in = "D:\\Work\\MR定位\\山西\\数据字段说明及样例数据\\信令\\mme\\002186_0";         String  out = "D:\\Work\\MR定位\\山西\\数据字段说明及样例数据\\信令\\mme\\output";                  job.setMapperClass(WordCountMap.class);         job.setInputFormatClass(ParquetInputFormat.class);         ParquetInputFormat.setReadSupportClass(job, MyReadSupport.class);         ParquetInputFormat.addInputPath(job, new Path(in));                  job.setReducerClass(WordCountReduce.class);         job.setOutputFormatClass(TextOutputFormat.class);         FileOutputFormat.setOutputPath(job, new Path(out));                  //判断output文件夹是否存在，如果存在则删除         Path path = new Path(out);         //根据path找到这个文件         FileSystem fileSystem = path.getFileSystem(conf);         if (fileSystem.exists(path)) {             fileSystem.delete(path, true);             System.out.println(out+"已存在，删除");         }          job.waitForCompletion(true); 	} }</code></pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-20010.htm">猫咪领养回访多久可以结束（领养猫家访烦不烦）</a></p>
+                                        <p>下一个：<a href="/news/article-20470.htm">宠物粮食加工厂设备哪的好点呢视频 宠物粮食加工厂设备哪的好点呢视频讲解</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-10-27-node-share.htm" title="10月27日→18.2M/S|2024年最新免费节点Shadowrocket/Clash/SSR/V2ray订阅链接地址">10月27日→18.2M/S|2024年最新免费节点Shadowrocket/Clash/SSR/V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-18680.htm" title="宠物领养网站的设计与实现方案有哪些内容（宠物领养网站的设计与实现方案有哪些内容和要求）">宠物领养网站的设计与实现方案有哪些内容（宠物领养网站的设计与实现方案有哪些内容和要求）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-18-free-node-subscribe-links.htm" title="10月18日→21.7M/S|2024年最新免费节点Shadowrocket/SSR/Clash/V2ray订阅链接地址">10月18日→21.7M/S|2024年最新免费节点Shadowrocket/SSR/Clash/V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-25-node-share.htm" title="9月25日→19.2M/S|2024年最新免费节点Clash/SSR/V2ray/Shadowrocket订阅链接地址">9月25日→19.2M/S|2024年最新免费节点Clash/SSR/V2ray/Shadowrocket订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-5-free-node-subscribe.htm" title="9月5日→22.9M/S|2024年最新免费节点Shadowrocket/SSR/Clash/V2ray订阅链接地址">9月5日→22.9M/S|2024年最新免费节点Shadowrocket/SSR/Clash/V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-27-clash-v2ray-ss-ssr.htm" title="11月27日→18.1M/S|2024年最新免费节点SSR/Clash/V2ray/Shadowrocket订阅链接地址">11月27日→18.1M/S|2024年最新免费节点SSR/Clash/V2ray/Shadowrocket订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-5-clash-v2ray-ss-ssr.htm" title="11月5日→22.5M/S|2024年最新免费节点V2ray/Clash/Shadowrocket/SSR订阅链接地址">11月5日→22.5M/S|2024年最新免费节点V2ray/Clash/Shadowrocket/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-20-free-high-speed-nodes.htm" title="9月20日→20.5M/S|2024年最新免费节点Clash/V2ray/Shadowrocket/SSR订阅链接地址">9月20日→20.5M/S|2024年最新免费节点Clash/V2ray/Shadowrocket/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-18-free-subscribe-node.htm" title="11月18日→21.8M/S|2024年最新免费节点V2ray/Shadowrocket/Clash/SSR订阅链接地址">11月18日→21.8M/S|2024年最新免费节点V2ray/Shadowrocket/Clash/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-15-free-v2ray.htm" title="10月15日→21M/S|2024年最新免费节点Clash/V2ray/SSR/Shadowrocket订阅链接地址">10月15日→21M/S|2024年最新免费节点Clash/V2ray/SSR/Shadowrocket订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div> <!-- end of container -->
+    </div> <!-- end of basic-2 -->
+    <!-- end of details 1 -->
+        <!-- Copyright -->
+    <div class="copyright bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    &nbsp;
+                </div> <!-- end of col -->
+            </div> <!-- enf of row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="p-small"><a href="/">V2ray X节点订阅官网</a> 版权所有 Powered by WordPress</p>
+                </div> <!-- end of col -->
+            </div> <!-- enf of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of copyright -->
+    <!-- end of copyright -->
+    <!-- Back To Top Button -->
+    <button onclick="topFunction()" id="myBtn">
+        <img src="/assets/website/img/v2rayx/up-arrow.png" alt="alternative">
+    </button>
+    <!-- end of back to top button -->
+    <!-- Scripts -->
+    <script src="/assets/website/js/frontend/v2rayx/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayx/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+    <script src="/assets/website/js/frontend/v2rayx/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+    <script src="/assets/website/js/frontend/v2rayx/purecounter.min.js"></script> <!-- Purecounter counter for statistics numbers -->
+    <script src="/assets/website/js/frontend/v2rayx/scripts.js"></script> <!-- Custom scripts -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
