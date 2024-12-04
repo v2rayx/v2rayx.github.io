@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2rayx.github.io/news/article-20930.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- SEO Meta Tags -->
+    <!-- OG Meta Tags to improve the way the post looks when you share the page on Facebook, Twitter, LinkedIn -->
+    <meta property="og:site_name" content="" /> <!-- website name -->
+    <meta property="og:site" content="" /> <!-- website link -->
+    <meta property="og:title" content="" /> <!-- title shown in the actual shared post -->
+    <meta property="og:description" content="" /> <!-- description shown in the actual shared post -->
+    <meta property="og:image" content="" /> <!-- image link, make sure it's jpg -->
+    <meta property="og:url" content="" /> <!-- where do you want your post to link to -->
+    <meta name="twitter:card" content="summary_large_image"> <!-- to have large image post format in Twitter -->
+    <title>SpringBoot整合ActiveMQ（入门）</title>
+        <meta name="description" content="这是一篇博客原文。 &nbsp;消息队列中间件是分布式系统中重要的组件，主要解决应用耦合，异步消息，流量削锋等问题。实现高性能，高可用，可伸缩和最终一致性架构。是大型分布式系统不可缺少的中间件。消息形" />
+        <link rel="icon" href="__ADDON__/img/v2rayx/favicon.ico" type="image/x-icon"/>
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="/assets/website/css/v2rayx/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/css/v2rayx/fontawesome-all.min.css" rel="stylesheet">
+    <link href="/assets/website/css/v2rayx/swiper.css" rel="stylesheet">
+    <link href="/assets/website/css/v2rayx/styles.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SJTGCLQCTC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SJTGCLQCTC');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Navigation -->
+    <nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-light" aria-label="Main navigation">
+        <div class="container">
+                        <a class="navbar-brand logo-image" href="/">
+                <span>V2ray X</span>
+            </a>
+                        <!-- Text Logo - Use this if you don't have a graphic logo -->
+            <!-- <a class="navbar-brand logo-text" href="index.html">Yavin</a> -->
+            <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav ms-auto navbar-nav-scroll">
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/free-nodes/">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/news/">新闻资讯</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="#">关于</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">联系</a>
+                    </li>
+                </ul>
+            </div> <!-- end of navbar-collapse -->
+        </div> <!-- end of container -->
+    </nav> <!-- end of navbar -->
+    <!-- end of navigation -->
+    <!-- Header -->
+    <header class="ex-header bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-10 offset-xl-1">
+                    <h1>SpringBoot整合ActiveMQ（入门）</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                    </p>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </header> <!-- end of ex-header -->
+    <!-- end of header -->
+    <!-- Details 1 -->
+    <div id="details" class="basic-2">
+        <img class="decoration-star" src="/assets/website/img/v2rayx/decoration-star.svg" alt="alternative">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                      				  				  				<div id="content_views" class="htmledit_views"> <p>这是一篇博客原文。</p> <p>&nbsp;消息队列中间件是分布式系统中重要的组件，<span style="color:#f33b45;"><strong>主要解决应用耦合，异步消息，流量削锋等问题。实现高性能，高可用，可伸缩和最终一致性架构</strong></span>。是大型分布式系统不可缺少的中间件。消息形式支持<span style="color:#f33b45;"><strong>点对点和订阅-发布</strong></span>。</p> <h2><strong>ActiveMQ是什么？</strong></h2> <blockquote> <ol> <li><strong>ActiveMQ是消息队列技术，为解决高并发问题而生</strong></li> <li><strong>ActiveMQ生产者消费者模型（生产者和消费者可以跨平台、跨系统）</strong></li> <li><strong>ActiveMQ支持如下两种消息传输方式</strong></li> </ol> <ul> <li><strong>点对点模式，生产者生产了一个消息，只能由一个消费者进行消费</strong></li> <li><strong>发布/订阅模式，生产者生产了一个消息，可以由多个消费者进行</strong></li> </ul> </blockquote> <h2><strong>SpringBoot整合ActiveMQ</strong></h2> <h3><strong>1. ActiveMQ下载启动</strong></h3> <blockquote> <p><strong>可直接进入官网下载完成。<a href="" rel="nofollow"> http://activemq.apache.org/download-archives.html</a></strong></p> </blockquote> <p>&nbsp;&nbsp;如果能成功访问<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://localhost:8161/admin"  rel="nofollow">http://localhost:8161/admin</a>（用户名和密码默认为admin），则启动成功。</p> <h3><strong>2.&nbsp; 创建两个springboot项目，分别作为消息提供者（provider）和消费者（consumer），添加依赖</strong></h3> <pre><code class="language-XML">&lt;dependency&gt;     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;     &lt;artifactId&gt;spring-boot-starter-activemq&lt;/artifactId&gt; &lt;/dependency&gt; &lt;!--消息队列连接池--&gt; &lt;dependency&gt;     &lt;groupId&gt;org.apache.activemq&lt;/groupId&gt;     &lt;artifactId&gt;activemq-pool&lt;/artifactId&gt;     &lt;version&gt;5.15.0&lt;/version&gt; &lt;/dependency&gt;</code></pre> <h3><strong>3.&nbsp; 在两个项目中的application.properires配置消息队列，并在启动类添加@EnableJms开启消息队列。</strong></h3> <h3><strong><span style="color:#3399ea;">application.properties</span></strong></h3> <pre><code class="language-XML"># failover:(tcp://localhost:61616,tcp://localhost:61617) # tcp://localhost:61616 spring.activemq.broker-url=tcp://localhost:61616 #true 表示使用内置的MQ，false则连接服务器 spring.activemq.in-memory=false #true表示使用连接池；false时，每发送一条数据创建一个连接 spring.activemq.pool.enabled=true #连接池最大连接数 spring.activemq.pool.max-connections=10 #空闲的连接过期时间，默认为30秒 spring.activemq.pool.idle-timeout=30000 #强制的连接过期时间，与idleTimeout的区别在于：idleTimeout是在连接空闲一段时间失效，而expiryTimeout不管当前连接的情况，只要达到指定时间就失效。默认为0，never spring.activemq.pool.expiry-timeout=0</code></pre> <p><span style="color:#f33b45;">这里采用的是key---value键值对方式配置。&nbsp; 也可以使用yaml格式配置（此格式为官方推荐格式）</span></p> <p><strong>启动类(provider)，consumer同样</strong></p> <pre><code class="language-java">@SpringBootApplication @EnableJms //启动消息队列 public class ProviderApplication { 	public static void main(String[] args) { 		SpringApplication.run(ProviderApplication.class, args); 	} }</code></pre> <h3><strong>4.&nbsp; prover项目结构图</strong></h3> <p><img fetchpriority="high" decoding="async" alt="" height="552" src="http://img.555519.xyz/uploads/20221120/fb5781e2d2d32ccce3ea2032d93f1f48.jpg"></p> <p><strong>BeanConfig定义消息队列</strong></p> <pre><code class="language-java">import javax.jms.Queue; import org.apache.activemq.command.ActiveMQQueue; import org.springframework.context.annotation.Bean; import org.springframework.context.annotation.Configuration;   /*  * @author ww  * @date 2021/3/23  11:55  */ @Configuration public class BeanConfig {       //定义存放消息的队列     @Bean     public Queue queue() {         return new ActiveMQQueue("ActiveMQQueue");     } }</code></pre> <p><strong>ProviderController</strong></p> <pre><code class="language-java">import javax.jms.Queue; import org.springframework.beans.factory.annotation.Autowired; import org.springframework.jms.core.JmsMessagingTemplate; import org.springframework.web.bind.annotation.RequestMapping; import org.springframework.web.bind.annotation.RestController;   /*  * @author ww  * @date   *  */ @RestController public class ProviderController {       //注入存放消息的队列，用于下列方法一     @Autowired     private Queue queue;       //注入springboot封装的工具类     @Autowired     private JmsMessagingTemplate jmsMessagingTemplate;       @RequestMapping("send")     public void send(String name) {         //方法一：添加消息到消息队列         jmsMessagingTemplate.convertAndSend(queue, name);         //方法二：这种方式不需要手动创建queue，系统会自行创建名为test的队列         //jmsMessagingTemplate.convertAndSend("test", name);     } }</code></pre> <h3><strong>5.&nbsp; 启动provider，向消息队列添加数据，本次添加5条数据</strong></h3> <blockquote> <p><span style="color:#3399ea;"><strong>这里使用postman工具模拟请求发送。</strong></span></p> </blockquote> <p><img decoding="async" alt="" height="177" src="http://img.555519.xyz/uploads/20221120/0de0ab021f8ce06ec42488fc02fc18f8.jpg"></p> <p><strong>查看<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://localhost:8161/admin/queues.jsp"  rel="nofollow">http://localhost:8161/admin/queues.jsp</a>&nbsp;如下</strong></p> <p><img decoding="async" alt="" height="534" src="http://img.555519.xyz/uploads/20221120/a322c465e46c336fb1819783cc169d2d.jpg"></p> <blockquote> <ul> <li><strong>Number Of Pending Messages：消息队列中待处理的消息</strong></li> <li><strong>Number Of Consumers：消费者的数量</strong></li> <li><strong>Messages Enqueued：累计进入过消息队列的总量</strong></li> <li><strong>Messages Dequeued：累计消费过的消息总量</strong></li> </ul> </blockquote> <h3><strong>&nbsp;6. consumer项目结构图</strong></h3> <p><img loading="lazy" decoding="async" alt="" height="427" src="http://img.555519.xyz/uploads/20221120/a0e70a6c001b7bbc831700e56e164ea8.jpg"></p> <p><strong>application.properties 和 ConsumerApplication 同 provider类似，如下为不同的ConsumerService：</strong></p> <pre><code class="language-java">import org.springframework.beans.factory.annotation.Autowired; import org.springframework.jms.annotation.JmsListener; import org.springframework.jms.core.JmsMessagingTemplate; import org.springframework.messaging.handler.annotation.SendTo; import org.springframework.stereotype.Component;   /*  * @author ww  * @date 2021/3/23  11:58  *  */ @Component public class ConsumerService {       @Autowired     private JmsMessagingTemplate jmsMessagingTemplate;       // 使用JmsListener配置消费者监听的队列，其中name是接收到的消息     @JmsListener(destination = "ActiveMQQueue")     // SendTo 会将此方法返回的数据, 写入到 OutQueue 中去.     @SendTo("SQueue")     public String handleMessage(String name) {         System.out.println("成功接受Name" + name);         return "成功接受Name" + name;     } }</code></pre> <h3><strong>&nbsp;7. 启动consumer，控制台输出如下</strong></h3> <p><img loading="lazy" decoding="async" alt="" height="180" src="http://img.555519.xyz/uploads/20221120/536cc52ab38f9308ab281a5721b93733.jpg"></p> <p>&nbsp;消息接收成功，查看<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://localhost:8161/admin/queues.jsp"  rel="nofollow">http://localhost:8161/admin/queues.jsp</a>&nbsp;，如下图所示，消息队列中不再有未处理的消息，由于consumer的启动，消费者的数量为1，Messages Dequeued（累计消费过的消息总量）的数值也变成了5；另外消费者接收到5条消息处理后，返回到OutQueue 5条消息，下图可以看出来。</p> <p><img loading="lazy" decoding="async" alt="" height="453" src="http://img.555519.xyz/uploads/20221120/cdba0bad8cbf5b23bd2520927f7c9544.jpg"></p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-20470.htm">宠物粮食加工厂设备哪的好点呢视频 宠物粮食加工厂设备哪的好点呢视频讲解</a></p>
+                                        <p>下一个：<a href="/news/article-20931.htm">孕妇被猫抓出血了会传染胎儿吗（孕妇被猫抓出血了会传染胎儿吗图片）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-9-15-free-subscribe-node.htm" title="9月15日→22.3M/S|2024年最新免费节点Clash/SSR/Shadowrocket/V2ray订阅链接地址">9月15日→22.3M/S|2024年最新免费节点Clash/SSR/Shadowrocket/V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-13-clash-v2ray-ss-ssr.htm" title="10月13日→20.5M/S|2024年最新免费节点SSR/Clash/Shadowrocket/V2ray订阅链接地址">10月13日→20.5M/S|2024年最新免费节点SSR/Clash/Shadowrocket/V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-30-free-high-speed-nodes.htm" title="11月30日→19.8M/S|2024年最新免费节点Shadowrocket/SSR/V2ray/Clash订阅链接地址">11月30日→19.8M/S|2024年最新免费节点Shadowrocket/SSR/V2ray/Clash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-14-free-v2ray.htm" title="9月14日→22.6M/S|2024年最新免费节点SSR/Shadowrocket/Clash/V2ray订阅链接地址">9月14日→22.6M/S|2024年最新免费节点SSR/Shadowrocket/Clash/V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-15-free-v2ray.htm" title="10月15日→21M/S|2024年最新免费节点Clash/V2ray/SSR/Shadowrocket订阅链接地址">10月15日→21M/S|2024年最新免费节点Clash/V2ray/SSR/Shadowrocket订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-9-free-v2ray.htm" title="11月9日→20.3M/S|2024年最新免费节点SSR/Shadowrocket/V2ray/Clash订阅链接地址">11月9日→20.3M/S|2024年最新免费节点SSR/Shadowrocket/V2ray/Clash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-7-node-share.htm" title="11月7日→23M/S|2024年最新免费节点Shadowrocket/SSR/V2ray/Clash订阅链接地址">11月7日→23M/S|2024年最新免费节点Shadowrocket/SSR/V2ray/Clash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-4-free-high-speed-nodes.htm" title="11月4日→19.3M/S|2024年最新免费节点SSR/V2ray/Shadowrocket/Clash订阅链接地址">11月4日→19.3M/S|2024年最新免费节点SSR/V2ray/Shadowrocket/Clash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-28-free-v2ray.htm" title="11月28日→21.7M/S|2024年最新免费节点Clash/Shadowrocket/SSR/V2ray订阅链接地址">11月28日→21.7M/S|2024年最新免费节点Clash/Shadowrocket/SSR/V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-5-clash-v2ray-ss-ssr.htm" title="10月5日→19.6M/S|2024年最新免费节点Clash/V2ray/SSR/Shadowrocket订阅链接地址">10月5日→19.6M/S|2024年最新免费节点Clash/V2ray/SSR/Shadowrocket订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div> <!-- end of container -->
+    </div> <!-- end of basic-2 -->
+    <!-- end of details 1 -->
+        <!-- Copyright -->
+    <div class="copyright bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    &nbsp;
+                </div> <!-- end of col -->
+            </div> <!-- enf of row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="p-small"><a href="/">V2ray X节点订阅官网</a> 版权所有 Powered by WordPress</p>
+                </div> <!-- end of col -->
+            </div> <!-- enf of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of copyright -->
+    <!-- end of copyright -->
+    <!-- Back To Top Button -->
+    <button onclick="topFunction()" id="myBtn">
+        <img src="/assets/website/img/v2rayx/up-arrow.png" alt="alternative">
+    </button>
+    <!-- end of back to top button -->
+    <!-- Scripts -->
+    <script src="/assets/website/js/frontend/v2rayx/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayx/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+    <script src="/assets/website/js/frontend/v2rayx/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+    <script src="/assets/website/js/frontend/v2rayx/purecounter.min.js"></script> <!-- Purecounter counter for statistics numbers -->
+    <script src="/assets/website/js/frontend/v2rayx/scripts.js"></script> <!-- Custom scripts -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
