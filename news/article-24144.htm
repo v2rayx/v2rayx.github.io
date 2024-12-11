@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://v2rayx.github.io" />
+        <link rel="canonical" href="https://v2rayx.github.io/news/article-24144.htm" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- SEO Meta Tags -->
@@ -14,9 +14,8 @@
     <meta property="og:image" content="" /> <!-- image link, make sure it's jpg -->
     <meta property="og:url" content="" /> <!-- where do you want your post to link to -->
     <meta name="twitter:card" content="summary_large_image"> <!-- to have large image post format in Twitter -->
-    <title>2024-10归档 - V2ray X节点订阅官网</title>
-        <meta name="keywords" content="2024-10归档" />
-        <meta name="description" content="2024-10归档" />
+    <title>JavaScript相邻元素平均值的数组方法详解</title>
+        <meta name="description" content="假设我们有一个数字数组- const&nbsp;arr&nbsp;=&nbsp;[3,&nbsp;5,&nbsp;7,&nbsp;8,&nbsp;3,&nbsp;5,&nbsp;7,&nbsp;4,&" />
         <link rel="icon" href="/assets/website/img/v2rayx/favicon.ico" type="image/x-icon"/>
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -37,7 +36,7 @@
      crossorigin="anonymous"></script>
 </head>
 
-<body data-page="category">
+<body data-page="detail">
         <!-- Navigation -->
     <nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-light" aria-label="Main navigation">
         <div class="container">
@@ -79,9 +78,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-10 offset-xl-1">
-                    <h1>2024-10 归档</h1>
+                    <h1>JavaScript相邻元素平均值的数组方法详解</h1>
                     <p>
-                        <a href="/">首页</a> / 2024-10 归档
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
                     </p>
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
@@ -94,25 +93,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                    <div class="xcblog-blog-list">
-                                                <div class="row item xcblog-blog-item" data-date="2024-10-01">
-                            <div class="col-md-3">
-                                <div class="image-container">
-                                    <a href="/free-nodes/2024-10-1-node-share-links.htm" class="xcblog-blog-url">
-                                        <img class="img-fluid" src="/uploads/20240905/e9373ed2303b0713ab383de1338731f4.webp" alt="10月1日→21.2M/S|2024年最新免费节点SSR/Shadowrocket/V2ray/Clash订阅链接地址">
-                                    </a>
-                                </div> <!-- end of image-container -->
-                            </div> <!-- end of col -->
-                            <div class="col-md-9">
-                                <a href="/free-nodes/2024-10-1-node-share-links.htm" class="xcblog-blog-url">
-                                    <h3 class="xcblog-blog-title">10月1日→21.2M/S|2024年最新免费节点SSR/Shadowrocket/V2ray/Clash订阅链接地址</h3>
-                                </a>
-                                <p>这一次的节点更新覆盖了美国、日本、韩国、加拿大、欧洲、新加坡、香港等地区,最高速度可达21.2 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                            </div> <!-- end of col -->
-                        </div> <!-- end of row -->
-                        
-                        <ul class="pagination"><li><a href="/date/2024-10/page-3.htm">&laquo;</a></li> <li><a href="/date/2024-10/">1</a></li><li><a href="/date/2024-10/page-2.htm">2</a></li><li><a href="/date/2024-10/page-3.htm">3</a></li><li class="active"><span>4</span></li> <li class="disabled"><span>&raquo;</span></li></ul>                    </div>
-                </div>
+                                      				  				  				<p>假设我们有一个数字数组-</p> <pre>const&nbsp;arr&nbsp;=&nbsp;[3,&nbsp;5,&nbsp;7,&nbsp;8,&nbsp;3,&nbsp;5,&nbsp;7,&nbsp;4,&nbsp;2,&nbsp;8,&nbsp;4,&nbsp;2,&nbsp;1];</pre> <p>我们需要编写一个函数，该函数返回一个数组，该数组包含对应元素及其前任元素的平均值。对于第一个元素，因为没有前任，所以应该返回非常元素。</p> <p>让我们为该函数编写代码，我们将使用Array.prototype.map()函数解决此问题-</p> <h2>示例</h2> <pre>const&nbsp;arr&nbsp;=&nbsp;[3,&nbsp;5,&nbsp;7,&nbsp;8,&nbsp;3,&nbsp;5,&nbsp;7,&nbsp;4,&nbsp;2,&nbsp;8,&nbsp;4,&nbsp;2,&nbsp;1]; const&nbsp;consecutiveAverage&nbsp;=&nbsp;arr&nbsp;=&gt;&nbsp;{ &nbsp;&nbsp;&nbsp;return&nbsp;arr.map((el,&nbsp;ind,&nbsp;array)&nbsp;=&gt;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;first&nbsp;=&nbsp;(array[ind-1]&nbsp;||&nbsp;0); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;second&nbsp;=&nbsp;(1&nbsp;+&nbsp;!!ind); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;((el&nbsp;+&nbsp;first)&nbsp;/&nbsp;second); &nbsp;&nbsp;&nbsp;}); }; console.log(consecutiveAverage(arr));</pre> <p>输出结果</p> <p>这将在控制台中产生以下输出-</p> <pre>[ &nbsp;&nbsp;&nbsp;3,&nbsp;&nbsp;&nbsp;4,&nbsp;6,&nbsp;7.5,&nbsp;5.5,&nbsp;4, &nbsp;&nbsp;&nbsp;6,&nbsp;5.5,&nbsp;3,&nbsp;&nbsp;&nbsp;5,&nbsp;&nbsp;&nbsp;6,&nbsp;3, &nbsp;&nbsp;&nbsp;1.5 ]</pre> <div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-23672.htm">动物接种疫苗产生的免疫力为多少 动物接种疫苗产生的免疫力为多少正常</a></p>
+                                        <p>下一个：<a href="/news/article-24145.htm">海拉鲁图鉴全收集列表（海拉鲁图鉴200）</a></p>
+                                    </div>
+                                </div>
                 <div class="col-md-3">
                     <div class="panel panel-default">
     <div class="panel-heading">
@@ -120,16 +106,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-21839.htm" title="家猫为什么不用打疫苗针了（为什么猫不用打狂犬疫苗）">家猫为什么不用打疫苗针了（为什么猫不用打狂犬疫苗）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-1-node-share-links.htm" title="10月1日→21.2M/S|2024年最新免费节点SSR/Shadowrocket/V2ray/Clash订阅链接地址">10月1日→21.2M/S|2024年最新免费节点SSR/Shadowrocket/V2ray/Clash订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-11-free-v2ray-subscribe.htm" title="11月11日→19.1M/S|2024年最新免费节点SSR/V2ray/Clash/Shadowrocket订阅链接地址">11月11日→19.1M/S|2024年最新免费节点SSR/V2ray/Clash/Shadowrocket订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-23671.htm" title="宠物粮食排行榜前十名品牌图片（宠物粮食排行榜前十名品牌图片大全）">宠物粮食排行榜前十名品牌图片（宠物粮食排行榜前十名品牌图片大全）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-19-free-subscribe-node.htm" title="11月19日→21.9M/S|2024年最新免费节点SSR/Clash/V2ray/Shadowrocket订阅链接地址">11月19日→21.9M/S|2024年最新免费节点SSR/Clash/V2ray/Shadowrocket订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-16-free-node-subscribe-links.htm" title="11月16日→21.4M/S|2024年最新免费节点Clash/V2ray/Shadowrocket/SSR订阅链接地址">11月16日→21.4M/S|2024年最新免费节点Clash/V2ray/Shadowrocket/SSR订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-22763.htm" title="沈阳宠物免费领养赠送地点（沈阳赠送领养宠物网站）">沈阳宠物免费领养赠送地点（沈阳赠送领养宠物网站）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-29-free-node-subscribe-links.htm" title="11月29日→18.7M/S|2024年最新免费节点V2ray/Shadowrocket/Clash/SSR订阅链接地址">11月29日→18.7M/S|2024年最新免费节点V2ray/Shadowrocket/Clash/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-21-free-v2ray-subscribe.htm" title="11月21日→20.2M/S|2024年最新免费节点SSR/V2ray/Clash/Shadowrocket订阅链接地址">11月21日→20.2M/S|2024年最新免费节点SSR/V2ray/Clash/Shadowrocket订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-20-free-high-speed-nodes.htm" title="9月20日→20.5M/S|2024年最新免费节点Clash/V2ray/Shadowrocket/SSR订阅链接地址">9月20日→20.5M/S|2024年最新免费节点Clash/V2ray/Shadowrocket/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-14-free-v2ray.htm" title="9月14日→22.6M/S|2024年最新免费节点SSR/Shadowrocket/Clash/V2ray订阅链接地址">9月14日→22.6M/S|2024年最新免费节点SSR/Shadowrocket/Clash/V2ray订阅链接地址</a></li>
                         <li class="py-2"><a href="/free-nodes/2024-12-9-free-subscribe-node.htm" title="12月9日→19M/S|2024年最新免费节点SSR/V2ray/Shadowrocket/Clash订阅链接地址">12月9日→19M/S|2024年最新免费节点SSR/V2ray/Shadowrocket/Clash订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-16-free-v2ray.htm" title="10月16日→19.2M/S|2024年最新免费节点SSR/V2ray/Clash/Shadowrocket订阅链接地址">10月16日→19.2M/S|2024年最新免费节点SSR/V2ray/Clash/Shadowrocket订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-27-node-share-links.htm" title="9月27日→18M/S|2024年最新免费节点V2ray/SSR/Clash/Shadowrocket订阅链接地址">9月27日→18M/S|2024年最新免费节点V2ray/SSR/Clash/Shadowrocket订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-3-free-subscribe-node.htm" title="12月3日→18.6M/S|2024年最新免费节点V2ray/Clash/SSR/Shadowrocket订阅链接地址">12月3日→18.6M/S|2024年最新免费节点V2ray/Clash/SSR/Shadowrocket订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-7-node-share.htm" title="10月7日→18.7M/S|2024年最新免费节点Clash/Shadowrocket/V2ray/SSR订阅链接地址">10月7日→18.7M/S|2024年最新免费节点Clash/Shadowrocket/V2ray/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-17-free-high-speed-nodes.htm" title="11月17日→19.7M/S|2024年最新免费节点Clash/Shadowrocket/V2ray/SSR订阅链接地址">11月17日→19.7M/S|2024年最新免费节点Clash/Shadowrocket/V2ray/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-11-free-v2ray.htm" title="12月11日→22.8M/S|2024年最新免费节点Shadowrocket/V2ray/SSR/Clash订阅链接地址">12月11日→22.8M/S|2024年最新免费节点Shadowrocket/V2ray/SSR/Clash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-15-free-subscribe-node.htm" title="11月15日→18M/S|2024年最新免费节点V2ray/Shadowrocket/Clash/SSR订阅链接地址">11月15日→18M/S|2024年最新免费节点V2ray/Shadowrocket/Clash/SSR订阅链接地址</a></li>
                     </ul>
     </div>
 </div>
