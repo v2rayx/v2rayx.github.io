@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://v2rayx.github.io" />
+        <link rel="canonical" href="https://v2rayx.github.io/news/article-26017.htm" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- SEO Meta Tags -->
@@ -14,9 +14,8 @@
     <meta property="og:image" content="" /> <!-- image link, make sure it's jpg -->
     <meta property="og:url" content="" /> <!-- where do you want your post to link to -->
     <meta name="twitter:card" content="summary_large_image"> <!-- to have large image post format in Twitter -->
-    <title>2024-10归档 - V2ray X节点订阅官网</title>
-        <meta name="keywords" content="2024-10归档" />
-        <meta name="description" content="2024-10归档" />
+    <title>设计模式之六大原则——接口隔离原则（ISP）</title>
+        <meta name="description" content="接口隔离原则 Interface Segregation Principle&nbsp;  定义：  客户端不应该依赖它不需要的接口 类间的依赖关系应该建立在最小的接口上  我们可以把这两个定义概括为" />
         <link rel="icon" href="/assets/website/img/v2rayx/favicon.ico" type="image/x-icon"/>
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -37,7 +36,7 @@
      crossorigin="anonymous"></script>
 </head>
 
-<body data-page="category">
+<body data-page="detail">
         <!-- Navigation -->
     <nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-light" aria-label="Main navigation">
         <div class="container">
@@ -79,9 +78,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-10 offset-xl-1">
-                    <h1>2024-10 归档</h1>
+                    <h1>设计模式之六大原则——接口隔离原则（ISP）</h1>
                     <p>
-                        <a href="/">首页</a> / 2024-10 归档
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
                     </p>
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
@@ -94,25 +93,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                    <div class="xcblog-blog-list">
-                                                <div class="row item xcblog-blog-item" data-date="2024-10-01">
-                            <div class="col-md-3">
-                                <div class="image-container">
-                                    <a href="/free-nodes/2024-10-1-node-share-links.htm" class="xcblog-blog-url">
-                                        <img class="img-fluid" src="/uploads/20240905/e9373ed2303b0713ab383de1338731f4.webp" alt="10月1日→21.2M/S|2024年最新免费节点SSR/Shadowrocket/V2ray/Clash订阅链接地址">
-                                    </a>
-                                </div> <!-- end of image-container -->
-                            </div> <!-- end of col -->
-                            <div class="col-md-9">
-                                <a href="/free-nodes/2024-10-1-node-share-links.htm" class="xcblog-blog-url">
-                                    <h3 class="xcblog-blog-title">10月1日→21.2M/S|2024年最新免费节点SSR/Shadowrocket/V2ray/Clash订阅链接地址</h3>
-                                </a>
-                                <p>这一次的节点更新覆盖了美国、日本、韩国、加拿大、欧洲、新加坡、香港等地区,最高速度可达21.2 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                            </div> <!-- end of col -->
-                        </div> <!-- end of row -->
-                        
-                        <ul class="pagination"><li><a href="/date/2024-10/page-3.htm">&laquo;</a></li> <li><a href="/date/2024-10/">1</a></li><li><a href="/date/2024-10/page-2.htm">2</a></li><li><a href="/date/2024-10/page-3.htm">3</a></li><li class="active"><span>4</span></li> <li class="disabled"><span>&raquo;</span></li></ul>                    </div>
-                </div>
+                                      				  				  				<div id="content_views" class="htmledit_views"> <div id="cnblogs_post_body" class="blogpost-body"> <p>接口隔离原则 Interface Segregation Principle<strong>&nbsp;</strong></p> <p><strong><br /></strong></p> <p><strong>定义：</strong></p> <ul> <li>客户端不应该依赖它不需要的接口</li> <li>类间的依赖关系应该建立在最小的接口上</li> </ul> <p>我们可以把这两个定义概括为一句话：建立单一接口，不要建立臃肿庞大的接口。再通俗一点讲：接口尽量细化，同时接口中的方法尽量少。</p> <p>提供给每个模块的都应该是单一接口，提供给几个模块就应该有几个接口，而不是建立一个庞大的臃肿的接口，容纳所有的客户端访问。</p> <p>&nbsp;</p> <p>接口是我们设计时对外提供的契约，通过分散定义多个接口，可以预防未来变更的扩散，提高系统的灵活性和可维护性。</p> <p>&nbsp;</p> <p><strong>含义：</strong></p> <ul> <li>接口要尽量小</li> </ul> <p>这是接口隔离原则的核心定义，不出现臃肿的接口（Fat Interface），但是“小”是有限度的，首先就是不能违反单一职责原则。</p> <p><strong>根据接口隔离原则拆分接口时，首先必须满足单一职责原则。</strong></p> <ul> <li>接口要高内聚</li> </ul> <p>高内聚就是要提高接口、类、模块的处理能力，减少对外的交互。</p> <p>具体到接口隔离原则就是，要求在接口中尽量少公布public方法，接口是对外的承诺，承诺地越少对系统开发越有利，变更的风险也就越少，同时也有利于降低成本。</p> <ul> <li>定制服务</li> </ul> <p>定制服务就是单独为一个个体提供优良的服务。</p> <ul> <li>接口设计是有限度的</li> </ul> <p>接口的设计粒度越小，系统越灵活，这是不争的事实。但是，灵活的同时也带来了结构的复杂化，开发难度增加，可维护性降低，这不是一个项目或产品所期望看到的，所以接口设计一定要注意适度，这个度只能根据经验和常识判断，没有一个固化或可测量的标准。</p> </div> <p>转载于:https://www.cnblogs.com/muzongyan/archive/2010/08/04/1792528.html</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-25540.htm">在动物医院上班怎么样（动物医院职位）</a></p>
+                                        <p>下一个：<a href="/news/article-26018.htm">SMTP协议解读以及如何使用SMTP协议发送电子邮件</a></p>
+                                    </div>
+                                </div>
                 <div class="col-md-3">
                     <div class="panel panel-default">
     <div class="panel-heading">
@@ -120,16 +106,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-9-26-free-node-subscribe-links.htm" title="9月26日→18.2M/S|2024年最新免费节点V2ray/Shadowrocket/Clash/SSR订阅链接地址">9月26日→18.2M/S|2024年最新免费节点V2ray/Shadowrocket/Clash/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-1-free-node-subscribe-links.htm" title="12月1日→18M/S|2024年最新免费节点Clash/V2ray/SSR/Shadowrocket订阅链接地址">12月1日→18M/S|2024年最新免费节点Clash/V2ray/SSR/Shadowrocket订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-7-node-share.htm" title="10月7日→18.7M/S|2024年最新免费节点Clash/Shadowrocket/V2ray/SSR订阅链接地址">10月7日→18.7M/S|2024年最新免费节点Clash/Shadowrocket/V2ray/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-12-free-v2ray.htm" title="9月12日→20.5M/S|2024年最新免费节点Clash/V2ray/Shadowrocket/SSR订阅链接地址">9月12日→20.5M/S|2024年最新免费节点Clash/V2ray/Shadowrocket/SSR订阅链接地址</a></li>
                         <li class="py-2"><a href="/news/article-22304.htm" title="可以自己拿疫苗去宠物医院注射吗多少钱（自己给宠物打疫苗怎么办疫苗证）">可以自己拿疫苗去宠物医院注射吗多少钱（自己给宠物打疫苗怎么办疫苗证）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-28-free-subscribe-node.htm" title="10月28日→22.8M/S|2024年最新免费节点V2ray/Shadowrocket/SSR/Clash订阅链接地址">10月28日→22.8M/S|2024年最新免费节点V2ray/Shadowrocket/SSR/Clash订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-29-free-node-subscribe-links.htm" title="11月29日→18.7M/S|2024年最新免费节点V2ray/Shadowrocket/Clash/SSR订阅链接地址">11月29日→18.7M/S|2024年最新免费节点V2ray/Shadowrocket/Clash/SSR订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-21839.htm" title="家猫为什么不用打疫苗针了（为什么猫不用打狂犬疫苗）">家猫为什么不用打疫苗针了（为什么猫不用打狂犬疫苗）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-26-clash-v2ray-ss-ssr.htm" title="10月26日→21.2M/S|2024年最新免费节点Clash/V2ray/Shadowrocket/SSR订阅链接地址">10月26日→21.2M/S|2024年最新免费节点Clash/V2ray/Shadowrocket/SSR订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-3-free-subscribe-node.htm" title="11月3日→19.2M/S|2024年最新免费节点SSR/Shadowrocket/V2ray/Clash订阅链接地址">11月3日→19.2M/S|2024年最新免费节点SSR/Shadowrocket/V2ray/Clash订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-25-node-share-links.htm" title="11月25日→19.2M/S|2024年最新免费节点Clash/SSR/V2ray/Shadowrocket订阅链接地址">11月25日→19.2M/S|2024年最新免费节点Clash/SSR/V2ray/Shadowrocket订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-22-node-share.htm" title="9月22日→18.2M/S|2024年最新免费节点Shadowrocket/Clash/SSR/V2ray订阅链接地址">9月22日→18.2M/S|2024年最新免费节点Shadowrocket/Clash/SSR/V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-13-clash-v2ray-ss-ssr.htm" title="9月13日→18.9M/S|2024年最新免费节点Clash/Shadowrocket/V2ray/SSR订阅链接地址">9月13日→18.9M/S|2024年最新免费节点Clash/Shadowrocket/V2ray/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-29-free-high-speed-nodes.htm" title="9月29日→22.5M/S|2024年最新免费节点V2ray/Clash/Shadowrocket/SSR订阅链接地址">9月29日→22.5M/S|2024年最新免费节点V2ray/Clash/Shadowrocket/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-26017.htm" title="设计模式之六大原则——接口隔离原则（ISP）">设计模式之六大原则——接口隔离原则（ISP）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-16-free-node-subscribe-links.htm" title="11月16日→21.4M/S|2024年最新免费节点Clash/V2ray/Shadowrocket/SSR订阅链接地址">11月16日→21.4M/S|2024年最新免费节点Clash/V2ray/Shadowrocket/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-23672.htm" title="动物接种疫苗产生的免疫力为多少 动物接种疫苗产生的免疫力为多少正常">动物接种疫苗产生的免疫力为多少 动物接种疫苗产生的免疫力为多少正常</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-20-clash-v2ray-ss-ssr.htm" title="10月20日→21.9M/S|2024年最新免费节点SSR/Shadowrocket/Clash/V2ray订阅链接地址">10月20日→21.9M/S|2024年最新免费节点SSR/Shadowrocket/Clash/V2ray订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-24-free-v2ray.htm" title="11月24日→18.4M/S|2024年最新免费节点V2ray/Shadowrocket/SSR/Clash订阅链接地址">11月24日→18.4M/S|2024年最新免费节点V2ray/Shadowrocket/SSR/Clash订阅链接地址</a></li>
                     </ul>
     </div>
 </div>
