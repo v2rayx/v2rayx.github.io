@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2rayx.github.io/news/article-36398.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- SEO Meta Tags -->
+    <!-- OG Meta Tags to improve the way the post looks when you share the page on Facebook, Twitter, LinkedIn -->
+    <meta property="og:site_name" content="" /> <!-- website name -->
+    <meta property="og:site" content="" /> <!-- website link -->
+    <meta property="og:title" content="" /> <!-- title shown in the actual shared post -->
+    <meta property="og:description" content="" /> <!-- description shown in the actual shared post -->
+    <meta property="og:image" content="" /> <!-- image link, make sure it's jpg -->
+    <meta property="og:url" content="" /> <!-- where do you want your post to link to -->
+    <meta name="twitter:card" content="summary_large_image"> <!-- to have large image post format in Twitter -->
+    <title>眼见不一定为实：调用链HBase倾斜修复</title>
+        <meta name="description" content="hello，大家好，我是小楼。 今天给大家分享一个关于HBase数据倾斜的排查案例，不懂调用链？不懂HBase？没关系，看完包懂~ 背景 最近HBase负责人反馈HBase存储的调用链数据偶尔出现极其" />
+        <link rel="icon" href="/assets/website/img/v2rayx/favicon.ico" type="image/x-icon"/>
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="/assets/website/css/v2rayx/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/css/v2rayx/fontawesome-all.min.css" rel="stylesheet">
+    <link href="/assets/website/css/v2rayx/swiper.css" rel="stylesheet">
+    <link href="/assets/website/css/v2rayx/styles.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SJTGCLQCTC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SJTGCLQCTC');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Navigation -->
+    <nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-light" aria-label="Main navigation">
+        <div class="container">
+                        <a class="navbar-brand logo-image" href="/">
+                <span>V2ray X</span>
+            </a>
+                        <!-- Text Logo - Use this if you don't have a graphic logo -->
+            <!-- <a class="navbar-brand logo-text" href="index.html">Yavin</a> -->
+            <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav ms-auto navbar-nav-scroll">
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/free-nodes/">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/news/">新闻资讯</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="#">关于</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">联系</a>
+                    </li>
+                </ul>
+            </div> <!-- end of navbar-collapse -->
+        </div> <!-- end of container -->
+    </nav> <!-- end of navbar -->
+    <!-- end of navigation -->
+    <!-- Header -->
+    <header class="ex-header bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-10 offset-xl-1">
+                    <h1>眼见不一定为实：调用链HBase倾斜修复</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                    </p>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </header> <!-- end of ex-header -->
+    <!-- end of header -->
+    <!-- Details 1 -->
+    <div id="details" class="basic-2">
+        <img class="decoration-star" src="/assets/website/img/v2rayx/decoration-star.svg" alt="alternative">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p>hello，大家好，我是小楼。</p> <p>今天给大家分享一个关于HBase数据倾斜的排查案例，不懂调用链？不懂HBase？没关系，看完包懂~</p> <h2 id="背景">背景</h2> <p>最近HBase负责人反馈HBase存储的调用链数据偶尔出现极其严重的倾斜情况，并且日常的倾斜情况也比较大，讲的通俗点就是出现了热点机器。</p> <p>举个例子，有三台HBase机器存储调用链数据，其中大部分数据读写都在一台机器上，导致机器负载特别大，经常告警，这就是HBase倾斜，也叫热点现象。本文主要讲述了治理倾斜情况的过程，以及踩的几个坑。</p> <h2 id="知识铺垫">知识铺垫</h2> <p>为什么会出现HBase倾斜的情况呢？既然是调用链数据HBase倾斜，那么首先简单介绍下几个调用链和HBase的背景知识。</p> <h3 id="全链路追踪">全链路追踪</h3> <p><code>全链路追踪</code>可能是一个比较统一的叫法，平常最多的叫法叫<code>调用链</code>，也可能有其他的叫法，不过说的都是同一个东西，本文全都用<code>调用链</code>来指代。</p> <p>调用链是分布式服务化场景下，<strong>跨应用</strong>的<strong>问题排查</strong>和<strong>性能分析</strong>的工具。</p> <p>说的直白点，就是可以让你看到你的代码逻辑在哪个地方调用了什么东西，比如在serviceA的methodA的逻辑里，依次调用了redis、mysql、serviceB等，可以看到每个调用的耗时、报错、出入参、ip地址等信息，这就是调用链。</p> <p>目前调用链有一个统一的标准，以前叫<code>OpenTracing</code>，现在与其他的一些标准整合进了<code>OpenTelemetry</code>，不过调用链的标准基本没变。</p> <p>调用链标准的最核心的概念如下，只列出了一些最核心的元素，不代表全部:</p> <ul> <li>Span：调用链最基本的元素就是Span，一次 Dubbo Server 请求处理，一次 HTTP 客户端请求，乃至一次线程池异步调用都可以作为一个 Span。 <ul> <li>SpanID：一个Span的唯一标识，需要保证全局唯一</li> <li>TraceID：一条调用链的唯一标识，会在整个调用链路中传递</li> <li>ParentID：父 Span 的 SpanID。当存在 A -&gt; B 这样的调用关系时，B Span 的 ParentID 是 A Span 的 SpanID。ParentID 用来构造整个调用链路的树形结构。每次发起新的请求时，都要把当前的 SpanID 作为 ParentID 传递给下一个 Span。</li> </ul> </li> <li>Segment：Segment是特殊的Span，一般表示这是一个应用的边界 Span。如作为 Dubbo Server 的一次请求处理；作为 HTTP Server 的一次请求处理；作为 NSQ Consumer 的一次消息处理等。</li> <li>Trace：一条调用链就是一条Trace，Trace是一堆Span的集合，每一个Trace理论上来说是一颗树</li> </ul> <p>下面用一张图来演示一次简单的三个服务间的Dubbo调用来展示调用链的数据是如何、何时产生的，以及各Span之间是通过什么关联起来的，用于深入理解上面的核心概念。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/c4ceced91b2d73fb5a23f1ef14d0565a.jpg" alt="眼见不一定为实：调用链HBase倾斜修复"></p> <p>文字描述：外部请求调用了ServiceA.MethodA， SA.MA依次调用了SB.MB、Redis、MySQL， SB.MB调用了SC.MC， SC.MC内部只有计算逻辑。</p> <blockquote> <p>注意：</p> <ul> <li>图里Span内容只包含了一部分，不代表全部内容。</li> <li>可能不同的调用链系统上报存储的方式不一样，有的是每个Segment上报一次，有的是每个Span上报一次，图中表示的是每个Span上报一次</li> </ul> </blockquote> <h3 id="hbase">HBase</h3> <p>网上关于HBase介绍的文章很多，这里不做详细的介绍，只是列出来一些基本的概念用于理解。</p> <p>HBase是一个可以存储海量数据的数据库，既然是数据库，那么最基本的操作就是添加和查询</p> <ul> <li>RowKey</li> </ul> <p>HBase基本的数据操作都是通过RowKey这个东西，RowKey是HBase的一个核心概念，如何设计Rowkey是使用HBase最关键的部分。</p> <p>RowKey在HBase里的作用是什么？一个是数据的操作要通过rowkey，可以把rowkey理解为mysql的主键，有索引的作用，另一个是用来做负载均衡。Rowkey的数据格式是字节流，也就是byte数组，这个概念很重要。</p> <p>什么是byte？就是一个8位字符，值在-128到127之间，所以即使你的rowkey不是那128个ascii码，也是可以存的，例如你的rowkey有三个字节，十进制表示分别是-56、-110、-27，发送到HBase也是可以存储的，不过你要展示出来给人看，可能就不太好展示这个RowKey了。</p> <ul> <li>Region</li> </ul> <p>Region是HBase数据分片的基本单位，可以把Region理解为HBase的数据分片。</p> <p>HBase是按什么来做分片的？如果你有搭建过HBase的话，并且看过HBase的web界面，可以看到Region部分有两个属性，Start Key和End Key。</p> <p>这两个属性代表什么意思？举个例子，现在有两个Region，RegionA的StartKey和EndKey是00和01，RegionB的StartKey和EndKey是01和02，你要存两条数据，RowKey分别是0000ABC和0100DEF，第一条数据就会落到RegionA里，第二条数据就会落到RegionB里，简单来讲就是根据RowKey的前缀来决定这条RowKey落到哪个Region里，如果Rowkey匹配不到任何一个Region，那么会新建一个Region存储数据。</p> <p>当Region的数据量到达某个阈值后，Region会自动分裂为两个Region，避免性能降低，HBase还有一个功能是预分区，比如在新建Table后，可以在Table里预先指定256个分区，StartKey和EndKey依次是00-01、01-02一直到FE-FF（前提是你的所有的RowKey的前缀都在00-FF区间内），预分区的好处是避免HBase最开始过多的自动分裂，因为分裂时数据是不可用的，过多的分裂会导致性能降低。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/ee3c33eadc01aa1e0e27054ed6425d1a.jpg" alt="眼见不一定为实：调用链HBase倾斜修复"></p> <h2 id="问题分析">问题分析</h2> <p>介绍完了调用链和HBase的基本概念，这里介绍下我们调用链系统的存储架构，以及为什么会产生倾斜问题。</p> <p>首先是调用链TraceID的设计，格式是 service_name-xx-yy-zz，也就是应用名+时间戳+IP+随机数。</p> <p>调用链数据存储有两部分，一部分在ES，一部分在HBase，为什么不直接把原始数据存到ES里？因为ES机器比较贵，用的固态盘，为了节省成本。</p> <p>ES里存储的是索引数据，也就是一些筛选条件，例如根据appName、startTime、耗时、是否有报错这些属性筛选调用链，这些可以用来筛选调用链的属性是存储在ES里的，并且为了节省空间，除了TraceID和SpanID这两个属性，其他属性的doc_value是关掉的，也就是只存了索引，没有存数据，因为要筛选出来TraceID和SpanID，然后根据这两个ID去HBase里取原始数据。</p> <p>HBase里存储的是HBase的原始数据，除了TraceID和SpanID，因为这两个属性的数据在ES里已经有了。HBase里的每条数据是一个Span，每条数据的RowKey是xx-TraceID-SpanID，最开始的两个字符是TraceID做hash取前两位，为什么要做个hash？因为我们TraceID的开头是应用名，如果不加前面两位hash值的话，根据HBase存储数据的策略，前缀一样的会存储到一起，也就是同一个应用的Trace会存储到一起，那么流量大的应用Trace会很多，这样就会导致倾斜问题，加两位hash值可以让数据分散开，并且同一个TraceID的数据会存储到一起，可以一次性Scan出来。</p> <p>既然RowKey的设计已经考虑到了倾斜问题，已经做了hash分散数据，那为什么日常会存在倾斜问题？而且偶尔会出现很严重的倾斜问题？原因是每个Trace的Span数量是不一样的，有的Trace可能就几个Span，有的Trace有几万个Span，还会出现一种极端情况，一个MQ消费者消费消息后又向好几个Topic里发送了消息，后续的消费者重复这样的操作，导致一条消息最终放大了几万甚至几十万倍，导致一个Trace里有几十万甚至几千万个Span，这只是其中一种场景，也可能业务开发做了什么骚操作，也会导致一个Trace包含的Span数量非常多，那么根据现在的存储架构，同一个Trace的数据会存储到一起，这就导致了倾斜问题。</p> <h2 id="方案设计">方案设计</h2> <p>在定位到问题后，最直接的想法就是彻底打散RowKey，也就是把SpanID的MD5当作RowKey，因为SpanID是全局唯一的，所以MD5必然是彻底打散的，不过这样做有一个坏处，就是数据彻底打散后，要查出一整个Trace的话，就得一个Span一个Span去查，不像之前的RowKey设计可以一次性Scan出来。</p> <p>为了知道这样查询性能有多慢，特意做了一次性能测试，结果如下：</p> <table> <thead> <tr> <th>span数量(个)</th> <th>scan(ms)</th> <th>search_es(ms)</th> <th>gets(ms)</th> <th>gets_parallel_batch100(ms)</th> <th>gets_parallel_batch200(ms)</th> <th>gets_parallel_batch300(ms)</th> <th>gets_parallel_batch500(ms)</th> </tr> </thead> <tbody> <tr> <td>100</td> <td>5</td> <td>12</td> <td>12+10</td> <td></td> <td></td> <td></td> <td></td> </tr> <tr> <td>265</td> <td>10</td> <td>20</td> <td>20+25</td> <td>20+10</td> <td>20+15</td> <td></td> <td></td> </tr> <tr> <td>336</td> <td>10</td> <td>20</td> <td>20+28</td> <td>20+10</td> <td>20+15</td> <td></td> <td></td> </tr> <tr> <td>562</td> <td>10</td> <td>25</td> <td>25+45</td> <td>25+15</td> <td>25+15</td> <td>25+23</td> <td></td> </tr> <tr> <td>1759</td> <td>30</td> <td>57</td> <td>57+130</td> <td>57+38</td> <td>57+40</td> <td>57+45</td> <td>57+45</td> </tr> <tr> <td>2812</td> <td>70</td> <td>85</td> <td>85+210</td> <td>85+70</td> <td>85+70</td> <td>85+70</td> <td>85+70</td> </tr> <tr> <td>8000</td> <td>170</td> <td>210</td> <td>210+700</td> <td>210+180</td> <td>210+180</td> <td>210+180</td> <td>210+200</td> </tr> </tbody> </table> <p>之前的设计查询一整个Trace的步骤就是直接用TraceID去HBase里scan，不用查询ES，也就是第二列的耗时。</p> <p>如果改成一个Span一个Span去查的话，查询步骤变成了两步，第一步先用TraceID从ES里查询出这个Trace所有的SpanID，然后再根据SpanID去HBase里批量gets，表格里的后5列就是两步查询的耗时，加号前面是查询ES的耗时，加号后面是HBase批量gets的耗时。第四列表示串行gets，后四列表示并行gets，并对不同batch的大小做了测试。</p> <p>根据测试结果，串行gets的性能要比并行gets的性能低3-4倍，所以不考虑串行gets。并行batch的大小对性能影响不大，并且最终耗时相比只scan的耗时也就增大一倍，例如查询8000个Span，前后方案查询耗时对比为170ms:390ms，实际上用户感知不到，所以方案就定为用MD5彻底打散数据。</p> <h2 id="踩的坑">踩的坑</h2> <p>在开发完成后，在测试环境测试无误后就直接发了线上，由于最开始不太了解HBase的Region相关的概念，所以误以为RowKey改成MD5后倾斜情况会直接消失，就直接发布了HBase数据写入的服务，发布后HBase那边立刻出现了非常严重的倾斜情况，导致HBase写入超时，kafka堆积，赶紧回滚了，HBase负责人查看监控发现大部分数据写入到了一台机器上。</p> <p>为什么会出现这种情况？测试环境为什么没有出现这个问题？</p> <p>根据上面介绍的HBase的Region相关的概念，出现这种情况的原因可能是RowKey没有匹配到任何一个Region，所以数据写入到了新建的Region上，也就是一台机器上。</p> <p>但是代码里写的明明就是MD5，并且在测试环境测试无误，之前的RowKey方案的前两位hash在00-FF之间，MD5的前缀肯定也在00-FF之间啊，按理说肯定可以匹配到一个Region的，为什么还会写到新的Region里？直接上代码</p> <pre><code class="language-java">import org.apache.commons.codec.digest.DigestUtils;  // 用spanId的MD5值当作RowKey，写入到HBase里 public static byte[] rowKeyMD5(String spanId) {     // DigestUtils只是JDK加密包的封装，底层还是调用JDK本身的MD5加密     return DigestUtils.md5(spanId); }</code></pre> <p>DigestUtils是org.apache.commons.codec.digest.DigestUtils包里带的，实际还是调用的JDK自带的MD5库，等同于如下的写法</p> <pre><code class="language-java">import java.security.MessageDigest; // MessageDigest是JDK自带的加密包，里面有MD5加密算法 MessageDigest.getInstance("md5").digest(spanId.getBytes(StandardCharsets.UTF_8));</code></pre> <p>调试一波，发现了问题，这里用一个简单的demo演示下，逻辑就是用md5加密"abc"这个字符串</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/f32f4952fd5872d87069bc3c20d83027.jpg" alt="眼见不一定为实：调用链HBase倾斜修复"></p> <p>一般我们<code>看到的</code>加密后的MD5是16个或者32个0-F之间的字符，0-F的ASCII码是48-57和97-102，但是加密后的byte数组有的byte是负的，那加密出来的这16个byte是什么玩意？虽然继续看了MD5加密的源码，但是水平不足，看不懂加密原理。。。</p> <p>看到加密后的byte数组应该就可以知道了为什么一发布就严重热点了，因为byte数组里面的东西根本不是正常的0-F之间的字符，虽然hbase的rowkey是只要是byte(-127~128)就行，但是现在MD5加密出的byte数组匹配不到原有的Region的StartKey和EndKey，全都写到新建的Region里了，那么我只需要把RowKey搞成MD5的16进制字符不就可以匹配到原有的Region了么？</p> <p>那么Java怎么MD5加密出一般我们<strong>看到的</strong>那种16进制字符的呢？比较方便的写法是</p> <pre><code class="language-java">import org.apache.commons.codec.binary.Hex;  Hex.encodeHex(DigestUtils.md5(str));</code></pre> <p>那么看下encodeHex里是怎么把md5byte数组转成十六进制字符串的</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/5589fe72544619d16642737547cf3fe2.jpg" alt="眼见不一定为实：调用链HBase倾斜修复"></p> <p>每个byte是8位，但是每个16进制字符，也就是0-F只需要四位bit就可以表示，所以一个byte可以表示两个16进制字符，也就是我们日常写的0xFF表示一个byte，上面的逻辑就是把一个byte的前四位和后四位分开，分别表示一个16进制字符，那么16个byte就可以拆成32个16进制字符，这就对上了，接下来看下encodeHex的输出</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/435880bba0604707ee7ebc1c2186c5b0.jpg" alt="眼见不一定为实：调用链HBase倾斜修复"></p> <p>abc经过MD5加密后的16进制字符串是900150983cd24fb0d6963f7d28e17f72，我们按照encodeHex的逻辑来手动拆下byte看看对不对的上</p> <p>首先看bs[0]，也就是-112，用二进制表示就是10010000，注意，这是个补码，简单解释下原码和补码，计算机中的数值都是用二进制补码来存储的，正数的补码是它本身，也就是它的原码，负数的补码是它的原码除了符号位取反加1，详细的可以去看看计算机基础的书籍。</p> <p>那么-112的原码就是11110000，补码就是10010000，拆成两部分也就是1001和0000，也就是9和0，跟16进制字符串的前两位，也就是90，对上了。</p> <p>再拆下bs[1]，也就是1，用二进制表示就是00000001，拆成两部分也就是0000和0001，也就是0和1，跟16进制字符串的三四位，也就是01，对上了</p> <p>再拆下bs[2]，也就是80，用二进制表示就是01010000，拆成两部分也就是0101和0000，也就是5和0，跟16进制字符串的五六位，也就是50，对上了</p> <p>后面的同理，就不写了，看到这里我们就知道了那个16长度的byte数组到底是什么玩意，就是把每两个16进制字符合并成了一个byte</p> <p><strong>所以，我们经常以为或经常看到Java中的MD5每一位都是0-F的字符串是经过了encodeHex处理，但RowKey实际上用的是处理之前的byte[]，它并不在0-F这个范围</strong></p> <h2 id="改进">改进</h2> <p>知道原因后，把RowKey的MD5改成十六进制字符，重新发布，果然没有出现严重热点问题，监控曲线跟之前一样，说明复用了已有的Region，日常倾斜情况需要跑一段时间才可以解决。</p> <h2 id="总结">总结</h2> <ol> <li>HBase的RowKey设计是使用HBase最最重要的地方</li> <li>注意Java的MD5加密出来的东西不一定是你想要的</li> <li>其实直接使用那个16长度的byte数组当作RowKey也可以，虽然基本不会复用已有的Region，不过要一点一点的灰度发布才可以</li> </ol> <p></p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-36153.htm">maven项目关于target目录没有生成xml、properties等文件问题</a></p>
+                                        <p>下一个：<a href="/news/article-36399.htm">动物医院大众点评怎么做 动物医院大众点评怎么做的</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-30679.htm" title="宠物领养合同有法律效应吗知乎（宠物领养合同有法律效应吗知乎）">宠物领养合同有法律效应吗知乎（宠物领养合同有法律效应吗知乎）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-8-free-subscribe-node.htm" title="11月8日→19.5M/S|2024年最新免费节点Shadowrocket/Clash/V2ray/SSR订阅链接地址">11月8日→19.5M/S|2024年最新免费节点Shadowrocket/Clash/V2ray/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-26-node-share-links.htm" title="12月26日→22.3M/S|2024年最新免费节点SSR/V2ray/Clash/Shadowrocket订阅链接地址分享">12月26日→22.3M/S|2024年最新免费节点SSR/V2ray/Clash/Shadowrocket订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-27866.htm" title="给猫打全套疫苗多少钱（给猫打全套疫苗多少钱啊）">给猫打全套疫苗多少钱（给猫打全套疫苗多少钱啊）</a></li>
+                        <li class="py-2"><a href="/news/article-36153.htm" title="maven项目关于target目录没有生成xml、properties等文件问题">maven项目关于target目录没有生成xml、properties等文件问题</a></li>
+                        <li class="py-2"><a href="/news/article-20469.htm" title="mapreduce读取parquet文件">mapreduce读取parquet文件</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-16-free-node-subscribe-links.htm" title="11月16日→21.4M/S|2024年最新免费节点Clash/V2ray/Shadowrocket/SSR订阅链接地址">11月16日→21.4M/S|2024年最新免费节点Clash/V2ray/Shadowrocket/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-13-node-share.htm" title="12月13日→20M/S|2024年最新免费节点Shadowrocket/Clash/V2ray/SSR订阅链接地址">12月13日→20M/S|2024年最新免费节点Shadowrocket/Clash/V2ray/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-26472.htm" title="聊城宠物食品公司工作怎么样（山东聊城宠物产业基地）">聊城宠物食品公司工作怎么样（山东聊城宠物产业基地）</a></li>
+                        <li class="py-2"><a href="/news/article-31633.htm" title="养猫的人容易得什么寄生虫病（养猫会得什么寄生虫）">养猫的人容易得什么寄生虫病（养猫会得什么寄生虫）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">18</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div> <!-- end of container -->
+    </div> <!-- end of basic-2 -->
+    <!-- end of details 1 -->
+        <!-- Copyright -->
+    <div class="copyright bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    &nbsp;
+                </div> <!-- end of col -->
+            </div> <!-- enf of row -->
+            <div class="row">
+                <div class="col-lg-12">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p class="p-small"><a href="/">V2ray X节点订阅官网</a> 版权所有 Powered by WordPress</p>
+                </div> <!-- end of col -->
+            </div> <!-- enf of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of copyright -->
+    <!-- end of copyright -->
+    <!-- Back To Top Button -->
+    <button onclick="topFunction()" id="myBtn">
+        <img src="/assets/website/img/v2rayx/up-arrow.png" alt="alternative">
+    </button>
+    <!-- end of back to top button -->
+    <!-- Scripts -->
+    <script src="/assets/website/js/frontend/v2rayx/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayx/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+    <script src="/assets/website/js/frontend/v2rayx/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+    <script src="/assets/website/js/frontend/v2rayx/purecounter.min.js"></script> <!-- Purecounter counter for statistics numbers -->
+    <script src="/assets/website/js/frontend/v2rayx/scripts.js"></script> <!-- Custom scripts -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
