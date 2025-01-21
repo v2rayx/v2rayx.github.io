@@ -2,7 +2,7 @@
 <html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://v2rayx.github.io/news/article-42807.htm" />
+        <link rel="canonical" href="https://v2rayx.github.io/news/article-43804.htm" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- SEO Meta Tags -->
@@ -14,19 +14,19 @@
     <meta property="og:image" content="" /> <!-- image link, make sure it's jpg -->
     <meta property="og:url" content="" /> <!-- where do you want your post to link to -->
     <meta name="twitter:card" content="summary_large_image"> <!-- to have large image post format in Twitter -->
-    <title>vue 配置全局模块、SASS（自动引入模块）</title>
-        <meta name="description" content="Automatically load modules instead of having to import or require them everywhere 自动引入模块，代替在使用的地方通过 " />
+    <title>Git的下载与安装详细步骤</title>
+        <meta name="description" content="Git的下载与安装  1、下载 2、安装 3、查看    点击进入git官网点击Download for Windown选择windows版本如果不知道自己电脑是多少位的，可以右击此电脑–》点击属性，" />
         <link rel="icon" href="/assets/website/img/v2rayx/favicon.ico" type="image/x-icon"/>
 
     <meta name="author" content="V2ray X节点订阅官网">
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://v2rayx.github.io/news/article-42807.htm" />
+    <meta property="og:url" content="https://v2rayx.github.io/news/article-43804.htm" />
     <meta property="og:site_name" content="V2ray X节点订阅官网" />
-    <meta property="og:title" content="vue 配置全局模块、SASS（自动引入模块）" />
-    <meta property="og:image" content="https://v2rayx.github.io/uploads/20240905/b9ae8569b95cdb4fe2b162b7af403db8.webp" />
-        <meta property="og:release_date" content="2025-01-19T07:09:14" />
-    <meta property="og:updated_time" content="2025-01-19T07:09:14" />
-        <meta property="og:description" content="Automatically load modules instead of having to import or require them everywhere 自动引入模块，代替在使用的地方通过 " />
+    <meta property="og:title" content="Git的下载与安装详细步骤" />
+    <meta property="og:image" content="https://v2rayx.github.io/uploads/20240905/106e0ebad13a8bb6616515ff61b7ebe7.webp" />
+        <meta property="og:release_date" content="2025-01-21T09:48:46" />
+    <meta property="og:updated_time" content="2025-01-21T09:48:46" />
+        <meta property="og:description" content="Git的下载与安装  1、下载 2、安装 3、查看    点击进入git官网点击Download for Windown选择windows版本如果不知道自己电脑是多少位的，可以右击此电脑–》点击属性，" />
         
     <meta name="applicable-device" content="pc,mobile" />
     <meta name="renderer" content="webkit" />
@@ -35,7 +35,7 @@
     <meta name="robots" content="max-image-preview:large" />
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="vue 配置全局模块、SASS（自动引入模块）">
+    <meta name="apple-mobile-web-app-title" content="Git的下载与安装详细步骤">
     <meta name="format-detection" content="telephone=no">
 
     <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
@@ -106,7 +106,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-10 offset-xl-1">
-                    <h1>vue 配置全局模块、SASS（自动引入模块）</h1>
+                    <h1>Git的下载与安装详细步骤</h1>
                     <p>
                         <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
                     </p>
@@ -122,10 +122,10 @@
             <div class="row">
                 <div class="col-md-9">
                                     <input type="hidden" id="share-website-info" data-name="" data-url="">
-                  				  				  				<div id="content_views" class="htmledit_views"> </h1> <p>Automatically load modules instead of having to <code>import</code> or <code>require</code> them everywhere</p> <p>自动引入模块，代替在使用的地方通过 “import”或者“require”引入。</p> <p>1、vue.config.js:</p> <pre><code class="language-javascript">const webpack = require('webpack') const path = require("path") module.exports={ 	configureWebpack:{ 		plugins:[ 			new webpack.ProvidePlugin({ 				 factory: [path.resolve(__dirname, './src/factory.js'), 'default'] 			}) 		] 	} }</code></pre> <p>注：identifier（标识符）: ['module1', 'property1'],</p> <p>identifier（标识符）：在其他的模块中通过这个标识符进行访问；factory</p> <p>module1：被引用模块的路径；path.resolve(__dirname, './src/factory.js')</p> <p>property1：被引入模块中暴露（export xx）的属性，default</p> <p>2、factory.js</p> <pre><code class="language-javascript">import { ref, reactive, watch, computed, onMounted, shallowRef } from "vue"; import { useStore } from 'vuex' import { useRouter, useRoute } from 'vue-router' import { ElMessage } from 'element-plus';  const proxy = { ref, reactive, watch, computed, onMounted, shallowRef} export default function() { 	 	if (proxy.$router) { 		return proxy 	} 	proxy.$message = ElMessage; 	proxy.$router = useRouter(); 	proxy.$route = useRoute(); 	proxy.$store = useStore(); 	return proxy } </code></pre> <p>3、使用factory的组件:</p> <pre><code class="language-javascript">&lt;template&gt;   &lt;div id="nav"&gt;    &lt;!-- &lt;router-link to="/"&gt;Home&lt;/router-link&gt; |     &lt;router-link to="/about"&gt;About&lt;/router-link&gt; --&gt; 	&lt;h1&gt;{<!-- -->{count}}&lt;/h1&gt; 	&lt;button @click="count++"&gt;+&lt;/button&gt; 	   &lt;/div&gt;   &lt;router-view/&gt; &lt;/template&gt; &lt;script setup&gt; 	// console.log(factory); 	const that=factory(); 	const count =that.ref(0) 	that.watch(count,(nv)=&gt;{ 		console.log(nv); 	}) 	 &lt;/script&gt;  &lt;style lang="scss"&gt;  &lt;/style&gt; </code></pre> <p><strong>全局引入scss文件：</strong></p> <p><strong>一、webpack的配置：</strong></p> <p>1、安装依赖</p> <blockquote> <p><strong>"sass": "^1.32.7",<br /> &nbsp;"sass-loader": "^12.0.0"</strong></p> </blockquote> <p>2、vue.config.js:</p> <pre><code class="language-javascript">module.exports = {	 	css: { 		loaderOptions: { 			sass: { 				additionalData: `@import "./src/assets/style/variable.scss";` 			} 		} 	} }</code></pre> <p>注：./src/assets/style/variable.scss是全局文件，additionalData必须这么写</p> <p>二、vite的配置：</p> <p>1、安装：</p> <blockquote> <p>"sass": "^1.56.1"</p> </blockquote> <p>2、vite.config.js</p> <pre><code class="language-javascript">export default defineConfig({ 	plugins: [vue()],	 	resolve: { 		alias: { 			'@': fileURLToPath(new URL('./src',import.meta.url))				 		} 	}, 	css: { 		preprocessorOptions: { 			scss: { 				additionalData: `@import "./src/assets/style/variable.scss";` 			}, 		} 	} })</code></pre> <p>全局模块vite配置：</p> <p>1、安装：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.npmjs.com/package/@rollup/plugin-inject"  title="@rollup/plugin-inject - npm" rel="nofollow">@rollup/plugin-inject - npm</a></p> <blockquote> <p>npm install @rollup/plugin-inject -D</p> </blockquote> <p>2、vite.config.js</p> <pre><code class="language-javascript">import { fileURLToPath, URL } from 'node:url' import { viteExternalsPlugin } from 'vite-plugin-externals' import { defineConfig } from 'vite' import vue from '@vitejs/plugin-vue' const inject = require('@rollup/plugin-inject') const path = require("path")   // https://vitejs.dev/config/ export default defineConfig({ 	plugins: [vue(), 		viteExternalsPlugin({ 			vue: 'Vue', 			'vue-router': 'VueRouter', 			pinia: 'Pinia', 			"element-plus": "ElementPlus", 		}), 		inject({ 			factory: path.resolve('./src/factory.js') 		}) 	], 	resolve: { 		alias: { 			'@': fileURLToPath(new URL('./src',import.meta.url))				 		} 	}, 	css: { 		preprocessorOptions: { 			scss: { 				additionalData: `@import "./src/assets/style/variable.scss";` 			}, 		} 	} }) </code></pre> <p>&nbsp;通过cdn引入internals :<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.npmjs.com/package/vite-plugin-externals"  title="vite-plugin-externals - npm" rel="nofollow">vite-plugin-externals - npm</a></p> <p>比如：</p> <p><img decoding="async" alt="" height="138" src="http://img.555519.xyz/uploads/20221229/d7fe2e1e0da9fd021b2358c996e627a1.jpg">&nbsp;</p> <p>&nbsp;webpack的配置参考：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/meng_xiaoxiao/article/details/125124333"  title="cdn引入第三方插件，解决发布新包强制刷新（缓存）_meng_xiaoxiao的博客-CSDN博客_使用cdn加载第三方模块" rel="nofollow">cdn引入第三方插件，解决发布新包强制刷新（缓存）_meng_xiaoxiao的博客-CSDN博客_使用cdn加载第三方模块</a></p> </p></div> 			                <div class="clearfix"></div>
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <div class="toc"> <h3>Git的下载与安装</h3> <ul> <li><a href="#1_2" rel="nofollow">1、下载</a></li> <li><a href="#2_10" rel="nofollow">2、安装</a></li> <li><a href="#3_47" rel="nofollow">3、查看</a></li> </ul> </div> </h1> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://git-scm.com/"  rel="nofollow">点击进入git官网</a><br /><strong>点击Download for Windown</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220604/64af7a0cd7fbe8ff76de4e9c8a7885d6.jpg" alt="Git的下载与安装详细步骤"><br /><strong>选择windows版本</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220604/b07aef3bbc410c9ba8591e4f819704c4.jpg" alt="Git的下载与安装详细步骤"><br /><strong>如果不知道自己电脑是多少位的，可以右击此电脑–》点击属性，即可查看</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220604/9396ae7cc90f3865a274179f7959edb5.jpg" alt="Git的下载与安装详细步骤"></p> </h1> <p><strong>找到下载的exe文件，然后双击</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220604/3017206d8edbdde709f12d160c9ffbc5.jpg" alt="Git的下载与安装详细步骤"><br /><strong>点击next</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220604/a064afba5868856c8a99f70b06c2bf4a.jpg" alt="Git的下载与安装详细步骤"><br /><strong>选择安装路径（注意：安装路径需要是非中文且无空格的）</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220604/c6f53af52bcd20f151f70c83085dbbb0.jpg" alt="Git的下载与安装详细步骤"><br /><strong>然后点击next</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220604/ee4b0834268738443f56fdc0688df076.jpg" alt="Git的下载与安装详细步骤"><br /><strong>根据所需勾选（一般使用默认，直接next）</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220604/a58d1fabc6b6bb97265c6c611140f250.jpg" alt="Git的下载与安装详细步骤"><br /><strong>确认安装目录界面，直接next</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220604/6368db41b4bea3e54be1d4a82de32221.jpg" alt="Git的下载与安装详细步骤"><br /><strong>选择默认编辑器，一般不做选择，直接使用vim，然后next</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220604/8a257bf7f95daafc9c9a20283d1aad78.jpg" alt="Git的下载与安装详细步骤"><br /><strong>是否更改分支名字，一般不做修改</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220604/6bce98e6361342ce42207cefd36a314d.jpg" alt="Git的下载与安装详细步骤"><br /><strong>选择不修改环境变量，然后next</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220604/f0e76eed9d9e02b2f9e63f272ff6bf3b.jpg" alt="Git的下载与安装详细步骤"><br /><strong>选择默认连接协议，next</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220604/550c2bf07ea660995f46c9339be61405.jpg" alt="Git的下载与安装详细步骤"><br /><strong>选择换行符界面，不做更改，直接next</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220604/41382fdf197e6eef7dab17ff158ba550.jpg" alt="Git的下载与安装详细步骤"><br /><strong>使用默认终端，不做更改，next</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220604/58e5b266bd33394b3cd9a8dd3dff531f.jpg" alt="Git的下载与安装详细步骤"><br /><strong>使用默认合并模式，然后next</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220604/74edfd21f515b1deed792789e40b6493.jpg" alt="Git的下载与安装详细步骤"><br /><strong>选择凭据管理器，使用第一个，然后next</strong></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220604/d3f5b2ec3e7bcb4694290170b884e7df.jpg" alt="Git的下载与安装详细步骤"><br /><strong>其它配置全部勾选，然后next</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220604/337daae9e08dc8777dd9c89c0a38404b.jpg" alt="Git的下载与安装详细步骤"><br /><strong>试验功能，不做勾选，直接点击安装</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220604/e496f3105636e8c787981941ebc528dd.jpg" alt="Git的下载与安装详细步骤"><br /><strong>取消勾选，点击完成</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220604/74cc040476524efe04cb8bb1b02d28bd.jpg" alt="Git的下载与安装详细步骤"></p> </h1> <p><strong>右键单击，出现git图标，说明安装完成</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220604/b8381776f44431bbbb90083d43a063dc.jpg" alt="Git的下载与安装详细步骤"></p> </div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
-                                        <p>上一个：<a href="/news/article-42311.htm">如何保证redis和数据库的一致性</a></p>
-                                        <p>下一个：<a href="/news/article-42808.htm">动物疫苗的保管与使用方法视频（动物疫苗的保管与使用方法视频讲解）</a></p>
+                                        <p>上一个：<a href="/news/article-43308.htm">拌料机多少钱一台500公斤（500公斤拌料机价格）</a></p>
+                                        <p>下一个：<a href="/news/article-43805.htm">动物接种疫苗多少钱一针河南（动物疫苗多少钱一支）</a></p>
                                     </div>
                                 </div>
                 <div class="col-md-3">
@@ -135,16 +135,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-42311.htm" title="如何保证redis和数据库的一致性">如何保证redis和数据库的一致性</a></li>
-                        <li class="py-2"><a href="/news/article-36398.htm" title="眼见不一定为实：调用链HBase倾斜修复">眼见不一定为实：调用链HBase倾斜修复</a></li>
-                        <li class="py-2"><a href="/news/article-26472.htm" title="聊城宠物食品公司工作怎么样（山东聊城宠物产业基地）">聊城宠物食品公司工作怎么样（山东聊城宠物产业基地）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-19-free-high-speed-nodes.htm" title="1月19日→20.2M/S|2025年最新免费节点V2ray/SSR/Clash/Shadowrocket订阅链接地址分享">1月19日→20.2M/S|2025年最新免费节点V2ray/SSR/Clash/Shadowrocket订阅链接地址分享</a></li>
-                        <li class="py-2"><a href="/news/article-33541.htm" title="哈尔滨农大兽医院电话号码是多少（中国农业哈尔滨兽医研究所）">哈尔滨农大兽医院电话号码是多少（中国农业哈尔滨兽医研究所）</a></li>
-                        <li class="py-2"><a href="/news/article-31137.htm" title="全国动物疫苗生产厂家（动物疫苗生产厂家建设需投资多少?）">全国动物疫苗生产厂家（动物疫苗生产厂家建设需投资多少?）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-20-free-node-subscribe.htm" title="1月20日→21.5M/S|2025年最新免费节点Clash/V2ray/Shadowrocket/SSR订阅链接地址分享">1月20日→21.5M/S|2025年最新免费节点Clash/V2ray/Shadowrocket/SSR订阅链接地址分享</a></li>
-                        <li class="py-2"><a href="/news/article-40330.htm" title="基于vue+springboot，实现图片base64转码保存到数据库">基于vue+springboot，实现图片base64转码保存到数据库</a></li>
-                        <li class="py-2"><a href="/news/article-41318.htm" title="动物疫苗价格排行前十（动物疫苗有哪些大厂家）">动物疫苗价格排行前十（动物疫苗有哪些大厂家）</a></li>
-                        <li class="py-2"><a href="/news/article-20469.htm" title="mapreduce读取parquet文件">mapreduce读取parquet文件</a></li>
+                        <li class="py-2"><a href="/news/article-21840.htm" title="小型狗粮加工厂的流程图（办一个小型狗粮加工厂）">小型狗粮加工厂的流程图（办一个小型狗粮加工厂）</a></li>
+                        <li class="py-2"><a href="/news/article-28790.htm" title="国内宠物粮生产厂家排名前十（国内宠物粮食十大厂家）">国内宠物粮生产厂家排名前十（国内宠物粮食十大厂家）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-25-node-share-links.htm" title="11月25日→19.2M/S|2024年最新免费节点Clash/SSR/V2ray/Shadowrocket订阅链接地址">11月25日→19.2M/S|2024年最新免费节点Clash/SSR/V2ray/Shadowrocket订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-33060.htm" title="动物疫苗品牌有哪些牌子 动物疫苗品牌有哪些牌子的">动物疫苗品牌有哪些牌子 动物疫苗品牌有哪些牌子的</a></li>
+                        <li class="py-2"><a href="/news/article-25072.htm" title="附近免费领养狗狗的地方在哪里呀最近（哪有领养狗狗的地方）">附近免费领养狗狗的地方在哪里呀最近（哪有领养狗狗的地方）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-30-free-high-speed-nodes.htm" title="11月30日→19.8M/S|2024年最新免费节点Shadowrocket/SSR/V2ray/Clash订阅链接地址">11月30日→19.8M/S|2024年最新免费节点Shadowrocket/SSR/V2ray/Clash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-40822.htm" title="聊城的宠物市场（聊城宠物店地址电话）">聊城的宠物市场（聊城宠物店地址电话）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-7-free-v2ray.htm" title="12月7日→20.2M/S|2024年最新免费节点SSR/Shadowrocket/V2ray/Clash订阅链接地址">12月7日→20.2M/S|2024年最新免费节点SSR/Shadowrocket/V2ray/Clash订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-21394.htm" title="义乌宠物收容中心（义乌宠物收容中心有哪些）">义乌宠物收容中心（义乌宠物收容中心有哪些）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-30-node-share-links.htm" title="12月30日→22.5M/S|2024年最新免费节点Clash/V2ray/SSR/Shadowrocket订阅链接地址分享">12月30日→22.5M/S|2024年最新免费节点Clash/V2ray/SSR/Shadowrocket订阅链接地址分享</a></li>
                     </ul>
     </div>
 </div>
