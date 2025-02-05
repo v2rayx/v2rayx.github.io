@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://v2rayx.github.io/news/article-29734.htm" />
@@ -17,6 +17,34 @@
     <title>Redis持久化机制及缓存失效解决方案</title>
         <meta name="description" content="Redis集群故障监测及哨兵机制原理解析Redis海量数据存储方案Redis Cluster  在之前的文章写过redis的实用功能，包括数据结构，主从复制结构，以及应对高并发海量数据场景下的分片re" />
         <link rel="icon" href="/assets/website/img/v2rayx/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2ray X节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2rayx.github.io/news/article-29734.htm" />
+    <meta property="og:site_name" content="V2ray X节点订阅官网" />
+    <meta property="og:title" content="Redis持久化机制及缓存失效解决方案" />
+    <meta property="og:image" content="https://v2rayx.github.io/uploads/20240905/a2dd7e15b78babb4460034015cae9ab8.webp" />
+        <meta property="og:release_date" content="2024-12-23T09:59:19" />
+    <meta property="og:updated_time" content="2024-12-23T09:59:19" />
+        <meta property="og:description" content="Redis集群故障监测及哨兵机制原理解析Redis海量数据存储方案Redis Cluster  在之前的文章写过redis的实用功能，包括数据结构，主从复制结构，以及应对高并发海量数据场景下的分片re" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Redis持久化机制及缓存失效解决方案">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link href="/assets/website/css/v2rayx/bootstrap.min.css" rel="stylesheet">
@@ -107,16 +135,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-12-19-free-node-subscribe.htm" title="12月19日→19.5M/S|2024年最新免费节点V2ray/SSR/Clash/Shadowrocket订阅链接地址">12月19日→19.5M/S|2024年最新免费节点V2ray/SSR/Clash/Shadowrocket订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-5-clash-v2ray-ss-ssr.htm" title="11月5日→22.5M/S|2024年最新免费节点V2ray/Clash/Shadowrocket/SSR订阅链接地址">11月5日→22.5M/S|2024年最新免费节点V2ray/Clash/Shadowrocket/SSR订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-29-free-high-speed-nodes.htm" title="9月29日→22.5M/S|2024年最新免费节点V2ray/Clash/Shadowrocket/SSR订阅链接地址">9月29日→22.5M/S|2024年最新免费节点V2ray/Clash/Shadowrocket/SSR订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-32112.htm" title="动物疫苗法律法规最新文件下载（动物疫苗法律法规最新文件下载）">动物疫苗法律法规最新文件下载（动物疫苗法律法规最新文件下载）</a></li>
-                        <li class="py-2"><a href="/news/article-26940.htm" title="动物疫苗接种时间表格图（动物疫苗的使用）">动物疫苗接种时间表格图（动物疫苗的使用）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-11-free-v2ray.htm" title="12月11日→22.8M/S|2024年最新免费节点Shadowrocket/V2ray/SSR/Clash订阅链接地址">12月11日→22.8M/S|2024年最新免费节点Shadowrocket/V2ray/SSR/Clash订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-24-free-v2ray.htm" title="11月24日→18.4M/S|2024年最新免费节点V2ray/Shadowrocket/SSR/Clash订阅链接地址">11月24日→18.4M/S|2024年最新免费节点V2ray/Shadowrocket/SSR/Clash订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-28325.htm" title="派多格宠物美容培训学校官网电话（派多格宠物店加盟电话）">派多格宠物美容培训学校官网电话（派多格宠物店加盟电话）</a></li>
-                        <li class="py-2"><a href="/news/article-18679.htm" title="新手养猫知识（新手养猫知识点）">新手养猫知识（新手养猫知识点）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-20-free-high-speed-nodes.htm" title="9月20日→20.5M/S|2024年最新免费节点Clash/V2ray/Shadowrocket/SSR订阅链接地址">9月20日→20.5M/S|2024年最新免费节点Clash/V2ray/Shadowrocket/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-43804.htm" title="Git的下载与安装详细步骤">Git的下载与安装详细步骤</a></li>
+                        <li class="py-2"><a href="/news/article-39345.htm" title="给宠物打疫苗可以自己打吗安全吗（给宠物打疫苗可以自己打吗?）">给宠物打疫苗可以自己打吗安全吗（给宠物打疫苗可以自己打吗?）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-21-free-v2ray-subscribe.htm" title="12月21日→18.5M/S|2024年最新免费节点Shadowrocket/Clash/V2ray/SSR订阅链接地址分享">12月21日→18.5M/S|2024年最新免费节点Shadowrocket/Clash/V2ray/SSR订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-12-free-high-speed-nodes.htm" title="11月12日→22.5M/S|2024年最新免费节点SSR/Clash/V2ray/Shadowrocket订阅链接地址">11月12日→22.5M/S|2024年最新免费节点SSR/Clash/V2ray/Shadowrocket订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-27398.htm" title="宠物粮食生意怎么样啊知乎 宠物粮食生意怎么样啊知乎">宠物粮食生意怎么样啊知乎 宠物粮食生意怎么样啊知乎</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-21-free-v2ray-subscribe.htm" title="11月21日→20.2M/S|2024年最新免费节点SSR/V2ray/Clash/Shadowrocket订阅链接地址">11月21日→20.2M/S|2024年最新免费节点SSR/V2ray/Clash/Shadowrocket订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-24611.htm" title="动物疫苗官网首页网站下载（动物疫苗查询系统）">动物疫苗官网首页网站下载（动物疫苗查询系统）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-29-free-node-subscribe-links.htm" title="1月29日→21.5M/S|2025年最新免费节点V2ray/Shadowrocket/Clash/SSR订阅链接地址分享">1月29日→21.5M/S|2025年最新免费节点V2ray/Shadowrocket/Clash/SSR订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-48724.htm" title="自己买的疫苗去宠物店代打（可以拿疫苗让宠物店帮忙打针吗）">自己买的疫苗去宠物店代打（可以拿疫苗让宠物店帮忙打针吗）</a></li>
+                        <li class="py-2"><a href="/news/article-22305.htm" title="猫三联和狂犬疫苗间隔多久打一次（猫三联和狂犬可以同一天打吗）">猫三联和狂犬疫苗间隔多久打一次（猫三联和狂犬可以同一天打吗）</a></li>
                     </ul>
     </div>
 </div>
@@ -128,19 +156,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>

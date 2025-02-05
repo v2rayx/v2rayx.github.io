@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://v2rayx.github.io/news/article-36398.htm" />
@@ -17,6 +17,34 @@
     <title>眼见不一定为实：调用链HBase倾斜修复</title>
         <meta name="description" content="hello，大家好，我是小楼。 今天给大家分享一个关于HBase数据倾斜的排查案例，不懂调用链？不懂HBase？没关系，看完包懂~ 背景 最近HBase负责人反馈HBase存储的调用链数据偶尔出现极其" />
         <link rel="icon" href="/assets/website/img/v2rayx/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2ray X节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2rayx.github.io/news/article-36398.htm" />
+    <meta property="og:site_name" content="V2ray X节点订阅官网" />
+    <meta property="og:title" content="眼见不一定为实：调用链HBase倾斜修复" />
+    <meta property="og:image" content="https://v2rayx.github.io/uploads/20240905/b013e42d21246c3e2c172eb2d8eaecf2.webp" />
+        <meta property="og:release_date" content="2025-01-06T09:49:13" />
+    <meta property="og:updated_time" content="2025-01-06T09:49:13" />
+        <meta property="og:description" content="hello，大家好，我是小楼。 今天给大家分享一个关于HBase数据倾斜的排查案例，不懂调用链？不懂HBase？没关系，看完包懂~ 背景 最近HBase负责人反馈HBase存储的调用链数据偶尔出现极其" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="眼见不一定为实：调用链HBase倾斜修复">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link href="/assets/website/css/v2rayx/bootstrap.min.css" rel="stylesheet">
@@ -107,16 +135,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-11-2-free-node-subscribe.htm" title="11月2日→20.5M/S|2024年最新免费节点V2ray/Shadowrocket/Clash/SSR订阅链接地址">11月2日→20.5M/S|2024年最新免费节点V2ray/Shadowrocket/Clash/SSR订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-30679.htm" title="宠物领养合同有法律效应吗知乎（宠物领养合同有法律效应吗知乎）">宠物领养合同有法律效应吗知乎（宠物领养合同有法律效应吗知乎）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-7-node-share.htm" title="10月7日→18.7M/S|2024年最新免费节点Clash/Shadowrocket/V2ray/SSR订阅链接地址">10月7日→18.7M/S|2024年最新免费节点Clash/Shadowrocket/V2ray/SSR订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-29253.htm" title="宠物医院点评100字通用（宠物医院好评语30字通用）">宠物医院点评100字通用（宠物医院好评语30字通用）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-19-free-node-subscribe.htm" title="12月19日→19.5M/S|2024年最新免费节点V2ray/SSR/Clash/Shadowrocket订阅链接地址">12月19日→19.5M/S|2024年最新免费节点V2ray/SSR/Clash/Shadowrocket订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-24611.htm" title="动物疫苗官网首页网站下载（动物疫苗查询系统）">动物疫苗官网首页网站下载（动物疫苗查询系统）</a></li>
+                        <li class="py-2"><a href="/news/article-44292.htm" title="反射 三种获得class对象的方式">反射 三种获得class对象的方式</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-21-free-node-subscribe-links.htm" title="1月21日→20.7M/S|2025年最新免费节点Shadowrocket/SSR/V2ray/Clash订阅链接地址分享">1月21日→20.7M/S|2025年最新免费节点Shadowrocket/SSR/V2ray/Clash订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-15-free-node-subscribe.htm" title="1月15日→22.1M/S|2025年最新免费节点SSR/Clash/V2ray/Shadowrocket订阅链接地址分享">1月15日→22.1M/S|2025年最新免费节点SSR/Clash/V2ray/Shadowrocket订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-42807.htm" title="vue 配置全局模块、SASS（自动引入模块）">vue 配置全局模块、SASS（自动引入模块）</a></li>
+                        <li class="py-2"><a href="/news/article-27866.htm" title="给猫打全套疫苗多少钱（给猫打全套疫苗多少钱啊）">给猫打全套疫苗多少钱（给猫打全套疫苗多少钱啊）</a></li>
+                        <li class="py-2"><a href="/news/article-30206.htm" title="宠物领养合同怎么写范本图片（宠物领养合同怎么写范本图片大全）">宠物领养合同怎么写范本图片（宠物领养合同怎么写范本图片大全）</a></li>
+                        <li class="py-2"><a href="/news/article-33061.htm" title="动物疫苗管理法律法规内容包括 动物疫苗管理法律法规内容包括哪些">动物疫苗管理法律法规内容包括 动物疫苗管理法律法规内容包括哪些</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-24-free-node-subscribe-links.htm" title="12月24日→23M/S|2024年最新免费节点Clash/Shadowrocket/SSR/V2ray订阅链接地址分享">12月24日→23M/S|2024年最新免费节点Clash/Shadowrocket/SSR/V2ray订阅链接地址分享</a></li>
                         <li class="py-2"><a href="/news/article-21839.htm" title="家猫为什么不用打疫苗针了（为什么猫不用打狂犬疫苗）">家猫为什么不用打疫苗针了（为什么猫不用打狂犬疫苗）</a></li>
-                        <li class="py-2"><a href="/news/article-20469.htm" title="mapreduce读取parquet文件">mapreduce读取parquet文件</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-8-free-subscribe-node.htm" title="11月8日→19.5M/S|2024年最新免费节点Shadowrocket/Clash/V2ray/SSR订阅链接地址">11月8日→19.5M/S|2024年最新免费节点Shadowrocket/Clash/V2ray/SSR订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-21393.htm" title="最适合穷人养的狗（最适合穷人养的狗有哪些）">最适合穷人养的狗（最适合穷人养的狗有哪些）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-17-clash-v2ray-ss-ssr.htm" title="1月17日→21.5M/S|2025年最新免费节点Shadowrocket/Clash/SSR/V2ray订阅链接地址分享">1月17日→21.5M/S|2025年最新免费节点Shadowrocket/Clash/SSR/V2ray订阅链接地址分享</a></li>
                     </ul>
     </div>
 </div>
@@ -128,16 +156,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>

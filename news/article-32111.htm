@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://v2rayx.github.io/news/article-32111.htm" />
@@ -17,6 +17,34 @@
     <title>PHP如何访问全局类</title>
         <meta name="description" content="介绍 当PHP解析器遇到未定义的标识符（例如类或函数名称）时，它将解析为当前命名空间。因此，要访问PHP的预定义类，必须使用全限定名以前缀\来引用它们。 使用内置类 在以下示例中，新类将预定义的std" />
         <link rel="icon" href="/assets/website/img/v2rayx/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2ray X节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2rayx.github.io/news/article-32111.htm" />
+    <meta property="og:site_name" content="V2ray X节点订阅官网" />
+    <meta property="og:title" content="PHP如何访问全局类" />
+    <meta property="og:image" content="https://v2rayx.github.io/uploads/20240905/290ba358e0adad84064ebb856ecd1d0d.webp" />
+        <meta property="og:release_date" content="2024-12-28T10:05:23" />
+    <meta property="og:updated_time" content="2024-12-28T10:05:23" />
+        <meta property="og:description" content="介绍 当PHP解析器遇到未定义的标识符（例如类或函数名称）时，它将解析为当前命名空间。因此，要访问PHP的预定义类，必须使用全限定名以前缀\来引用它们。 使用内置类 在以下示例中，新类将预定义的std" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="PHP如何访问全局类">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link href="/assets/website/css/v2rayx/bootstrap.min.css" rel="stylesheet">
@@ -107,16 +135,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-11-10-free-subscribe-node.htm" title="11月10日→21.2M/S|2024年最新免费节点Clash/Shadowrocket/SSR/V2ray订阅链接地址">11月10日→21.2M/S|2024年最新免费节点Clash/Shadowrocket/SSR/V2ray订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-1-node-share-links.htm" title="11月1日→20.2M/S|2024年最新免费节点Shadowrocket/Clash/V2ray/SSR订阅链接地址">11月1日→20.2M/S|2024年最新免费节点Shadowrocket/Clash/V2ray/SSR订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-4-free-node-subscribe-links.htm" title="10月4日→22M/S|2024年最新免费节点Clash/V2ray/SSR/Shadowrocket订阅链接地址">10月4日→22M/S|2024年最新免费节点Clash/V2ray/SSR/Shadowrocket订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-15-free-subscribe-node.htm" title="11月15日→18M/S|2024年最新免费节点V2ray/Shadowrocket/Clash/SSR订阅链接地址">11月15日→18M/S|2024年最新免费节点V2ray/Shadowrocket/Clash/SSR订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-1-free-node-subscribe-links.htm" title="12月1日→18M/S|2024年最新免费节点Clash/V2ray/SSR/Shadowrocket订阅链接地址">12月1日→18M/S|2024年最新免费节点Clash/V2ray/SSR/Shadowrocket订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-28790.htm" title="国内宠物粮生产厂家排名前十（国内宠物粮食十大厂家）">国内宠物粮生产厂家排名前十（国内宠物粮食十大厂家）</a></li>
-                        <li class="py-2"><a href="/news/article-31633.htm" title="养猫的人容易得什么寄生虫病（养猫会得什么寄生虫）">养猫的人容易得什么寄生虫病（养猫会得什么寄生虫）</a></li>
-                        <li class="py-2"><a href="/news/article-26472.htm" title="聊城宠物食品公司工作怎么样（山东聊城宠物产业基地）">聊城宠物食品公司工作怎么样（山东聊城宠物产业基地）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-20-free-v2ray-subscribe.htm" title="12月20日→19.4M/S|2024年最新免费节点Clash/SSR/V2ray/Shadowrocket订阅链接地址">12月20日→19.4M/S|2024年最新免费节点Clash/SSR/V2ray/Shadowrocket订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-26940.htm" title="动物疫苗接种时间表格图（动物疫苗的使用）">动物疫苗接种时间表格图（动物疫苗的使用）</a></li>
+                        <li class="py-2"><a href="/news/article-23671.htm" title="宠物粮食排行榜前十名品牌图片（宠物粮食排行榜前十名品牌图片大全）">宠物粮食排行榜前十名品牌图片（宠物粮食排行榜前十名品牌图片大全）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-21-free-node-subscribe-links.htm" title="1月21日→20.7M/S|2025年最新免费节点Shadowrocket/SSR/V2ray/Clash订阅链接地址分享">1月21日→20.7M/S|2025年最新免费节点Shadowrocket/SSR/V2ray/Clash订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-35119.htm" title="中国兽药厂家前十强排行榜 中国兽药厂家前十强排行榜有哪些">中国兽药厂家前十强排行榜 中国兽药厂家前十强排行榜有哪些</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-19-free-subscribe-node.htm" title="11月19日→21.9M/S|2024年最新免费节点SSR/Clash/V2ray/Shadowrocket订阅链接地址">11月19日→21.9M/S|2024年最新免费节点SSR/Clash/V2ray/Shadowrocket订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-22763.htm" title="沈阳宠物免费领养赠送地点（沈阳赠送领养宠物网站）">沈阳宠物免费领养赠送地点（沈阳赠送领养宠物网站）</a></li>
+                        <li class="py-2"><a href="/news/article-45295.htm" title="k8s 部署Redis集群">k8s 部署Redis集群</a></li>
+                        <li class="py-2"><a href="/news/article-40822.htm" title="聊城的宠物市场（聊城宠物店地址电话）">聊城的宠物市场（聊城宠物店地址电话）</a></li>
+                        <li class="py-2"><a href="/news/article-27398.htm" title="宠物粮食生意怎么样啊知乎 宠物粮食生意怎么样啊知乎">宠物粮食生意怎么样啊知乎 宠物粮食生意怎么样啊知乎</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-5-clash-v2ray-ss-ssr.htm" title="11月5日→22.5M/S|2024年最新免费节点V2ray/Clash/Shadowrocket/SSR订阅链接地址">11月5日→22.5M/S|2024年最新免费节点V2ray/Clash/Shadowrocket/SSR订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-29254.htm" title="宠物寄养协议合同电子版怎么写才有效果（宠物寄养协议合同范本）">宠物寄养协议合同电子版怎么写才有效果（宠物寄养协议合同范本）</a></li>
                     </ul>
     </div>
 </div>
@@ -128,19 +156,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>
