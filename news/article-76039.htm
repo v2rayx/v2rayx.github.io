@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2rayx.github.io/news/article-76039.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- SEO Meta Tags -->
+    <!-- OG Meta Tags to improve the way the post looks when you share the page on Facebook, Twitter, LinkedIn -->
+    <meta property="og:site_name" content="" /> <!-- website name -->
+    <meta property="og:site" content="" /> <!-- website link -->
+    <meta property="og:title" content="" /> <!-- title shown in the actual shared post -->
+    <meta property="og:description" content="" /> <!-- description shown in the actual shared post -->
+    <meta property="og:image" content="" /> <!-- image link, make sure it's jpg -->
+    <meta property="og:url" content="" /> <!-- where do you want your post to link to -->
+    <meta name="twitter:card" content="summary_large_image"> <!-- to have large image post format in Twitter -->
+    <title>自定义全局异常处理机制</title>
+        <meta name="description" content="1.自定义异常的信息 枚举 ,将所用到的异常信息列出,统一管理,有异常添加到此枚举中即可 /**  * 枚举：将可能选项一一的列出来 本质就是多例。  * 比如：红绿灯：三种情况：红黄绿  */ @G" />
+        <link rel="icon" href="/assets/website/img/v2rayx/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2ray X节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2rayx.github.io/news/article-76039.htm" />
+    <meta property="og:site_name" content="V2ray X节点订阅官网" />
+    <meta property="og:title" content="自定义全局异常处理机制" />
+    <meta property="og:image" content="https://v2rayx.github.io/uploads/20240905/a2dd7e15b78babb4460034015cae9ab8.webp" />
+        <meta property="og:release_date" content="2025-03-18T06:11:19" />
+    <meta property="og:updated_time" content="2025-03-18T06:11:19" />
+        <meta property="og:description" content="1.自定义异常的信息 枚举 ,将所用到的异常信息列出,统一管理,有异常添加到此枚举中即可 /**  * 枚举：将可能选项一一的列出来 本质就是多例。  * 比如：红绿灯：三种情况：红黄绿  */ @G" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="自定义全局异常处理机制">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="/assets/website/css/v2rayx/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/css/v2rayx/fontawesome-all.min.css" rel="stylesheet">
+    <link href="/assets/website/css/v2rayx/swiper.css" rel="stylesheet">
+    <link href="/assets/website/css/v2rayx/styles.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SJTGCLQCTC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SJTGCLQCTC');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Navigation -->
+    <nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-light" aria-label="Main navigation">
+        <div class="container">
+            <a class="navbar-brand logo-image" href="/">
+                        <span>V2ray X</span>
+                        </a>
+            <!-- Text Logo - Use this if you don't have a graphic logo -->
+            <!-- <a class="navbar-brand logo-text" href="index.html">Yavin</a> -->
+            <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav ms-auto navbar-nav-scroll">
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/free-nodes/">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/client.htm">客户端</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/news/">新闻资讯</a>
+                    </li>
+                                    </ul>
+            </div> <!-- end of navbar-collapse -->
+        </div> <!-- end of container -->
+    </nav> <!-- end of navbar -->
+    <!-- end of navigation -->
+    <!-- Header -->
+    <header class="ex-header bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-10 offset-xl-1">
+                    <h1>自定义全局异常处理机制</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                    </p>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </header> <!-- end of ex-header -->
+    <!-- end of header -->
+    <!-- Details 1 -->
+    <div id="details" class="basic-2">
+        <img class="decoration-star" src="/assets/website/img/v2rayx/decoration-star.svg" alt="alternative">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p><strong>1.自定义异常的信息 枚举 ,将所用到的异常信息列出,统一管理,有异常添加到此枚举中即可</strong></p> <pre><code class="prism language-java"><span class="token comment">/**  * 枚举：将可能选项一一的列出来 本质就是多例。  * 比如：红绿灯：三种情况：红黄绿  */</span> <span class="token annotation punctuation">@Getter</span> <span class="token keyword">public</span> <span class="token keyword">enum</span>  <span class="token class-name">ExceptionEnums</span> <span class="token punctuation">{<!-- --></span>      <span class="token comment">//列举不同情况  每种情况使用逗号分开</span>     <span class="token function">OK</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> <span class="token string">"操作成功！"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>          <span class="token function">INVALID_PARAM_ERROR</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">,</span> <span class="token string">"无效的请求参数！"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     <span class="token function">INVALID_PHONE_NUMBER</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">,</span> <span class="token string">"无效的手机号码"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     <span class="token function">INVALID_VERIFY_CODE</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">,</span> <span class="token string">"验证码错误！"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     <span class="token function">INVALID_USERNAME_PASSWORD</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">,</span> <span class="token string">"无效的用户名和密码！"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     <span class="token function">INVALID_SERVER_ID_SECRET</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">,</span> <span class="token string">"无效的服务id和密钥！"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     <span class="token function">INVALID_NOTIFY_PARAM</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">,</span> <span class="token string">"回调参数有误！"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     <span class="token function">INVALID_NOTIFY_SIGN</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">,</span> <span class="token string">"回调签名有误！"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>          <span class="token function">SPEC_NOT_FOUND</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">,</span> <span class="token string">"规格不存在！"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     <span class="token function">APPLICATION_NOT_FOUND</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">,</span> <span class="token string">"应用不存在！"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>      <span class="token function">DATA_TRANSFER_ERROR</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">,</span> <span class="token string">"数据转换异常！"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     <span class="token function">INSERT_OPERATION_FAIL</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">,</span> <span class="token string">"新增操作失败！"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     <span class="token function">UPDATE_OPERATION_FAIL</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">,</span> <span class="token string">"更新操作失败！"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     <span class="token function">DELETE_OPERATION_FAIL</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">,</span> <span class="token string">"删除操作失败！"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     <span class="token function">FILE_UPLOAD_ERROR</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">,</span> <span class="token string">"文件上传失败！"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     <span class="token function">DIRECTORY_WRITER_ERROR</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">,</span> <span class="token string">"目录写入失败！"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     <span class="token function">FILE_WRITER_ERROR</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">,</span> <span class="token string">"文件写入失败！"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     <span class="token function">SEND_MESSAGE_ERROR</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">,</span> <span class="token string">"短信发送失败！"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     <span class="token function">INVALID_ORDER_STATUS</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">,</span> <span class="token string">"订单状态不正确！"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>      <span class="token function">UNAUTHORIZED</span><span class="token punctuation">(</span><span class="token number">401</span><span class="token punctuation">,</span> <span class="token string">"登录失效或未登录！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token punctuation">;</span>      <span class="token comment">//提供属性</span>     <span class="token keyword">private</span> <span class="token keyword">int</span> status<span class="token punctuation">;</span> <span class="token comment">//状态码</span>     <span class="token keyword">private</span> <span class="token class-name">String</span> message<span class="token punctuation">;</span> <span class="token comment">//提示消息</span>       <span class="token comment">//提供属性私有构造 枚举类型通过私有有参构造注入值</span>     <span class="token class-name">ExceptionEnums</span><span class="token punctuation">(</span><span class="token keyword">int</span> status<span class="token punctuation">,</span> <span class="token class-name">String</span> message<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         <span class="token keyword">this</span><span class="token punctuation">.</span>status <span class="token operator">=</span> status<span class="token punctuation">;</span>         <span class="token keyword">this</span><span class="token punctuation">.</span>message <span class="token operator">=</span> message<span class="token punctuation">;</span>     <span class="token punctuation">}</span> <span class="token punctuation">}</span> </code></pre> <p><strong>2.自定义异常的类,从异常 枚举 列表中读取异常信息</strong></p> <pre><code class="prism language-java"><span class="token comment">/**  * 自定义异常类：包含http状态码,提示信息（父类中RuntimeException已经有message属性）  */</span> <span class="token annotation punctuation">@Data</span> <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LyException</span> <span class="token keyword">extends</span> <span class="token class-name">RuntimeException</span><span class="token punctuation">{<!-- --></span>      <span class="token comment">//提供http状态码属性，动态设置</span>     <span class="token keyword">private</span> <span class="token keyword">int</span> status<span class="token punctuation">;</span>      <span class="token comment">//ExceptionEnums中包含 装填码 以及提示消息</span>     <span class="token comment">//public LyException(ExceptionEnums enums) {<!-- --></span>     <span class="token comment">//    this.status = enums.getStatus();</span>     <span class="token comment">//}</span>      <span class="token keyword">public</span> <span class="token class-name">LyException</span><span class="token punctuation">(</span><span class="token class-name">ExceptionEnums</span> enums<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         <span class="token keyword">super</span><span class="token punctuation">(</span>enums<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token keyword">this</span><span class="token punctuation">.</span>status <span class="token operator">=</span> enums<span class="token punctuation">.</span><span class="token function">getStatus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span> <span class="token punctuation">}</span> </code></pre> <p><strong>3.统一异常处理机制,拦截所有异常信息</strong></p> <pre><code class="prism language-java"><span class="token comment">/**  * 作用：controllerAdvice是SPringMVC提供异常处理机制：  * 捕获所有项目模块controller产生的异常信息，将异常信息做定制给前端返回结果  */</span> <span class="token annotation punctuation">@ControllerAdvice</span> <span class="token annotation punctuation">@ResponseBody</span> <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BasicExceptionHandler</span> <span class="token punctuation">{<!-- --></span>      <span class="token comment">/*     //处理对应的异常类型：RuntimeException  ,没有封装完成的,指定状态码的异常信息     @ExceptionHandler(RuntimeException.class)     public ResponseEntity&lt;String&gt; error(RuntimeException e){         return ResponseEntity.status(400).body(e.getMessage());     }     */</span>           <span class="token comment">/**      * 处理其他自定义异常      * 最后改良：将返回数据String改为自定义的ExceptionResult      */</span>     <span class="token annotation punctuation">@ExceptionHandler</span><span class="token punctuation">(</span><span class="token class-name">LyException</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>     <span class="token keyword">public</span> <span class="token class-name">ResponseEntity</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">ExceptionResult</span><span class="token punctuation">&gt;</span></span> <span class="token function">error</span><span class="token punctuation">(</span><span class="token class-name">LyException</span> e<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>         <span class="token keyword">return</span> <span class="token class-name">ResponseEntity</span><span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span><span class="token function">getStatus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">body</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ExceptionResult</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span> <span class="token punctuation">}</span> </code></pre> <p><strong>4.自定义,异常返回的显示格式,以及显示的信息,更加规范化</strong></p> <pre><code class="prism language-java"> <span class="token annotation punctuation">@Getter</span> <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ExceptionResult</span> <span class="token punctuation">{<!-- --></span>     <span class="token keyword">private</span> <span class="token keyword">int</span> status<span class="token punctuation">;</span>     <span class="token keyword">private</span> <span class="token class-name">String</span> message<span class="token punctuation">;</span>     <span class="token keyword">private</span> <span class="token class-name">String</span> timestamp<span class="token punctuation">;</span>      <span class="token comment">//定义异常返回的显示格式,以及显示信息</span>     <span class="token keyword">public</span> <span class="token class-name">ExceptionResult</span><span class="token punctuation">(</span><span class="token class-name">LyException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         <span class="token keyword">this</span><span class="token punctuation">.</span>status <span class="token operator">=</span> e<span class="token punctuation">.</span><span class="token function">getStatus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token keyword">this</span><span class="token punctuation">.</span>message <span class="token operator">=</span> e<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">//来源于 jodatime 工具包  也可自己设置</span>         <span class="token keyword">this</span><span class="token punctuation">.</span>timestamp <span class="token operator">=</span> <span class="token class-name">DateTime</span><span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token string">"yyyy-MM-dd HH:mm:ss"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span> <span class="token punctuation">}</span> </code></pre> <p><strong>5.代码中使用演示 , 业务中可能出现异常的地方,抛出自定义的异常,参数为自定义的枚举,也就是可能发生异常的状态码,以及异常信息</strong></p> <pre><code class="prism language-java"><span class="token annotation punctuation">@RestController</span> <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ItemController</span> <span class="token punctuation">{<!-- --></span>      <span class="token annotation punctuation">@Autowired</span>     <span class="token keyword">private</span> <span class="token class-name">ItemService</span> itemService<span class="token punctuation">;</span>      <span class="token comment">/**      * ResponseEntity是SpringMVC提供请求响应对象      * status:http响应状态码 返回状态码200 说明请求成功  如果其他状态码 说明请求失败      * body：响应数据      * 如果不使用ResponseEntity，一般我们会在项目中提供自定义结果对象 Result code:状态码      */</span>     <span class="token annotation punctuation">@PostMapping</span><span class="token punctuation">(</span><span class="token string">"/item"</span><span class="token punctuation">)</span>     <span class="token keyword">public</span> <span class="token class-name">ResponseEntity</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Item</span><span class="token punctuation">&gt;</span></span> <span class="token function">saveItem</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestBody</span> <span class="token class-name">Item</span> item<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>         <span class="token comment">//判断商品价格是否为空</span>         <span class="token keyword">if</span><span class="token punctuation">(</span>item<span class="token punctuation">.</span><span class="token function">getPrice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>             <span class="token comment">//给前端提示错误信息  RuntimeException 状态码是固定 500 想状态码程序员控制</span>             <span class="token comment">//throw new RuntimeException("商品价格为！！");</span>             <span class="token comment">//ExceptionEnums.PRICE_IS_NULL 枚举类型中包括价格不能为空的状态码 以及提示消息</span>             <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">LyException</span><span class="token punctuation">(</span><span class="token class-name">ExceptionEnums</span><span class="token punctuation">.</span>PRICE_IS_NULL<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token punctuation">}</span>         <span class="token keyword">if</span><span class="token punctuation">(</span>item<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>             <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">LyException</span><span class="token punctuation">(</span><span class="token class-name">ExceptionEnums</span><span class="token punctuation">.</span>NAME_IS_NULL<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token punctuation">}</span>         <span class="token class-name">Item</span> item1 <span class="token operator">=</span> itemService<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token keyword">return</span> <span class="token class-name">ResponseEntity</span><span class="token punctuation">.</span><span class="token function">ok</span><span class="token punctuation">(</span>item1<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span> <span class="token punctuation">}</span>  </code></pre> <p><strong>6.返回异常的标准结构</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads/20230110/362f3a4e0c4f469f4bd56ceb6b953105.jpg" alt="自定义全局异常处理机制"></p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-76038.htm">HTML5画布 canvas移动</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-61938.htm" title="各种品牌猫粮对比表（各大猫粮测评）">各种品牌猫粮对比表（各大猫粮测评）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-15-free-node-subscribe.htm" title="1月15日→22.1M/S|2025年最新免费节点SSR/Clash/V2ray/Shadowrocket订阅链接地址分享">1月15日→22.1M/S|2025年最新免费节点SSR/Clash/V2ray/Shadowrocket订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-36883.htm" title="下载动物医院的软件是什么软件啊（下载动物医院的软件是什么软件啊）">下载动物医院的软件是什么软件啊（下载动物医院的软件是什么软件啊）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-15-free-high-speed-nodes.htm" title="3月15日→21.8M/S|2025年最新免费节点Clash/Shadowrocket/SSR/V2ray订阅链接地址分享">3月15日→21.8M/S|2025年最新免费节点Clash/Shadowrocket/SSR/V2ray订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-9-node-share-links.htm" title="3月9日→22.2M/S|2025年最新免费节点SSR/Clash/V2ray/Shadowrocket订阅链接地址分享">3月9日→22.2M/S|2025年最新免费节点SSR/Clash/V2ray/Shadowrocket订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-72007.htm" title="怀孕被猫咪抓出血了要打针吗（怀孕被猫咪抓了流血了会影响胎儿畸形吗）">怀孕被猫咪抓出血了要打针吗（怀孕被猫咪抓了流血了会影响胎儿畸形吗）</a></li>
+                        <li class="py-2"><a href="/news/article-76038.htm" title="HTML5画布 canvas移动">HTML5画布 canvas移动</a></li>
+                        <li class="py-2"><a href="/news/article-75351.htm" title="动物疫苗的作用有哪些呢图片视频（动物疫苗的了解）">动物疫苗的作用有哪些呢图片视频（动物疫苗的了解）</a></li>
+                        <li class="py-2"><a href="/news/article-71357.htm" title="在Java中可以重载或覆盖静态方法吗">在Java中可以重载或覆盖静态方法吗</a></li>
+                        <li class="py-2"><a href="/news/article-37368.htm" title="加盟做什么项目好赚钱（加盟做什么生意最赚钱投资小）">加盟做什么项目好赚钱（加盟做什么生意最赚钱投资小）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div> <!-- end of container -->
+    </div> <!-- end of basic-2 -->
+    <!-- end of details 1 -->
+        <!-- Copyright -->
+    <div class="copyright bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    &nbsp;
+                </div> <!-- end of col -->
+            </div> <!-- enf of row -->
+            <div class="row">
+                <div class="col-lg-12">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p class="p-small"><a href="/">V2ray X节点订阅官网</a> 版权所有 Powered by WordPress</p>
+                </div> <!-- end of col -->
+            </div> <!-- enf of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of copyright -->
+    <!-- end of copyright -->
+    <!-- Back To Top Button -->
+    <button onclick="topFunction()" id="myBtn">
+        <img src="/assets/website/img/v2rayx/up-arrow.png" alt="alternative">
+    </button>
+    <!-- end of back to top button -->
+    <!-- Scripts -->
+    <script src="/assets/website/js/frontend/v2rayx/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayx/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+    <script src="/assets/website/js/frontend/v2rayx/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+    <script src="/assets/website/js/frontend/v2rayx/purecounter.min.js"></script> <!-- Purecounter counter for statistics numbers -->
+    <script src="/assets/website/js/frontend/v2rayx/scripts.js"></script> <!-- Custom scripts -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
