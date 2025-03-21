@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2rayx.github.io/news/article-78075.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- SEO Meta Tags -->
+    <!-- OG Meta Tags to improve the way the post looks when you share the page on Facebook, Twitter, LinkedIn -->
+    <meta property="og:site_name" content="" /> <!-- website name -->
+    <meta property="og:site" content="" /> <!-- website link -->
+    <meta property="og:title" content="" /> <!-- title shown in the actual shared post -->
+    <meta property="og:description" content="" /> <!-- description shown in the actual shared post -->
+    <meta property="og:image" content="" /> <!-- image link, make sure it's jpg -->
+    <meta property="og:url" content="" /> <!-- where do you want your post to link to -->
+    <meta name="twitter:card" content="summary_large_image"> <!-- to have large image post format in Twitter -->
+    <title>mysql 数据库密码问题</title>
+        <meta name="description" content="初始密码 安装完数据库后，先得启动数据库，即 systemctl  start mysqld  再去查找数据库的初始密码，（yum 安装） cat /var/log/mysqld.log |grep " />
+        <link rel="icon" href="/assets/website/img/v2rayx/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2ray X节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2rayx.github.io/news/article-78075.htm" />
+    <meta property="og:site_name" content="V2ray X节点订阅官网" />
+    <meta property="og:title" content="mysql 数据库密码问题" />
+    <meta property="og:image" content="https://v2rayx.github.io/uploads/20240905/6530b2ca3834d910453e1f3c5d03cac7.webp" />
+        <meta property="og:release_date" content="2025-03-21T10:28:23" />
+    <meta property="og:updated_time" content="2025-03-21T10:28:23" />
+        <meta property="og:description" content="初始密码 安装完数据库后，先得启动数据库，即 systemctl  start mysqld  再去查找数据库的初始密码，（yum 安装） cat /var/log/mysqld.log |grep " />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="mysql 数据库密码问题">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="/assets/website/css/v2rayx/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/css/v2rayx/fontawesome-all.min.css" rel="stylesheet">
+    <link href="/assets/website/css/v2rayx/swiper.css" rel="stylesheet">
+    <link href="/assets/website/css/v2rayx/styles.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SJTGCLQCTC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SJTGCLQCTC');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Navigation -->
+    <nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-light" aria-label="Main navigation">
+        <div class="container">
+            <a class="navbar-brand logo-image" href="/">
+                        <span>V2ray X</span>
+                        </a>
+            <!-- Text Logo - Use this if you don't have a graphic logo -->
+            <!-- <a class="navbar-brand logo-text" href="index.html">Yavin</a> -->
+            <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav ms-auto navbar-nav-scroll">
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/free-nodes/">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/client.htm">客户端</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/news/">新闻资讯</a>
+                    </li>
+                                    </ul>
+            </div> <!-- end of navbar-collapse -->
+        </div> <!-- end of container -->
+    </nav> <!-- end of navbar -->
+    <!-- end of navigation -->
+    <!-- Header -->
+    <header class="ex-header bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-10 offset-xl-1">
+                    <h1>mysql 数据库密码问题</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                    </p>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </header> <!-- end of ex-header -->
+    <!-- end of header -->
+    <!-- Details 1 -->
+    <div id="details" class="basic-2">
+        <img class="decoration-star" src="/assets/website/img/v2rayx/decoration-star.svg" alt="alternative">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h2> <a id="_0" rel="nofollow"></a>初始密码</h2> <p>安装完数据库后，先得启动数据库，即</p> <pre><code>systemctl  start mysqld </code></pre> <p>再去查找数据库的初始密码，（yum 安装）</p> <pre><code>cat /var/log/mysqld.log |grep password|grep localhost:|awk -F"localhost:" '{print $NF}' </code></pre> <p>执行上面语句就会得到初始密码;<code>mysql -uroot -p'密码'</code>即可登录数据库</p> <p><mark>常见问题</mark></p> <ul> <li>问题一</li> </ul> <pre><code>ERROR 2002 (HY000): Can’t connect to local MySQL server  through socket ‘/var/lib/mysql/mysql.sock’ (2) </code></pre> <p>然后去找这个文件，发现/var/lib/mysql/路径下没有mysql.sock文件。而该文件存在于/tmp/mysql.sock !</p> <p>解决方法</p> <p>(1)修改<code>my.cnf</code>文件</p> <pre><code>vim /etc/my.cnf [mysqld]  socket = /tmp/mysql.sock </code></pre> <p>(2)软链</p> <pre><code>ln -s /tmp/mysql.sock  /var/lib/mysql/mysql.sock </code></pre> <ul> <li>问题二</li> </ul> <pre><code>ERROR 1054 (42S22): Unknown column 'password' in 'field list' </code></pre> <p>解决方法</p> <pre><code>update user set authentication_string= password('new-password') where user = 'root' ;  </code></pre> <ul> <li>问题三</li> </ul> <pre><code>ERROR 1862 (HY000): Your password has expired. To log in you must change it using a client  that supports expired passwords. </code></pre> <p>解决方法<br /> 在配置文件中添加<code>skip-grant-tables</code>语句，重新启动数据库即可实现无密登录。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230110/92769d14b1270ab5f4bde1a345e6684e.jpg" alt="mysql 数据库密码问题"></p> <h2> <a id="_53" rel="nofollow"></a>修改密码</h2> <h4> <a id="root_54" rel="nofollow"></a>root修改自己密码</h4> <ul> <li>方法一</li> </ul> <pre><code> # mysqladmin -uroot -p'123' password 'new_password'	    //123为旧密码 </code></pre> <ul> <li>方法二</li> </ul> <pre><code>mysql&gt; update mysql.user set authentication_string=password('new-passwd!') where user='root' and host='localhost'; </code></pre> <ul> <li>方法三</li> </ul> <pre><code>    上面方法将会在后面的版本remove,使用下面方法     SET PASSWORD='new_password';  直接设置密码 </code></pre> <h4> <a id="root_69" rel="nofollow"></a>root修改其他用户密码</h4> <ul> <li>方法一</li> </ul> <pre><code>mysql&gt; SET PASSWORD FOR user3@’localhost’='new_password'; </code></pre> <ul> <li>方法二</li> </ul> <pre><code>UPDATE mysql.user SET authentication_string=password(‘new_password’) WHERE user=’user3’ AND host=’localhost’; </code></pre> <h4> <a id="_78" rel="nofollow"></a>普通用户修改自己密码</h4> <pre><code> mysql&gt; SET password=password('new_password');          mysql&gt; select * from mysql.user\G     mysql&gt; alter user 'wing'@'localhost' identified by 'new-passwd'; </code></pre> <h4> <a id="_85" rel="nofollow"></a>查看现有的密码策略</h4> <pre><code>mysql&gt; SHOW VARIABLES LIKE 'validate_password%'; </code></pre> <p><font color="#dd00dd" size="4">参数解释：</font></p> <p>1).<code>validate_password_dictionary_file</code>指定密码验证的文件路径;<br /> 2).<code>validate_password_length</code> 密码最小长度<br /> 3).<code>validate_password_mixed_case_count</code> 密码至少要包含的小写字母个数和大写字母个数;<br /> 4).<code>validate_password_number_count</code> 密码至少要包含的数字个数<br /> 5).<code>validate_password_policy</code>密码强度检查等级，对应等级为：0/LOW、1/MEDIUM、2/STRONG,默认为1<br /><code>0/LOW</code>：只检查长度;<br /><code>1/MEDIUM</code>：检查长度、数字、大小写、特殊字符;<br /><code>2/STRONG</code>：检查长度、数字、大小写、特殊字符字典文件。<br /> 6).<code>validate_password_special_char_count</code>密码至少要包含的特殊字符数</p> <h4> <a id="_102" rel="nofollow"></a>找回密码</h4> <pre><code>	# mysqld --skip-grant-tables --user=mysql &amp;     //跳过数据库权限验证          # mysql      mysql&gt; UPDATE mysql.user SET authentication_string=password('new_password') 	WHERE user='root' AND host='localhost';     mysql&gt; FLUSH PRIVILEGES;   刷新授权表 </code></pre> <h4> <a id="_111" rel="nofollow"></a>可能出现的问题</h4> <ul> <li>问题一</li> </ul> <pre><code>ERROR You must reset your password using ALTER USER statement before executing this statement </code></pre> <p>解决方案</p> <pre><code>ALTER USER 'root'@'localhost' IDENTIFIED BY 'new-passwd'; </code></pre> <ul> <li>问题二</li> </ul> <pre><code>ERROR 1819 (HY000): Your password does not satisfy the current policy requirements </code></pre> <p>报错原因：密码强度不够<br /> 解决方法：(该账号为测试账号，所以采用降低密码策略强度)</p> <pre><code>mysql&gt; set global validate_password_policy=0; mysql&gt; set global validate_password_length=4; SHOW VARIABLES LIKE 'validate_password%'; </code></pre> <p>±-----------------------------------------------------±------+<br /> | Variable_name | Value |<br /> ±-----------------------------------------------------±------+<br /> | validate_password_dictionary_file | |<br /> | validate_password_length | 4 |<br /> | validate_password_mixed_case_count | 1 |<br /> | validate_password_number_count | 1 |<br /> | validate_password_policy | LOW |<br /> | validate_password_special_char_count | 1 |<br /> ±----------------------------------------------------±---- --+<br /> 6 rows in set (0.00 sec)<br /> 再次创建用户，成功</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-77385.htm">领养宠物狗狗去哪里领养（在哪儿领养狗狗）</a></p>
+                                        <p>下一个：<a href="/news/article-78076.htm">上海宠物医院有多少家分院（上海宠物医院知乎）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-22-free-node-subscribe-links.htm" title="1月22日→18.3M/S|2025年最新免费节点SSR/V2ray/Shadowrocket/Clash订阅链接地址分享">1月22日→18.3M/S|2025年最新免费节点SSR/V2ray/Shadowrocket/Clash订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-73999.htm" title="动物医院哪里好一点 动物医院哪里好一点啊">动物医院哪里好一点 动物医院哪里好一点啊</a></li>
+                        <li class="py-2"><a href="/news/article-63743.htm" title="宠物美容师多少钱一个月上海（上海宠物美容师培训）">宠物美容师多少钱一个月上海（上海宠物美容师培训）</a></li>
+                        <li class="py-2"><a href="/news/article-60172.htm" title="合肥猫猫领养网站有哪些（合肥哪里有领养猫狗的地方）">合肥猫猫领养网站有哪些（合肥哪里有领养猫狗的地方）</a></li>
+                        <li class="py-2"><a href="/news/article-73328.htm" title="减治思二分查找详细总结">减治思二分查找详细总结</a></li>
+                        <li class="py-2"><a href="/news/article-49236.htm" title="济南领养狗狗的网站（济南领养狗狗的地方）">济南领养狗狗的网站（济南领养狗狗的地方）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-20-free-subscribe-node.htm" title="3月20日→18.4M/S|2025年最新免费节点SSR/Clash/Shadowrocket/V2ray订阅链接地址分享">3月20日→18.4M/S|2025年最新免费节点SSR/Clash/Shadowrocket/V2ray订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-22-free-high-speed-nodes.htm" title="2月22日→20.9M/S|2025年最新免费节点Shadowrocket/V2ray/SSR/Clash订阅链接地址分享">2月22日→20.9M/S|2025年最新免费节点Shadowrocket/V2ray/SSR/Clash订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-60171.htm" title="C++学习笔记15-类和对象-C++对象模型和this指针">C++学习笔记15-类和对象-C++对象模型和this指针</a></li>
+                        <li class="py-2"><a href="/news/article-63128.htm" title="广州宠物领养网免费领养猫狗（广州哪里有宠物领养机构）">广州宠物领养网免费领养猫狗（广州哪里有宠物领养机构）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">63</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div> <!-- end of container -->
+    </div> <!-- end of basic-2 -->
+    <!-- end of details 1 -->
+        <!-- Copyright -->
+    <div class="copyright bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    &nbsp;
+                </div> <!-- end of col -->
+            </div> <!-- enf of row -->
+            <div class="row">
+                <div class="col-lg-12">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p class="p-small"><a href="/">V2ray X节点订阅官网</a> 版权所有 Powered by WordPress</p>
+                </div> <!-- end of col -->
+            </div> <!-- enf of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of copyright -->
+    <!-- end of copyright -->
+    <!-- Back To Top Button -->
+    <button onclick="topFunction()" id="myBtn">
+        <img src="/assets/website/img/v2rayx/up-arrow.png" alt="alternative">
+    </button>
+    <!-- end of back to top button -->
+    <!-- Scripts -->
+    <script src="/assets/website/js/frontend/v2rayx/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayx/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+    <script src="/assets/website/js/frontend/v2rayx/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+    <script src="/assets/website/js/frontend/v2rayx/purecounter.min.js"></script> <!-- Purecounter counter for statistics numbers -->
+    <script src="/assets/website/js/frontend/v2rayx/scripts.js"></script> <!-- Custom scripts -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
