@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2rayx.github.io/news/article-94163.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- SEO Meta Tags -->
+    <!-- OG Meta Tags to improve the way the post looks when you share the page on Facebook, Twitter, LinkedIn -->
+    <meta property="og:site_name" content="" /> <!-- website name -->
+    <meta property="og:site" content="" /> <!-- website link -->
+    <meta property="og:title" content="" /> <!-- title shown in the actual shared post -->
+    <meta property="og:description" content="" /> <!-- description shown in the actual shared post -->
+    <meta property="og:image" content="" /> <!-- image link, make sure it's jpg -->
+    <meta property="og:url" content="" /> <!-- where do you want your post to link to -->
+    <meta name="twitter:card" content="summary_large_image"> <!-- to have large image post format in Twitter -->
+    <title>Java 方法的重载与参数传递详解_java</title>
+        <meta name="description" content="目录  方法重载概述 方法重载特特点 方法重载练习 方法参数传递  方法参数传递（基本类型） 方法参数传递（引用类型）     方法重载概述 方法重载指同一个类中定义的多个方法之间的关系，满足下列条件" />
+        <link rel="icon" href="/assets/website/img/v2rayx/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2ray X节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2rayx.github.io/news/article-94163.htm" />
+    <meta property="og:site_name" content="V2ray X节点订阅官网" />
+    <meta property="og:title" content="Java 方法的重载与参数传递详解_java" />
+    <meta property="og:image" content="https://v2rayx.github.io/uploads/20240905/0f0fd16b163b71c8111aa688e1dca498.webp" />
+        <meta property="og:release_date" content="2025-04-12T08:57:33" />
+    <meta property="og:updated_time" content="2025-04-12T08:57:33" />
+        <meta property="og:description" content="目录  方法重载概述 方法重载特特点 方法重载练习 方法参数传递  方法参数传递（基本类型） 方法参数传递（引用类型）     方法重载概述 方法重载指同一个类中定义的多个方法之间的关系，满足下列条件" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Java 方法的重载与参数传递详解_java">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="/assets/website/css/v2rayx/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/css/v2rayx/fontawesome-all.min.css" rel="stylesheet">
+    <link href="/assets/website/css/v2rayx/swiper.css" rel="stylesheet">
+    <link href="/assets/website/css/v2rayx/styles.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SJTGCLQCTC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SJTGCLQCTC');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Navigation -->
+    <nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-light" aria-label="Main navigation">
+        <div class="container">
+            <a class="navbar-brand logo-image" href="/">
+                        <span>V2ray X</span>
+                        </a>
+            <!-- Text Logo - Use this if you don't have a graphic logo -->
+            <!-- <a class="navbar-brand logo-text" href="index.html">Yavin</a> -->
+            <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav ms-auto navbar-nav-scroll">
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/free-nodes/">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/client.htm">客户端</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/news/">新闻资讯</a>
+                    </li>
+                                    </ul>
+            </div> <!-- end of navbar-collapse -->
+        </div> <!-- end of container -->
+    </nav> <!-- end of navbar -->
+    <!-- end of navigation -->
+    <!-- Header -->
+    <header class="ex-header bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-10 offset-xl-1">
+                    <h1>Java 方法的重载与参数传递详解_java</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                    </p>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </header> <!-- end of ex-header -->
+    <!-- end of header -->
+    <!-- Details 1 -->
+    <div id="details" class="basic-2">
+        <img class="decoration-star" src="/assets/website/img/v2rayx/decoration-star.svg" alt="alternative">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li><a href="#_label0" rel="nofollow">方法重载概述</a></li> <li><a href="#_label1" rel="nofollow">方法重载特特点</a></li> <li><a href="#_label2" rel="nofollow">方法重载练习</a></li> <li><a href="#_label3" rel="nofollow">方法参数传递</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_3_0" rel="nofollow">方法参数传递（基本类型）</a></li> <li><a href="#_lab2_3_1" rel="nofollow">方法参数传递（引用类型）</a></li> </ul> </ul> </div> <p class="maodian"><a name="_label0" rel="nofollow"></a></p> <h2>方法重载概述</h2> <p>方法重载指同一个类中定义的多个方法之间的关系，满足下列条件的多个方法互相构成重载</p> <p>* 多个方法在同一个类中</p> <p>* 多个放方法具有相同方法名</p> <p>* 多个方法的参数不相同，类型不同或数量不同</p> <p class="maodian"><a name="_label1" rel="nofollow"></a></p> <h2>方法重载特特点</h2> <p>* 重载仅对应方法的定义，与方法的调用无关，调用方法参照标准格式</p> <p>* 重载仅针对同一个类中方法的名称与参数进行识别，与返回值无关，换句话说不能通过返回值来判断两个方法是否构成重载</p> <p>示例：</p> <div class="ay1code"> <pre class="brush:java;"> public class MethodDemo{           public static float  fn（int a）{              //方法体           }   public static int  fn（int a，int b）{              //方法体            }   }</pre> </div> <p class="maodian"><a name="_label2" rel="nofollow"></a></p> <h2>方法重载练习</h2> <p>需求：使用方法重载的思想，设计比较两个整数是否相同的方法，兼容全整数类型（byte，short，int，long）</p> <p>思路：</p> <p>1.定义比较两个数字的是否相同的方法compare()方法，参数选择两个int型参数</p> <div class="ay1code"> <pre class="brush:java;">public static boolean compare（int a,int b）{            return a==b;  }</pre> </div> <p>2.定义对应的重载方法，变更对应的参数类型，参数变更为两个long型参数</p> <div class="ay1code"> <pre class="brush:java;">public static boolean compare（long a,long b）{            return a==b;  }</pre> </div> <p>3.定义所有重载方法，两个byte类型与两个short类型参数</p> <div class="ay1code"> <pre class="brush:java;">public static boolean compare（byte a,byte b）{           //代码片段  }  public static boolean compare（short a,short b）{            //代码片段  }</pre> </div> <p>4. 完成方法调用，运行测试结果</p> <div class="ay1code"> <pre class="brush:java;">public static void main（String args[ ]）{         system.out.println(cpmpare(10,20));  }</pre> </div> <p>示例代码：</p> <div class="ay1code"> <pre class="brush:java;">   public class hmm081 {      public static void main(String[] args) {          //调用方法          System.out.println(compare(10,20));          //强转          System.out.println(compare((byte)10,(byte)20));          System.out.println(compare((long)10,(long)10));      }      public static boolean compare(int a,int b){          System.out.println("int");          return a==b;      }      public static boolean compare(long a,long b){          System.out.println("long");          return a==b;      }      public static boolean compare(byte a,byte b){          System.out.println("byte");          return a==b;      }      public static boolean compare(short a,short b){          System.out.println("short");          return a==b;      }  }</pre> </div> <p class="maodian"><a name="_label3" rel="nofollow"></a></p> <h2>方法参数传递</h2> <p class="maodian"><a name="_lab2_3_0" rel="nofollow"></a></p> <h3>方法参数传递（基本类型）</h3> <p>对于基本数据类型参数，形式参数的改变，不影响实际参数的值</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220416/2a20444b9e20eebc0aabb95c67a4e048.jpg"></p> <p> 虽然形参change（）内的number改变，但main（）参数不变，不影响实际参数值，所以第二次输出结果还是100</p> <p class="maodian"><a name="_lab2_3_1" rel="nofollow"></a></p> <h3>方法参数传递（引用类型）</h3> <p>对于引用类型的参数，形式参数的改变，影响实际参数的值，如数组。</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220416/88c02cec61cf9ec78679e3a1ff795783.jpg"></p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220416/6aed29bad16f1a1e8a53dfe5eb1b61f3.jpg"></p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-93146.htm">动物疫苗定义及分类 动物疫苗定义及分类标准</a></p>
+                                        <p>下一个：<a href="/news/article-94164.htm">重庆宠物领养中心在哪个位置呀（重庆宠物领养重庆宠物赠送）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-79441.htm" title="动物医院诊疗许可证代办多少钱（动物医院办理条件）">动物医院诊疗许可证代办多少钱（动物医院办理条件）</a></li>
+                        <li class="py-2"><a href="/news/article-86491.htm" title="MySQL GET_FORMAT()函数的用途是什么？">MySQL GET_FORMAT()函数的用途是什么？</a></li>
+                        <li class="py-2"><a href="/news/article-72007.htm" title="怀孕被猫咪抓出血了要打针吗（怀孕被猫咪抓了流血了会影响胎儿畸形吗）">怀孕被猫咪抓出血了要打针吗（怀孕被猫咪抓了流血了会影响胎儿畸形吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-11-clash-v2ray-ss-ssr.htm" title="4月11日→20.2M/S|2025年最新免费节点SSR/Shadowrocket/Clash/V2ray订阅链接地址分享">4月11日→20.2M/S|2025年最新免费节点SSR/Shadowrocket/Clash/V2ray订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-77385.htm" title="领养宠物狗狗去哪里领养（在哪儿领养狗狗）">领养宠物狗狗去哪里领养（在哪儿领养狗狗）</a></li>
+                        <li class="py-2"><a href="/news/article-87955.htm" title="小猫一摸就呼噜说明性格如何（小猫养多久才认主人?）">小猫一摸就呼噜说明性格如何（小猫养多久才认主人?）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-18-node-share-links.htm" title="3月18日→20.1M/S|2025年最新免费节点Clash/V2ray/SSR/Shadowrocket订阅链接地址分享">3月18日→20.1M/S|2025年最新免费节点Clash/V2ray/SSR/Shadowrocket订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-78075.htm" title="mysql 数据库密码问题">mysql 数据库密码问题</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-3-clash-v2ray-ss-ssr.htm" title="3月3日→19.6M/S|2025年最新免费节点SSR/Shadowrocket/V2ray/Clash订阅链接地址分享">3月3日→19.6M/S|2025年最新免费节点SSR/Shadowrocket/V2ray/Clash订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-9-node-share-links.htm" title="3月9日→22.2M/S|2025年最新免费节点SSR/Clash/V2ray/Shadowrocket订阅链接地址分享">3月9日→22.2M/S|2025年最新免费节点SSR/Clash/V2ray/Shadowrocket订阅链接地址分享</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">36</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div> <!-- end of container -->
+    </div> <!-- end of basic-2 -->
+    <!-- end of details 1 -->
+        <!-- Copyright -->
+    <div class="copyright bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    &nbsp;
+                </div> <!-- end of col -->
+            </div> <!-- enf of row -->
+            <div class="row">
+                <div class="col-lg-12">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p class="p-small"><a href="/">V2ray X节点订阅官网</a> 版权所有 Powered by WordPress</p>
+                </div> <!-- end of col -->
+            </div> <!-- enf of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of copyright -->
+    <!-- end of copyright -->
+    <!-- Back To Top Button -->
+    <button onclick="topFunction()" id="myBtn">
+        <img src="/assets/website/img/v2rayx/up-arrow.png" alt="alternative">
+    </button>
+    <!-- end of back to top button -->
+    <!-- Scripts -->
+    <script src="/assets/website/js/frontend/v2rayx/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayx/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+    <script src="/assets/website/js/frontend/v2rayx/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+    <script src="/assets/website/js/frontend/v2rayx/purecounter.min.js"></script> <!-- Purecounter counter for statistics numbers -->
+    <script src="/assets/website/js/frontend/v2rayx/scripts.js"></script> <!-- Custom scripts -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
