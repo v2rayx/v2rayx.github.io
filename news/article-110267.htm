@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2rayx.github.io/news/article-110267.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- SEO Meta Tags -->
+    <!-- OG Meta Tags to improve the way the post looks when you share the page on Facebook, Twitter, LinkedIn -->
+    <meta property="og:site_name" content="" /> <!-- website name -->
+    <meta property="og:site" content="" /> <!-- website link -->
+    <meta property="og:title" content="" /> <!-- title shown in the actual shared post -->
+    <meta property="og:description" content="" /> <!-- description shown in the actual shared post -->
+    <meta property="og:image" content="" /> <!-- image link, make sure it's jpg -->
+    <meta property="og:url" content="" /> <!-- where do you want your post to link to -->
+    <meta name="twitter:card" content="summary_large_image"> <!-- to have large image post format in Twitter -->
+    <title>一道思考题所引起动态跟踪 ‘学案’ &#8211; 深入浅出eBPF _在线工具</title>
+        <meta name="description" content="本文地址：https://www.ebpf.top/post/ftrace_kernel_dynamic 李程远老师在极客时间 《容器实战高手课》中的“ 加餐 04 | 理解 ftrace（2）：怎么" />
+        <link rel="icon" href="/assets/website/img/v2rayx/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2ray X节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2rayx.github.io/news/article-110267.htm" />
+    <meta property="og:site_name" content="V2ray X节点订阅官网" />
+    <meta property="og:title" content="一道思考题所引起动态跟踪 ‘学案’ &#8211; 深入浅出eBPF _在线工具" />
+    <meta property="og:image" content="https://v2rayx.github.io/uploads/20240905/b9ae8569b95cdb4fe2b162b7af403db8.webp" />
+        <meta property="og:release_date" content="2025-05-03T10:27:53" />
+    <meta property="og:updated_time" content="2025-05-03T10:27:53" />
+        <meta property="og:description" content="本文地址：https://www.ebpf.top/post/ftrace_kernel_dynamic 李程远老师在极客时间 《容器实战高手课》中的“ 加餐 04 | 理解 ftrace（2）：怎么" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="一道思考题所引起动态跟踪 ‘学案’ &#8211; 深入浅出eBPF _在线工具">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="/assets/website/css/v2rayx/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/css/v2rayx/fontawesome-all.min.css" rel="stylesheet">
+    <link href="/assets/website/css/v2rayx/swiper.css" rel="stylesheet">
+    <link href="/assets/website/css/v2rayx/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SJTGCLQCTC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SJTGCLQCTC');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Navigation -->
+    <nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-light" aria-label="Main navigation">
+        <div class="container">
+            <a class="navbar-brand logo-image" href="/">
+                        <span>V2ray X</span>
+                        </a>
+            <!-- Text Logo - Use this if you don't have a graphic logo -->
+            <!-- <a class="navbar-brand logo-text" href="index.html">Yavin</a> -->
+            <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav ms-auto navbar-nav-scroll">
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/free-nodes/">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/client.htm">客户端</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/news/">新闻资讯</a>
+                    </li>
+                                    </ul>
+            </div> <!-- end of navbar-collapse -->
+        </div> <!-- end of container -->
+    </nav> <!-- end of navbar -->
+    <!-- end of navigation -->
+    <!-- Header -->
+    <header class="ex-header bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-10 offset-xl-1">
+                    <h1>一道思考题所引起动态跟踪 ‘学案’ &#8211; 深入浅出eBPF _在线工具</h1>
+                    <p>
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                    </p>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </header> <!-- end of ex-header -->
+    <!-- end of header -->
+    <!-- Details 1 -->
+    <div id="details" class="basic-2">
+        <img class="decoration-star" src="/assets/website/img/v2rayx/decoration-star.svg" alt="alternative">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                      				  				  				<p>本文地址：https://www.ebpf.top/post/ftrace_kernel_dynamic</p> <p>李程远老师在极客时间 《容器实战高手课》中的“ 加餐 04 | 理解 ftrace（2）：怎么理解 ftrace 背后的技术 tracepoint 和 kprobe？” 留了一道思考题：</p> <blockquote> <p>想想看，当我们用 kprobe 为一个内核函数注册了 probe 之后，怎样能看到对应内核函数的第一条指令被替换了呢？</p> </blockquote> <p>kprobe 是内核函数动态跟踪的一种实现机制，使用该机制几乎可跟踪所有的内核函数（排除带有<code>__kprobes/nokprobe_inline</code> 注解的和标有<code>NOKPROBE_SYMBOL</code> 的函数）。 kprobe 跟踪机制的实现目前主要有 2 种机制：</p> <ul> <li> <p>一般情况下，当 kprobe 函数注册的时候，把目标地址上内核代码的指令码，替换成了 “cc”，也就是 int3 指令。这样一来，当内核代码执行到这条指令的时候，就会触发一个异常而进入到 Linux int3 异常处理函数 do_int3() 里。在<code>do_int3()</code> 这个函数里，进行检查，如果发现有对应的 kprobe 注册了 probe，就会依次执行注册的 pre_handler()、替换前的指令、post_handler()。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220507/0cce4bdc4feaed20a93921fd09c2c311.jpg" alt="一道思考题所引起动态跟踪 ‘学案’ - 深入浅出eBPF _在线工具"></p> </li> <li> <p>如内核基于 ftrace 对函数进行 trace，则会函数头上预留了<code>callq &lt;__fentry__&gt;</code> 的 5 个字节（在启动的时候被替换成了 nop）。kprobe 跟踪机制会复用 ftrace 跟踪预留的 5 个字节，将其替换成<code>ftrace_caller</code> ，而不再使用 int3 软中断指令替换。</p> </li> </ul> <p>不论上述那种方式，kprobe 实现原理基本一致：进行目标指令替换，替换的指令可以使程序跳转到一个特定的 handler 里，然后再去执行注册的 probe 的函数。</p> <p>本文，我将基于 ftrace 机制对整个动态替换的机制进行验证。如对 ftrace 不熟悉，建议提前阅读Linux 原生跟踪工具 Ftrace 必知必会。</p> <h2 id="1-基础知识">1. 基础知识</h2> <h3 id="11-默认编译">1.1 默认编译</h3> <p>我们用 C 语言实现一个非常简单程序进行简单验证：</p> <pre><code class="language-c">#include &lt;stdio.h&gt; #include &lt;stdlib.h&gt;  int a() {     return 0; }  int main(int argc, char ** argv){     return 0; }</code></pre> <p>在默认参数编译后的代码如下，可见函数头部没有特殊定义。</p> <pre><code class="language-bash">$ gcc -o hello hello.c  $ objdump -S hello ... 0000000000001129 &lt;a&gt;:     1129:	f3 0f 1e fa          	endbr64     112d:	55                   	push   %rbp     112e:	48 89 e5             	mov    %rsp,%rbp     1131:	b8 00 00 00 00       	mov    $0x0,%eax     1136:	5d                   	pop    %rbp     1137:	c3                   	ret ...</code></pre> <h3 id="12-使用--pg-选项">1.2 使用<code>-pg</code> 选项</h3> <p>使用<code>-pg</code> 参数编译后，我们可以看到在函数头部增加了对<code>mcount</code> 函数的调用，这种机制常用用于运行程序性能分析：</p> <pre><code class="language-bash">$ gcc -pg -o hello.pg hello.c  $ objdump -S hello.pg ... 00000000000011e9 &lt;a&gt;:     11e9:	f3 0f 1e fa          	endbr64     11ed:	55                   	push   %rbp     11ee:	48 89 e5             	mov    %rsp,%rbp     11f1:	ff 15 f1 2d 00 00    	call   *0x2df1(%rip)        # 3fe8 &lt;mcount@GLIBC_2.2.5&gt;     11f7:	b8 00 00 00 00       	mov    $0x0,%eax     11fc:	5d                   	pop    %rbp     11fd:	c3                   	ret ...</code></pre> <blockquote> <p>gcc 添加 -pg 选项后，编译器都会在函数头部增加 mcount/fentry 函数调用（ 设置了 notrace 属性函数除外）；<br /><code>#define notrace __attribute__((no_instrument_function))</code></p> </blockquote> <h3 id="13-使用--pg-和--mfentry-选项">1.3 使用<code>-pg</code> 和<code>-mfentry</code> 选项</h3> <p>在 gcc 4.6 版本后，新增编译选项<code>-mfentry</code>, 将通过调用实现更加简洁高效的<code>__fentry__</code> 函数替换<code>mcount</code> ， 在 Linux Kernel 4.19 x86 体系结构默认使用该方式。</p> <pre><code class="language-bash"># echo 'void foo(){}' | gcc -x c -S -o - - -pg -mfentry $ gcc -pg -mfentry -o hello.pg.entry hello.c $ objdump -S hello.pg.entry 00000000000011e9 &lt;a&gt;:     11e9:	f3 0f 1e fa          	endbr64     11ed:	ff 15 05 2e 00 00    	call   *0x2e05(%rip)        # 3ff8 &lt;__fentry__@GLIBC_2.13&gt;     11f3:	55                   	push   %rbp     11f4:	48 89 e5             	mov    %rsp,%rbp     11f7:	b8 00 00 00 00       	mov    $0x0,%eax     11fc:	5d                   	pop    %rbp     11fd:	c3                   	ret</code></pre> <p>这里我们以 fentry 为例，该函数调用会占用 5 个字节。 Linux 内核中 fentry 函数被定位为 retq 直接返回。</p> <pre><code class="language-c">SYM_FUNC_START(__fentry__)         retq SYM_FUNC_END(__fentry__)</code></pre> <p>即使通过 reqt 直接返回，每个函数都调用的时候仍然会带来大概 13% 的性能损耗，在实际运行过程中，ftrace 机制会在内核启动时候将 5 个字节（<code>ff 15 05 2e 00 00   call __fentry__</code>）直接替换成 nop 指令，在 x86_64 体系中为 nop 指令为：<code>0F 1F 44 00 00H</code>  。</p> <blockquote> <p>在启用 ftrace 动态跟踪机制时（CONFIG_DYNAMIC_FTRACE），设置跟踪函数后，内核会对当前 nop 指令进行动态替换（hot hook），替换成跳转到 ftrace_caller 函数，从而实现了动态跟踪。在替换过程中为了避免引发多核异常，首先将第一个直接替换成 0xcc 的中断指令，然后再替换后续的指令，具体实现参见 void ftrace_replace_code(int enable);</p> </blockquote> <h3 id="14-对内核进行验证">1.4 对内核进行验证</h3> <p>我们以内核函数<code>schedule</code> 为例，使用 gdb 调试带有符号信息的 vmlinux 文件时，我们可直接查看到函数编译后的汇编代码：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220507/2d0a4483584de71dbe080380d08afe98.jpg" alt="一道思考题所引起动态跟踪 ‘学案’ - 深入浅出eBPF _在线工具"></p> <p><code>__fentry__</code> 函数则直接被定义为了 retq 指令：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220507/5f4195d6cd6fe1f1f385ae07edce99ed.jpg" alt="一道思考题所引起动态跟踪 ‘学案’ - 深入浅出eBPF _在线工具"></p> <blockquote> <p>call 汇编指令解析：</p> <p><code>0xffffffff81c33580 &lt;+0&gt;:	e8 1b 41 44 ff	call   0xffffffff810776a0 &lt;__fentry__&gt;</code></p> <p>e8 代表 call,  1b 41 44 ff 相对于下一条指令的偏移量 （0xffffffff81c33580 + 5）， FF 44 41 1B 为负数，补码为 BB BE E5， 0xffffffff810776a0 - 0xffffffff81c33585 = -bbbee5</p> </blockquote> <h2 id="2-ftrace-中-kprobe-跟踪机制验证">2. ftrace 中 kprobe 跟踪机制验证</h2> <p>这里，我们打算验证 3 件事情：</p> <ol> <li>函数在内核启动后，函数首部的 call 指令会被替换成 nop 指令；</li> <li>ftrace 方式下设置 kprobe 函数跟踪后，nop 指令会被替换成相对应的 call 调用；</li> <li>kprobe 跟踪停止后，函数头部的 5 个字节会被替换成 nop 指令；（1，2 验证后，则很容易验证）</li> </ol> <p>为了验证内核函数动态替换过程，我首先考虑的是通过内核模块打印函数地址对应的首部 5 个字节。</p> <h2 id="3-使用内核模块进行验证">3. 使用内核模块进行验证</h2> <h3 id="31-使用-kallsyms_lookup_name-方式获取">3.1 使用 kallsyms_lookup_name 方式获取</h3> <p>最常见或流行的做法是在内核模块中使用内核函数<code>kallsyms_lookup_name()</code> 获取到跟踪函数的地址，然后进行打印。</p> <p>首先，我也想尝试通过这种方式进行，其他获取内核符号地址的方式参见 获取内核符号地址的方式。内核模块的样例代码参考hello_kernel_module，代码也非常简单：</p> <pre><code class="language-c">static int __init hello_init(void) {     char *func_addr = (char *)kallsyms_lookup_name("schedule");        // 判断地址是否合法，然后进行打印 }</code></pre> <p>但在编译阶段报错（本地环境 5.11.22-generic）：</p> <pre><code class="language-c">ERROR: modpost: "kallsyms_lookup_name" [hello_kernel_module/hello.ko] undefined!</code></pre> <p>在新版内核 ( &gt;= 5.7 ) 中，出于安全考虑<code>kallsyms_lookup_name</code> 函数不再被导出，在内核模块中不能再直接应用，相关说明可参见文章Unexporting kallsyms_lookup_name 和提交的 补丁。 这里 讨论了几种可行的替代方案，另外关于多内核版本下的统一方案可参考The Linux Kernel Module Programming Guide 中的样例代码syscall.c。这里为了简化，我使用 kprobe 注册机制（仅支持 Linux 5.11 内核），完整代码如下：</p> <pre><code class="language-c">#include &lt;linux/init.h&gt; #include &lt;linux/module.h&gt; #include &lt;linux/kprobes.h&gt; static struct kprobe kp = {     .symbol_name = "kallsyms_lookup_name" };  static int __init hello_init(void) {     typedef unsigned long (*kallsyms_lookup_name_t)(const char *name);     int i = 0;     kallsyms_lookup_name_t kallsyms_lookup_name;     register_kprobe(&amp;kp);     kallsyms_lookup_name = (kallsyms_lookup_name_t) kp.addr;     unregister_kprobe(&amp;kp);      char *func_addr = (char *)kallsyms_lookup_name("schedule");      pr_info("fun addr 0x%lx\n", func_addr);     for (i = 0; i &lt; 5; i++)     { 			 pr_info("0x%02x ", (u8)func_addr[i]);     }          return 0; }</code></pre> <p>完整代码参见get_inst.c。编译并安装后，可通过 dmesg 进行查看：</p> <pre><code class="language-bash">$ sudo insmod ./hello.ko $ dmesg -T [Sat Apr  9 12:11:25 2022] fun addr 0xffffffff9eea3eb0 [Sat Apr  9 12:11:25 2022] 0x0f 0x1f 0x44 0x00 0x00</code></pre> <p>这里我们可以看到函数首部的 5 个字节已被替换成 nop 指令（<code>0f 1f 44 00 00</code>)，这个过程是在内核启动时由<code>ftrace_init()</code> 函数统一处理替换的。同样，新安装的内核模块中导出的函数，首部也会自动被替换成成 nop 指令。</p> <p>对应到ftrace pdf 中 schedule 函数的样例如下：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220507/f4e8feecbec4a0dcabe99e8b059d31a2.jpg" alt="一道思考题所引起动态跟踪 ‘学案’ - 深入浅出eBPF _在线工具"></p> <p>图 未启用 kprobe 跟踪前，函数首部 5 个字节为 nop 指令 &lt;图来自于ftrace pdf P36&gt;</p> <p>接着，启用内核函数 schedule 的跟踪，再进行验证：</p> <pre><code class="language-bash">$ cd /sys/kernel/debug/tracing $ sudo echo 'p:schedule schedule' &gt;&gt; kprobe_events $ sudo cat kprobe_events p:kprobes/schedule schedule  $ sudo echo 1 &gt;  events/kprobes/schedule/enable $ insmod ./hello.ko $ demsg -T [Sun Apr 10 20:07:12 2022] 0xe8 0x7b 0x5a 0xd9 0x20 [Sun Apr 10 20:07:12 2022] fun addr 0xffffffff9fa33580  $ sudo echo 0 &gt;  events/kprobes/schedule/enable</code></pre> <p>在启用内核函数 schedule 函数跟踪后，我们可以看到首部 5 个字节 （nop）已经被替换成了其他函数调用。大体效果如下所示：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220507/b118fd25d3681931ab2e3df8ff745815.jpg" alt="一道思考题所引起动态跟踪 ‘学案’ - 深入浅出eBPF _在线工具"> 图：在注册 kprobe 函数 nop 指令被替换效果 &lt;来自于ftrace pdf  P37&gt;</p> <h3 id="32-直接使用内核函数地址踩坑笔记可跳过">3.2 直接使用内核函数地址（踩坑笔记，可跳过）</h3> <p>如果不通过<code>kallsyms_lookup_name</code> 函数，直接使用<code>/boot/System.map</code> 中的地址是否可以？答案是可以的，但是需要小心KASLR（Kernel Address Space Layout Randomization）机制。</p> <p>KASLR 可能会在每次启动时随机化内核代码和数据的地址，目的是保护内核空间不被攻击者破坏，这样以来<code>/boot/System.map</code> 中列出的静态地址会被随机值调整。如果没有 KASLR，攻击者可能会在固定地址中轻易找到目标地址。<strong>如果<code>/proc/kallsyms</code> 中的符号地址与<code>/boot/System.map</code> 中的地址不同，说明 KASLR 系统运行的内核中被启用</strong>。两个查看需要 root 用户权限才能查看。</p> <pre><code class="language-bash">$ grep GRUB_CMDLINE_LINUX_DEFAULT /etc/default/grub GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"  $ sudo grep schedule$ /boot/System.map-$(uname -r) ffffffff81c33580 T schedule  $ grep schedule$ /proc/kallsyms  ffffffff9fa33580 T schedule  # 如果系统未启用 KASLR（内核地址空间随机地址）功能，两者地址会相等，否则会不一致。</code></pre> <p>如果启用了 KASLR，我们必须在每次重启机器时注意<code>/proc/kallsyms</code> 的地址（** 每次重启机器都会发生变化 **）。为了使用<code>/boot/System.map</code> 中的地址，要确保 KASLR 被禁用。我们可以在启动命令行中添加<code>nokaslr</code> 来禁用 KASLR，重启生效：</p> <pre><code class="language-bash">$ grep GRUB_CMDLINE_LINUX_DEFAULT /etc/default/grub GRUB_CMDLINE_LINUX_DEFAULT="quiet splash" $ sudo perl -i -pe 'm/quiet/ and s//quiet nokaslr/' /etc/default/grub $ grep quiet /etc/default/grub GRUB_CMDLINE_LINUX_DEFAULT="quiet nokaslr splash" $ sudo update-grub</code></pre> <p>我们可在内核模块中添加一个 sym 变量获取传入的函数地址，样例代码如下：</p> <pre><code class="language-c">#include &lt;linux/init.h&gt; #include &lt;linux/module.h&gt; #include &lt;linux/kallsyms.h&gt;  static unsigned long sym = 0; module_param(sym, ulong, 0644);  static int __init hello_init(void) {     char *func_addr = 0;     int i = 0;     if (sym != 0)     { 			func_addr = (char *)sym; 			for ( i = 0; i &lt; 5; i++) 				pr_info("0x%02x ", (u8)func_addr[i]);     }      pr_info("fun addr 0x%p\n", func_addr);     return 0; } module_init(hello_init);</code></pre> <p>在确保 KASLR 被禁用后，我们编译上述模块并运行，可得到与上述方式一致的结果：</p> <pre><code class="language-bash">$ addr=`grep -w "schedule" /proc/kallsyms|cut -d " " -f 1` $ insmod ./hello.ko sym=0x$addr  $ dmesg -T [Sun Apr 10 20:50:51 2022] 0xe8 0x7b 0x5a 0xd9 0x20 [Sun Apr 10 20:50:51 2022] fun addr 0x000000005aad203e  $ rmmod hello</code></pre> <p>如果不禁用 KASLR 使用固定地址进行编译，加载驱动则会报错：</p> <pre><code class="language-bash">$ sudo dmesg -T [Fri Apr  8 17:39:47 2022] BUG: unable to handle page fault for address: ffffffff810a3eb2 [Fri Apr  8 17:39:47 2022] #PF: supervisor read access in kernel mode [Fri Apr  8 17:39:47 2022] #PF: error_code(0x0000) - not-present page</code></pre> <h2 id="4-使用-gdb--qemu-进行验证">4. 使用 gdb + qemu 进行验证</h2> <p>我将编译内核带上 DEBUG 选项的内核及相关文件保存到了 百度网盘，提取码 av28。关于内核编译及调试的详细过程可参考 使用 GDB + Qemu 调试 Linux 内核。</p> <p>这里介绍一下如何在 Mac 环境下使用 qemu 软件进行内核调试：</p> <pre><code class="language-bash">$ brew install qemu $ brew link qemu</code></pre> <p>需要提前下载网盘的文件至本地目录，运行 qemu 进行测试：</p> <pre><code class="language-bash">$ cat run.sh #!/bin/bash  qemu-system-x86_64 -machine type=q35,accel=hvf -kernel ./bzImage -initrd  ./rootfs_root.img -append "nokaslr console=ttyS0" -s c  $ ./run.sh</code></pre> <p>注意这里添加了<code>-machine type=q35,accel=hvf</code> 标记，在 mac 环境下使用 hvf 加速，如果不启用加速，默认使用 xen 虚拟化指令集。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220507/1d376e23236015070137b57fd1ff2ebd.jpg" alt="一道思考题所引起动态跟踪 ‘学案’ - 深入浅出eBPF _在线工具"></p> <blockquote> <p>如果在 qemu-system-x86_64 命令行没有启用 hvf 加速，看到函数前 5 个字节会有所差异，默认为<code>66 66 66 66 90	data16 data16 data16 xchg %ax,%ax</code>，这是因为 nop 指令在不同的体系结构会有所不同。</p> </blockquote> <pre><code class="language-bash"># cd /sys/kernel/debug/tracing # echo 'p:schedule schedule' &gt;&gt; kprobe_events # echo 1 &gt;  events/kprobes/schedule/enable</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220507/7d06ca88c7ead946b5ded8dd596baf78.jpg" alt="一道思考题所引起动态跟踪 ‘学案’ - 深入浅出eBPF _在线工具"></p> <p>这里我们对传入头部的函数继续进行跟踪：</p> <pre><code class="language-bash">(gdb) x/100i 0xffffffffc0002000</code></pre> <p>在后续翻页中可以看到调用了 kprobe_ftrace_handler 注册函数。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220507/c537a94cbffef04facf3926f0789afad.jpg" alt="一道思考题所引起动态跟踪 ‘学案’ - 深入浅出eBPF _在线工具"></p> <blockquote> <p>需要注意地址 0xffffffffc0002000 的函数并不是 ftrace 注册函数 ftrace_caller 或 ftrace_regs_caller，而是依据这两个函数在内存中动态构建的 trampoline（蹦床），将 ftrace_caller 或 ftrace_regs_caller 修改注册函数后的汇编拷贝到这段 trampoline 中，（本次调试 ftrace 函数为 ftrace_regs_caller，事件注册函数为 kprobe_ftrace_handler)。</p> </blockquote> <h2 id="参考">参考</h2> <ul> <li>ftrace 作者的 pdf：Ftrace Kernel Hooks: More than just tracing</li> <li> 探秘 ftrace</li> <li> 内核文档 Function Tracer Design</li> <li> 二十分钟 Linux ftrace 原理抛砖引玉 - Cache One</li> <li>KASLR</li> <li> 当 ftrace 用于用户空间</li> <li>Linux kernel debug on macOS 搭建可视化内核 debug 环境</li> </ul> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-110266.htm">@NotEmpty、@NotBlank等注解的正确使用 @Validated和@Valid的区别 解决@NotBlank等注解不生效的问题 使用BindingResult进行接口请求参数的统一校验</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-96889.htm" title="动物医院科室的设置 动物医院科室分类">动物医院科室的设置 动物医院科室分类</a></li>
+                        <li class="py-2"><a href="/news/article-94164.htm" title="重庆宠物领养中心在哪个位置呀（重庆宠物领养重庆宠物赠送）">重庆宠物领养中心在哪个位置呀（重庆宠物领养重庆宠物赠送）</a></li>
+                        <li class="py-2"><a href="/news/article-100611.htm" title="宠物粮食的品牌有哪些牌子（宠物粮食品牌起名大全）">宠物粮食的品牌有哪些牌子（宠物粮食品牌起名大全）</a></li>
+                        <li class="py-2"><a href="/news/article-101223.htm" title="天津宠物狗领养中心（天津宠物狗领养中心地址）">天津宠物狗领养中心（天津宠物狗领养中心地址）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-19-node-share.htm" title="4月19日→20.8M/S|2025年最新免费节点V2ray/Shadowrocket/Clash/SSR订阅链接地址分享">4月19日→20.8M/S|2025年最新免费节点V2ray/Shadowrocket/Clash/SSR订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-87231.htm" title="宠物主粮品牌排名榜（宠物粮品牌大全）">宠物主粮品牌排名榜（宠物粮品牌大全）</a></li>
+                        <li class="py-2"><a href="/news/article-110267.htm" title="一道思考题所引起动态跟踪 ‘学案’ &#8211; 深入浅出eBPF _在线工具">一道思考题所引起动态跟踪 ‘学案’ &#8211; 深入浅出eBPF _在线工具</a></li>
+                        <li class="py-2"><a href="/news/article-91665.htm" title="广州宠物领养平台官网电话 广州宠物领养平台官网电话号码">广州宠物领养平台官网电话 广州宠物领养平台官网电话号码</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-24-clash-v2ray-ss-ssr.htm" title="4月24日→18.4M/S|2025年最新免费节点Clash/SSR/V2ray/Shadowrocket订阅链接地址分享">4月24日→18.4M/S|2025年最新免费节点Clash/SSR/V2ray/Shadowrocket订阅链接地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-25-free-high-speed-nodes.htm" title="4月25日→19.6M/S|2025年最新免费节点Shadowrocket/V2ray/Clash/SSR订阅链接地址分享">4月25日→19.6M/S|2025年最新免费节点Shadowrocket/V2ray/Clash/SSR订阅链接地址分享</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2025-05/" title="2025-05 归档">2025-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">86</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div> <!-- end of container -->
+    </div> <!-- end of basic-2 -->
+    <!-- end of details 1 -->
+        <!-- Copyright -->
+    <div class="copyright bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    &nbsp;
+                </div> <!-- end of col -->
+            </div> <!-- enf of row -->
+            <div class="row">
+                <div class="col-lg-12">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p class="p-small"><a href="/">V2ray X节点订阅官网</a> 版权所有 Powered by WordPress</p>
+                </div> <!-- end of col -->
+            </div> <!-- enf of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of copyright -->
+    <!-- end of copyright -->
+    <!-- Back To Top Button -->
+    <button onclick="topFunction()" id="myBtn">
+        <img src="/assets/website/img/v2rayx/up-arrow.png" alt="alternative">
+    </button>
+    <!-- end of back to top button -->
+    <!-- Scripts -->
+    <script src="/assets/website/js/frontend/v2rayx/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayx/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+    <script src="/assets/website/js/frontend/v2rayx/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+    <script src="/assets/website/js/frontend/v2rayx/purecounter.min.js"></script> <!-- Purecounter counter for statistics numbers -->
+    <script src="/assets/website/js/frontend/v2rayx/scripts.js"></script> <!-- Custom scripts -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
