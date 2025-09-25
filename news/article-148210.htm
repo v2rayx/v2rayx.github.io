@@ -70,7 +70,7 @@
     <nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-light" aria-label="Main navigation">
         <div class="container">
             <a class="navbar-brand logo-image" href="/">
-                        <span>V2rayX</span>
+                        <span>免费V2ray节点每日更新</span>
                         </a>
             <!-- Text Logo - Use this if you don't have a graphic logo -->
             <!-- <a class="navbar-brand logo-text" href="index.html">Yavin</a> -->
@@ -119,7 +119,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node免费节点站" data-url="https://clashnode.github.io">
                 <div class="xcblog-blog-detail xcblog-blog-detail-defined">
                       <p>在信息全球化浪潮下，互联网已成为现代人获取知识、沟通世界的重要窗口。然而网络限制与地域封锁却如同无形的围墙，阻碍着人们对自由信息的获取。在这样的背景下，科学上网工具的重要性日益凸显，其中基于V2Ray核心的小飞机（Shadowrocket）凭借其卓越的性能和灵活的配置，成为众多用户的首选解决方案。本文将为您提供一份详尽的下载配置指南，带您轻松跨越网络藩篱。</p>  <h2>一、初识小飞机：V2Ray技术的力量源泉</h2>  <p>小飞机并非简单的网络加速工具，而是基于V2Ray核心开发的智能代理客户端。V2Ray作为新一代网络代理软件，采用模块化架构设计，支持Socks、HTTP、Shadowsocks、VMess等多种协议，其独创的"路由分流"功能可以智能判断网络流量走向，既保障了访问速度，又确保了连接稳定性。</p>  <p>与传统VPN相比，V2Ray的最大优势在于其隐蔽性和抗干扰能力。通过TLS加密和动态端口等技术创新，V2Ray能够有效规避网络封锁检测，在极端网络环境下仍能保持稳定连接。而小飞机作为V2Ray的客户端实现，将这些技术优势转化为直观易用的操作界面，让普通用户也能享受企业级的安全网络服务。</p>  <h2>二、下载准备：选择适合您的版本</h2>  <h3>官方渠道获取</h3>  <p>小飞机的正版获取渠道因操作系统而异。Windows用户建议访问GitHub官方仓库（github.com/v2ray/v2ray-core），在Releases页面下载最新稳定版。Mac用户可通过App Store搜索"Shadowrocket"获取，而Android用户则需要在Google Play或第三方应用市场（如APKPure）下载安装包。</p>  <h3>版本选择指南</h3>  <p>根据您的设备选择合适版本： - Windows系统：推荐下载v4.0以上版本，支持完整的图形化界面 - macOS系统：建议选择App Store正式版，确保系统兼容性 - Android系统：arm64架构为主流手机架构，x86版本适用于模拟器 - iOS系统：由于地区限制，可能需要切换App Store地区账号</p>  <h3>安全验证要点</h3>  <p>下载时务必验证文件完整性：检查SHA256校验码，确认与官方发布的值一致；警惕第三方修改版，这些版本可能包含恶意代码；建议在下载后使用杀毒软件进行扫描。</p>  <h2>三、详细安装教程：步步为营</h2>  <h3>Windows系统安装详解</h3>  <ol> <li>双击下载的安装包，系统可能会弹出SmartScreen筛选器警告，选择"更多信息"-"仍要运行"</li> <li>安装向导界面选择安装语言，建议使用English保持兼容性</li> <li>选择安装位置时，避免使用包含中文的路径，防止出现意外错误</li> <li>创建桌面快捷方式选项建议勾选，方便日后快速启动</li> <li>安装完成后不要立即运行，先进行系统防火墙设置</li> </ol>  <h3>macOS系统特别说明</h3>  <p>由于苹果系统的安全策略，非App Store版本可能需要额外步骤： 1. 进入系统偏好设置-安全性与隐私 2. 在通用标签页中点击"仍要打开" 3. 如果出现无法验证开发者提示，需要进入终端执行：    <code>sudo spctl --master-disable</code> （注意：此操作会降低安全级别，请谨慎使用）</p>  <h3>移动端安装技巧</h3>  <p>Android设备在安装前需要开启"允许来自未知来源的应用"选项；iOS用户若无法从App Store获取，可考虑使用TestFlight测试版本或企业证书版本，但这些渠道的稳定性无法保证。</p>  <h2>四、核心配置：从入门到精通</h2>  <h3>服务器配置详解</h3>  <ol> <li><p>基础参数设置：</p>  <ul> <li>地址(Address)：服务器IP或域名</li> <li>端口(Port)：通常为443或随机端口</li> <li>用户ID(UUID)：36位标识符，区分大小写</li> <li>额外ID(AlterId)：建议设置为100以内数值</li> <li>安全加密方式：推荐使用auto或aes-128-gcm</li> </ul></li> <li><p>传输协议配置：</p>  <ul> <li>TCP：最稳定兼容性最好的协议</li> <li>WebSocket：可伪装成网页流量，抗干扰能力强</li> <li>HTTP/2：新型协议，速度表现优异</li> <li>mKCP：牺牲带宽换取连接稳定性</li> </ul></li> </ol>  <h3>路由规则定制</h3>  <p>高级用户可根据需要定制路由规则： <code>{   "domainStrategy": "IPOnDemand",   "rules": [     {       "type": "field",       "domain": ["geosite:cn"],       "outboundTag": "direct"     },     {       "type": "field",       "ip": ["geoip:cn"],       "outboundTag": "direct"     }   ] }</code> 此配置可实现国内外流量分流，提升访问效率。</p>  <h3>性能优化设置</h3>  <ol> <li>开启MUX多路复用：提升TCP连接效率</li> <li>调整并发连接数：根据网络状况设置</li> <li>启用内存缓存：减少磁盘IO开销</li> <li>配置DNS服务器：使用8.8.8.8等公共DNS</li> </ol>  <h2>五、实战测试：确保最佳使用体验</h2>  <h3>连接测试方法</h3>  <ol> <li>速度测试：使用speedtest.net或fast.com测试延迟和带宽</li> <li>泄漏检测：通过ipleak.net检测DNS和IP泄漏</li> <li>阻断测试：访问Google、YouTube等网站验证连通性</li> <li>稳定性测试：持续ping测试观察丢包率</li> </ol>  <h3>故障排除指南</h3>  <p>当出现连接问题时，可按照以下步骤排查： 1. 检查服务器状态是否正常 2. 验证配置参数是否正确 3. 尝试更换传输协议和端口 4. 检查本地防火墙设置 5. 更新客户端到最新版本</p>  <h2>六、安全使用指南：保护您的数字隐私</h2>  <h3>最佳安全实践</h3>  <ol> <li>定期更新客户端和核心组件</li> <li>使用强密码和双重认证保护账号</li> <li>避免使用公共WiFi时不加密连接</li> <li>定期检查连接日志，发现异常及时处理</li> <li>重要操作时启用"阻止所有非代理流量"选项</li> </ol>  <h3>隐私保护设置</h3>  <ol> <li>开启"禁止WebRTC泄漏"选项</li> <li>配置DNS over HTTPS防止DNS查询被监听</li> <li>使用匿名模式浏览敏感网站</li> <li>定期清除浏览器缓存和cookies</li> </ol>  <h2>七、高级技巧：发挥最大潜能</h2>  <h3>脚本自动化</h3>  <p>通过编写脚本实现自动切换节点： ```bash</p>  <h1>!/bin/bash  <h1>自动选择延迟最低的节点  <p>v2ray -test -server list.txt | grep latency | sort -n | head -1 ```</p>  <h3>路由高级配置</h3>  <p>利用路由功能实现分应用代理： <code>json {   "type": "field",   "outboundTag": "proxy",   "domain": ["geosite:google", "geosite:facebook"] }</code></p>  <h2>点评：技术解放与责任担当</h2>  <p>小飞机V2Ray不仅仅是一个技术工具，更是数字时代公民获取信息自由的重要载体。其精巧的设计架构展现了开源社区的智慧结晶，从多协议支持到智能路由，每一个功能细节都体现着工程师们对网络自由的理解与追求。</p>  <p>然而技术永远是一把双刃剑。在使用这类工具时，我们更应当牢记数字公民的责任：遵守当地法律法规，尊重网络秩序，不进行违法信息传播和网络攻击行为。真正的网络自由建立在相互尊重和责任担当的基础上，而非无节制的为所欲为。</p>  <p>从技术层面看，V2Ray项目代表了代理技术的最新发展方向。其模块化设计、灵活的配置系统和强大的性能表现，都为未来网络工具的发展指明了方向。随着5G时代的到来和物联网设备的普及，这种智能、安全、高效的网络连接方案将会发挥越来越重要的作用。</p>  <p>掌握小飞机V2Ray的使用，不仅是获得了一个网络工具，更是打开了一扇通向更广阔数字世界的大门。在这个过程中，我们既享受技术带来的便利，也应当思考如何在数字世界中更好地保护自己、尊重他人，共同维护一个开放、安全、自由的互联网环境。</p>  <hr />  <p><em>本文仅作技术交流与学习之用，请读者遵守当地法律法规，合理使用网络工具。任何违法行为与本文作者无关。</em></p>                 </div>
                 <div class="clearfix"></div>
@@ -134,16 +134,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-8-28-clash-node-daily-updates.htm" title="V2rayX - 8月28日22.1M/S|免费SSR/Shadowrocket/V2ray/Clash节点推荐，V2rayC梯子购买推荐">V2rayX - 8月28日22.1M/S|免费SSR/Shadowrocket/V2ray/Clash节点推荐，V2rayC梯子购买推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-7-18-node-share-links.htm" title="7月18日→22.9M/S|2025年最新免费节点Free QuantumultX订阅链接地址">7月18日→22.9M/S|2025年最新免费节点Free QuantumultX订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-27-clash-verge-rev-github.htm" title="V2rayX - 8月27日19.4M/S|免费V2ray/Shadowrocket/Clash/SSR节点推荐，V2rayC梯子购买推荐">V2rayX - 8月27日19.4M/S|免费V2ray/Shadowrocket/Clash/SSR节点推荐，V2rayC梯子购买推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-20-latest-quantumult-x-node.htm" title="8月20日→22.5M/S|2025年最新免费节点Free QuantumultX订阅链接地址">8月20日→22.5M/S|2025年最新免费节点Free QuantumultX订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-6-latest-quantumult-x-node.htm" title="8月6日→20.9M/S|2025年最新免费节点Free QuantumultX订阅链接地址">8月6日→20.9M/S|2025年最新免费节点Free QuantumultX订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-7-20-quantumult-x-node-windows.htm" title="7月20日→19.7M/S|2025年最新免费节点Free QuantumultX订阅链接地址">7月20日→19.7M/S|2025年最新免费节点Free QuantumultX订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-7-16-quantumult-x-node-windows.htm" title="7月16日→19.6M/S|2025年最新免费节点Free QuantumultX订阅链接地址">7月16日→19.6M/S|2025年最新免费节点Free QuantumultX订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-10-quantumult-x-github.htm" title="8月10日→20.2M/S|2025年最新免费节点Free QuantumultX订阅链接地址">8月10日→20.2M/S|2025年最新免费节点Free QuantumultX订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-9-free-node-subscribe-links.htm" title="8月9日→20.6M/S|2025年最新免费节点Free QuantumultX订阅链接地址">8月9日→20.6M/S|2025年最新免费节点Free QuantumultX订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-11-today-quantumult-x-node.htm" title="8月11日→18M/S|2025年最新免费节点Free QuantumultX订阅链接地址">8月11日→18M/S|2025年最新免费节点Free QuantumultX订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-19-free-node-subscribe.htm" title="8月19日→19M/S|2025年最新免费节点Free QuantumultX订阅链接地址">8月19日→19M/S|2025年最新免费节点Free QuantumultX订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-21-free-ssr-node.htm" title="V2rayX - 9月21日22.7M/S|免费V2ray节点/Shadowrocket节点/SSR/Clash节点推荐，V2rayC梯子购买推荐">V2rayX - 9月21日22.7M/S|免费V2ray节点/Shadowrocket节点/SSR/Clash节点推荐，V2rayC梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-12-free-subscribe-node.htm" title="V2rayX - 9月12日18.4M/S|免费V2ray节点/SSR/Clash节点/Shadowrocket节点推荐，V2rayC梯子购买推荐">V2rayX - 9月12日18.4M/S|免费V2ray节点/SSR/Clash节点/Shadowrocket节点推荐，V2rayC梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-15-free-subscribe-node.htm" title="8月15日→23M/S|2025年最新免费节点Free QuantumultX订阅链接地址">8月15日→23M/S|2025年最新免费节点Free QuantumultX订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-13-free-v2ray-subscribe.htm" title="V2rayX - 9月13日21.9M/S|免费Clash节点/Shadowrocket节点/SSR/V2ray节点推荐，V2rayC梯子购买推荐">V2rayX - 9月13日21.9M/S|免费Clash节点/Shadowrocket节点/SSR/V2ray节点推荐，V2rayC梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-13-quantumult-x-node-share.htm" title="8月13日→23M/S|2025年最新免费节点Free QuantumultX订阅链接地址">8月13日→23M/S|2025年最新免费节点Free QuantumultX订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-16-free-node-subscribe.htm" title="V2rayX - 9月16日18.5M/S|免费V2ray节点/Clash节点/Shadowrocket节点/SSR节点推荐，V2rayC梯子购买推荐">V2rayX - 9月16日18.5M/S|免费V2ray节点/Clash节点/Shadowrocket节点/SSR节点推荐，V2rayC梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-23-clash-node.htm" title="V2rayX - 9月23日20.1M/S|免费Clash节点/Shadowrocket节点/V2ray节点/SSR节点推荐，V2rayC梯子购买推荐">V2rayX - 9月23日20.1M/S|免费Clash节点/Shadowrocket节点/V2ray节点/SSR节点推荐，V2rayC梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-30-clash-node-daily-updates.htm" title="V2rayX - 8月30日20M/S|免费V2ray节点/SSR/Clash节点/Shadowrocket节点推荐，V2rayC梯子购买推荐">V2rayX - 8月30日20M/S|免费V2ray节点/SSR/Clash节点/Shadowrocket节点推荐，V2rayC梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-16-quantumult-x-node-github.htm" title="8月16日→19.5M/S|2025年最新免费节点Free QuantumultX订阅链接地址">8月16日→19.5M/S|2025年最新免费节点Free QuantumultX订阅链接地址</a></li>
                     </ul>
     </div>
 </div>
@@ -155,10 +155,10 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2025-08/" title="2025-08 归档">2025-08</a></h4>
+                <h4><span class="badge" style="float: right;">23</span> <a href="/date/2025-09/" title="2025-09 归档">2025-09</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2025-07/" title="2025-07 归档">2025-07</a></h4>
+                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2025-08/" title="2025-08 归档">2025-08</a></h4>
             </li>
                     </ul>
     </div>
@@ -179,7 +179,8 @@
             </div> <!-- enf of row -->
             <div class="row">
                 <div class="col-lg-12">
-                                        <p>
+                                        <p>本站内容仅供学习与技术研究用途，无意传播或倡导任何违反法律法规的行为。在此声明：用户须自行了解所在地法律法规，合法合规使用；因使用不当产生的法律责任，与本站及作者无关；请在使用前仔细阅读本声明，继续使用即视为同意以上条款。</p>
+                    <p>
                                                 <a href="/">首页</a> |
                                                 <a href="/free-nodes/">免费节点</a> |
                                                 <a href="/paid-subscribe/">推荐机场</a> |
@@ -190,7 +191,7 @@
                         <a href="/privacy.htm">隐私申明</a> |
                         <a href="/sitemap.xml">网站地图</a>
                     </p>
-                    <p class="p-small"><a href="/">V2ray X节点订阅官网</a> 版权所有 Powered by WordPress</p>
+                                        <p class="p-small"><a href="/">V2ray X节点订阅官网</a> 版权所有 Powered by WordPress</p>
                 </div> <!-- end of col -->
             </div> <!-- enf of row -->
         </div> <!-- end of container -->
