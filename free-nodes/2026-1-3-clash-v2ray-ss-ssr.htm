@@ -330,14 +330,14 @@ tar -zxvf v2rayduyao.tar.gz
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 可以设置自定义 DNS 吗？</h5></div>
+    <div class="panel-heading"><h5>如何将 Windows 上的 V2Ray 与 WSL 环境联合调试？</h5></div>
     <div class="panel-body">
-        支持自定义 DNS，可配置本地或远程 DNS 服务器，包括 DoH/DoT。正确配置可提升解析速度、防止 DNS 污染，提高访问稳定性和安全性。<hr />    </div>
+        在 WSL 内运行需要的调试工具并通过 localhost 或将 V2Ray 监听地址绑定为 0.0.0.0，然后在 Windows 与 WSL 之间配置端口映射。注意 Windows 防火墙规则需允许 WSL 与 Windows 进程通信。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>WinXray 的 PAC 模式如何应用？</h5></div>
+    <div class="panel-heading"><h5>SSR 的混淆和协议设置如何选择才能绕过封锁？</h5></div>
     <div class="panel-body">
-        PAC 模式根据规则自动判断流量是否走代理，无需手动切换节点。适合访问国内外混合网站环境，提高网络访问速度和稳定性，减少误操作导致的访问失败。<hr />    </div>
+        选择模拟 HTTPS 的混淆方式如 tls1.2_ticket_auth，并搭配 AEAD 或协议插件，可以有效隐藏流量特征，降低被封锁风险。不同网络环境需测试选择最优组合。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>SSR 节点和 V2Ray 节点可以混合使用吗？</h5></div>
@@ -345,19 +345,9 @@ tar -zxvf v2rayduyao.tar.gz
         可以，但要使用支持多协议的客户端，如 Clash、Sing-box、Mihomo 等。这类客户端能在同一配置文件中加载不同协议的节点，通过规则分流让 SSR 与 V2Ray 同时工作。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Trojan-Go 的多路复用（mux）如何开启？</h5></div>
+    <div class="panel-heading"><h5>Nekobox 是否支持多客户端同时管理节点？</h5></div>
     <div class="panel-body">
-        Trojan-Go 在配置文件中通过启用 mux 参数即可实现多路复用。此功能允许多个连接共享同一隧道，减少握手延迟并提升整体传输效率，尤其在移动网络中表现出色。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>如何将 Windows 上的 V2Ray 与 WSL 环境联合调试？</h5></div>
-    <div class="panel-body">
-        在 WSL 内运行需要的调试工具并通过 localhost 或将 V2Ray 监听地址绑定为 0.0.0.0，然后在 Windows 与 WSL 之间配置端口映射。注意 Windows 防火墙规则需允许 WSL 与 Windows 进程通信。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Matsuri 如何通过节点测速选择最优线路？</h5></div>
-    <div class="panel-body">
-        Matsuri 会定期测速节点延迟和丢包率，结合策略组自动选择延迟低、稳定性高的节点。这样可以提升网页、视频和游戏访问速度，减少掉线和卡顿，优化整体体验。<hr />    </div>
+        支持。Nekobox 可以独立管理多个客户端，如 Shadowsocks 和 Clash 节点，互不干扰。结合策略组，可实现多客户端流量分流和网络优化，提高便利性和效率。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Netch 全局代理与规则代理如何选择？</h5></div>
@@ -365,19 +355,29 @@ tar -zxvf v2rayduyao.tar.gz
         全局代理会将所有流量通过节点转发，适合游戏或全局科学上网；规则代理只针对指定应用、IP 或端口走节点，可优化带宽使用和访问效率，根据需求灵活选择模式。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>Matsuri 如何通过节点测速选择最优线路？</h5></div>
+    <div class="panel-body">
+        Matsuri 会定期测速节点延迟和丢包率，结合策略组自动选择延迟低、稳定性高的节点。这样可以提升网页、视频和游戏访问速度，减少掉线和卡顿，优化整体体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>Mellow TUN 模式与 SOCKS5 代理有什么区别？</h5></div>
     <div class="panel-body">
         TUN 模式拦截系统 IP 层流量，实现全局代理；SOCKS5 代理通常只影响指定应用。TUN 更适合全局加速，如游戏、视频和浏览器流量，提高网络稳定性和覆盖范围。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Nekobox 是否支持多客户端同时管理节点？</h5></div>
+    <div class="panel-heading"><h5>WinXray 的 PAC 模式如何应用？</h5></div>
     <div class="panel-body">
-        支持。Nekobox 可以独立管理多个客户端，如 Shadowsocks 和 Clash 节点，互不干扰。结合策略组，可实现多客户端流量分流和网络优化，提高便利性和效率。<hr />    </div>
+        PAC 模式根据规则自动判断流量是否走代理，无需手动切换节点。适合访问国内外混合网站环境，提高网络访问速度和稳定性，减少误操作导致的访问失败。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>SSR 的混淆和协议设置如何选择才能绕过封锁？</h5></div>
+    <div class="panel-heading"><h5>Potatso Lite 可以设置自定义 DNS 吗？</h5></div>
     <div class="panel-body">
-        选择模拟 HTTPS 的混淆方式如 tls1.2_ticket_auth，并搭配 AEAD 或协议插件，可以有效隐藏流量特征，降低被封锁风险。不同网络环境需测试选择最优组合。    </div>
+        支持自定义 DNS，可配置本地或远程 DNS 服务器，包括 DoH/DoT。正确配置可提升解析速度、防止 DNS 污染，提高访问稳定性和安全性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Trojan-Go 的多路复用（mux）如何开启？</h5></div>
+    <div class="panel-body">
+        Trojan-Go 在配置文件中通过启用 mux 参数即可实现多路复用。此功能允许多个连接共享同一隧道，减少握手延迟并提升整体传输效率，尤其在移动网络中表现出色。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -406,15 +406,15 @@ tar -zxvf v2rayduyao.tar.gz
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-12-8-node-share.htm" title="V2rayX - 12月8日21.4M/S|免费Singbox节点/V2ray节点/Clash节点/SSR节点/Shadowrocket节点节点推荐，V2rayC梯子购买推荐">V2rayX - 12月8日21.4M/S|免费Singbox节点/V2ray节点/Clash节点/SSR节点/Shadowrocket节点节点推荐，V2rayC梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-17-shadowrocket-node.htm" title="V2rayX - 12月17日20M/S|免费V2ray节点/Singbox节点/Clash节点/SSR节点/Shadowrocket节点节点推荐，V2rayC梯子购买推荐">V2rayX - 12月17日20M/S|免费V2ray节点/Singbox节点/Clash节点/SSR节点/Shadowrocket节点节点推荐，V2rayC梯子购买推荐</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-12-24-node-share.htm" title="V2rayX - 12月24日21.9M/S|免费SSR节点/Clash节点/V2ray节点/Singbox节点/Shadowrocket节点节点推荐，V2rayC梯子购买推荐">V2rayX - 12月24日21.9M/S|免费SSR节点/Clash节点/V2ray节点/Singbox节点/Shadowrocket节点节点推荐，V2rayC梯子购买推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-12-19-free-subscribe-node.htm" title="V2rayX - 12月19日18M/S|免费Shadowrocket节点/Clash节点/V2ray节点/SSR节点/Singbox节点节点推荐，V2rayC梯子购买推荐">V2rayX - 12月19日18M/S|免费Shadowrocket节点/Clash节点/V2ray节点/SSR节点/Singbox节点节点推荐，V2rayC梯子购买推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-7-free-v2ray.htm" title="V2rayX - 11月7日23M/S|免费SSR节点/Shadowrocket节点/Singbox节点/V2ray节点/Clash节点节点推荐，V2rayC梯子购买推荐">V2rayX - 11月7日23M/S|免费SSR节点/Shadowrocket节点/Singbox节点/V2ray节点/Clash节点节点推荐，V2rayC梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-1-2-free-node-subscribe-links.htm" title="V2rayX - 1月2日20.4M/S|免费SSR节点/Shadowrocket节点/Singbox节点/Clash节点/V2ray节点节点推荐，V2rayC梯子购买推荐">V2rayX - 1月2日20.4M/S|免费SSR节点/Shadowrocket节点/Singbox节点/Clash节点/V2ray节点节点推荐，V2rayC梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-1-1-clash-node-daily-updates.htm" title="V2rayX - 1月1日20.2M/S|免费Singbox节点/SSR节点/Clash节点/Shadowrocket节点/V2ray节点节点推荐，V2rayC梯子购买推荐">V2rayX - 1月1日20.2M/S|免费Singbox节点/SSR节点/Clash节点/Shadowrocket节点/V2ray节点节点推荐，V2rayC梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-10-free-ssr-subscribe.htm" title="V2rayX - 12月10日18.5M/S|免费SSR节点/V2ray节点/Singbox节点/Clash节点/Shadowrocket节点节点推荐，V2rayC梯子购买推荐">V2rayX - 12月10日18.5M/S|免费SSR节点/V2ray节点/Singbox节点/Clash节点/Shadowrocket节点节点推荐，V2rayC梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-1-3-clash-v2ray-ss-ssr.htm" title="V2rayX - 1月3日18.4M/S|免费V2ray节点/Clash节点/SSR节点/Singbox节点/Shadowrocket节点节点推荐，V2rayC梯子购买推荐">V2rayX - 1月3日18.4M/S|免费V2ray节点/Clash节点/SSR节点/Singbox节点/Shadowrocket节点节点推荐，V2rayC梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-9-free-high-speed-nodes.htm" title="V2rayX - 12月9日19.3M/S|免费V2ray节点/Shadowrocket节点/SSR节点/Clash节点/Singbox节点节点推荐，V2rayC梯子购买推荐">V2rayX - 12月9日19.3M/S|免费V2ray节点/Shadowrocket节点/SSR节点/Clash节点/Singbox节点节点推荐，V2rayC梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-22-node-share-links.htm" title="V2rayX - 12月22日22.6M/S|免费SSR节点/Singbox节点/Shadowrocket节点/Clash节点/V2ray节点节点推荐，V2rayC梯子购买推荐">V2rayX - 12月22日22.6M/S|免费SSR节点/Singbox节点/Shadowrocket节点/Clash节点/V2ray节点节点推荐，V2rayC梯子购买推荐</a></li>
                         <li class="py-2"><a href="/free-nodes/2026-1-6-free-clash.htm" title="V2rayX - 1月6日22.1M/S|免费V2ray节点/Singbox节点/Shadowrocket节点/Clash节点/SSR节点节点推荐，V2rayC梯子购买推荐">V2rayX - 1月6日22.1M/S|免费V2ray节点/Singbox节点/Shadowrocket节点/Clash节点/SSR节点节点推荐，V2rayC梯子购买推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-27-free-v2ray-subscribe.htm" title="V2rayX - 11月27日20.9M/S|免费SSR节点/Shadowrocket节点/Singbox节点/Clash节点/V2ray节点节点推荐，V2rayC梯子购买推荐">V2rayX - 11月27日20.9M/S|免费SSR节点/Shadowrocket节点/Singbox节点/Clash节点/V2ray节点节点推荐，V2rayC梯子购买推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-12-13-free-high-speed-nodes.htm" title="V2rayX - 12月13日20.3M/S|免费Singbox节点/Clash节点/V2ray节点/SSR节点/Shadowrocket节点节点推荐，V2rayC梯子购买推荐">V2rayX - 12月13日20.3M/S|免费Singbox节点/Clash节点/V2ray节点/SSR节点/Shadowrocket节点节点推荐，V2rayC梯子购买推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-10-free-v2ray-subscribe.htm" title="V2rayX - 11月10日23M/S|免费Clash节点/Singbox节点/SSR节点/V2ray节点/Shadowrocket节点节点推荐，V2rayC梯子购买推荐">V2rayX - 11月10日23M/S|免费Clash节点/Singbox节点/SSR节点/V2ray节点/Shadowrocket节点节点推荐，V2rayC梯子购买推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-12-11-free-clash-subscribe.htm" title="V2rayX - 12月11日19.1M/S|免费Shadowrocket节点/V2ray节点/Clash节点/SSR节点/Singbox节点节点推荐，V2rayC梯子购买推荐">V2rayX - 12月11日19.1M/S|免费Shadowrocket节点/V2ray节点/Clash节点/SSR节点/Singbox节点节点推荐，V2rayC梯子购买推荐</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-12-14-free-clash-subscribe.htm" title="V2rayX - 12月14日19.2M/S|免费Shadowrocket节点/Singbox节点/Clash节点/V2ray节点/SSR节点节点推荐，V2rayC梯子购买推荐">V2rayX - 12月14日19.2M/S|免费Shadowrocket节点/Singbox节点/Clash节点/V2ray节点/SSR节点节点推荐，V2rayC梯子购买推荐</a></li>
                     </ul>
     </div>
@@ -430,10 +430,7 @@ tar -zxvf v2rayduyao.tar.gz
                 <h4><span class="badge" style="float: right;">7</span> <a href="/date/2026-01/" title="2026-01 归档">2026-01</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2025-12/" title="2025-12 归档">2025-12</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">23</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
+                <h4><span class="badge" style="float: right;">19</span> <a href="/date/2025-12/" title="2025-12 归档">2025-12</a></h4>
             </li>
                     </ul>
     </div>
